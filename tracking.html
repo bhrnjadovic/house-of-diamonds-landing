@@ -1,0 +1,360 @@
+<!--
+=============================================================================
+HOUSE OF DIAMONDS - TRACKING SETUP
+=============================================================================
+This file contains all tracking code for Google Ads, Google Analytics 4,
+and Facebook Pixel.
+
+SETUP INSTRUCTIONS:
+1. Replace placeholder IDs with your actual tracking IDs
+2. Include this file in the <head> section of your index.html
+3. Test all tracking events in Google Tag Assistant and Facebook Pixel Helper
+
+=============================================================================
+-->
+
+<!-- Google tag (gtag.js) - Google Ads Conversion Tracking -->
+<!--
+INSTRUCTIONS:
+1. Replace 'AW-XXXXXXXXXX' with your Google Ads Conversion ID
+2. Get this from: Google Ads > Tools > Conversions > Select Conversion Action
+-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  // Google Ads Configuration
+  // Replace 'AW-XXXXXXXXXX' with your actual Google Ads Conversion ID
+  gtag('config', 'AW-XXXXXXXXXX');
+</script>
+
+<!-- Google Analytics 4 (GA4) -->
+<!--
+INSTRUCTIONS:
+1. Replace 'G-XXXXXXXXXX' with your GA4 Measurement ID
+2. Get this from: Google Analytics > Admin > Data Streams > Select Stream
+-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  // Google Analytics 4 Configuration
+  // Replace 'G-XXXXXXXXXX' with your actual GA4 Measurement ID
+  gtag('config', 'G-XXXXXXXXXX', {
+    'send_page_view': true,
+    'allow_google_signals': true,
+    'allow_ad_personalization_signals': true
+  });
+</script>
+
+<!-- Facebook Pixel Code -->
+<!--
+INSTRUCTIONS:
+1. Replace 'XXXXXXXXXXXXXXXXX' with your Facebook Pixel ID
+2. Get this from: Facebook Events Manager > Data Sources > Select Pixel
+-->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+
+  // Replace 'XXXXXXXXXXXXXXXXX' with your actual Facebook Pixel ID
+  fbq('init', 'XXXXXXXXXXXXXXXXX');
+  fbq('track', 'PageView');
+</script>
+<noscript>
+  <!-- Replace 'XXXXXXXXXXXXXXXXX' with your actual Facebook Pixel ID -->
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXXXX&ev=PageView&noscript=1"/>
+</noscript>
+
+<!-- Event Tracking Script -->
+<script>
+  // =============================================================================
+  // EVENT TRACKING CONFIGURATION
+  // =============================================================================
+
+  // Wait for DOM to be fully loaded
+  document.addEventListener('DOMContentLoaded', function() {
+
+    // -------------------------------------------------------------------------
+    // 1. PAGE VIEW TRACKING
+    // -------------------------------------------------------------------------
+    // Already handled by gtag('config') and fbq('track', 'PageView') above
+    console.log('Page view tracked');
+
+
+    // -------------------------------------------------------------------------
+    // 2. FORM SUBMISSION TRACKING
+    // -------------------------------------------------------------------------
+    const forms = document.querySelectorAll('form');
+    forms.forEach(function(form) {
+      form.addEventListener('submit', function(e) {
+        // Track form submission in Google Ads
+        gtag('event', 'conversion', {
+          'send_to': 'AW-XXXXXXXXXX/CONVERSION_LABEL', // Replace with your conversion label
+          'event_callback': function() {
+            console.log('Google Ads form conversion tracked');
+          }
+        });
+
+        // Track form submission in Google Analytics 4
+        gtag('event', 'generate_lead', {
+          'event_category': 'Form',
+          'event_label': 'Contact Form Submission',
+          'value': 1
+        });
+
+        // Track form submission in Facebook Pixel
+        fbq('track', 'Lead', {
+          content_name: 'Contact Form',
+          content_category: 'Form Submission'
+        });
+
+        console.log('Form submission tracked');
+      });
+    });
+
+
+    // -------------------------------------------------------------------------
+    // 3. CTA BUTTON CLICKS TRACKING
+    // -------------------------------------------------------------------------
+    // Track all buttons and CTA links
+    const ctaButtons = document.querySelectorAll('button, .cta-button, a[href^="tel:"], a[href^="mailto:"], .btn, .button');
+    ctaButtons.forEach(function(button) {
+      button.addEventListener('click', function(e) {
+        const buttonText = this.textContent.trim() || this.getAttribute('aria-label') || 'Unknown CTA';
+        const buttonHref = this.getAttribute('href') || 'No href';
+
+        // Track in Google Analytics 4
+        gtag('event', 'cta_click', {
+          'event_category': 'CTA',
+          'event_label': buttonText,
+          'value': buttonHref
+        });
+
+        // Track in Facebook Pixel
+        fbq('trackCustom', 'CTAClick', {
+          button_text: buttonText,
+          button_href: buttonHref
+        });
+
+        console.log('CTA click tracked:', buttonText);
+      });
+    });
+
+
+    // -------------------------------------------------------------------------
+    // 4. PHONE NUMBER CLICKS TRACKING
+    // -------------------------------------------------------------------------
+    const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+    phoneLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        const phoneNumber = this.getAttribute('href').replace('tel:', '');
+
+        // Track in Google Ads as conversion
+        gtag('event', 'conversion', {
+          'send_to': 'AW-XXXXXXXXXX/PHONE_CONVERSION_LABEL', // Replace with your phone conversion label
+          'event_callback': function() {
+            console.log('Google Ads phone conversion tracked');
+          }
+        });
+
+        // Track in Google Analytics 4
+        gtag('event', 'phone_call', {
+          'event_category': 'Contact',
+          'event_label': phoneNumber,
+          'value': phoneNumber
+        });
+
+        // Track in Facebook Pixel
+        fbq('track', 'Contact', {
+          contact_type: 'Phone',
+          phone_number: phoneNumber
+        });
+
+        console.log('Phone click tracked:', phoneNumber);
+      });
+    });
+
+
+    // -------------------------------------------------------------------------
+    // 5. SCROLL DEPTH TRACKING (25%, 50%, 75%, 100%)
+    // -------------------------------------------------------------------------
+    let scrollTracked = {
+      '25': false,
+      '50': false,
+      '75': false,
+      '100': false
+    };
+
+    function trackScrollDepth() {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollPercent = Math.round((scrollTop / (documentHeight - windowHeight)) * 100);
+
+      // Track each milestone only once
+      if (scrollPercent >= 25 && !scrollTracked['25']) {
+        scrollTracked['25'] = true;
+
+        // Track in Google Analytics 4
+        gtag('event', 'scroll_depth', {
+          'event_category': 'Engagement',
+          'event_label': '25%',
+          'value': 25
+        });
+
+        // Track in Facebook Pixel
+        fbq('trackCustom', 'ScrollDepth', {
+          depth: '25%'
+        });
+
+        console.log('Scroll depth tracked: 25%');
+      }
+
+      if (scrollPercent >= 50 && !scrollTracked['50']) {
+        scrollTracked['50'] = true;
+
+        gtag('event', 'scroll_depth', {
+          'event_category': 'Engagement',
+          'event_label': '50%',
+          'value': 50
+        });
+
+        fbq('trackCustom', 'ScrollDepth', {
+          depth: '50%'
+        });
+
+        console.log('Scroll depth tracked: 50%');
+      }
+
+      if (scrollPercent >= 75 && !scrollTracked['75']) {
+        scrollTracked['75'] = true;
+
+        gtag('event', 'scroll_depth', {
+          'event_category': 'Engagement',
+          'event_label': '75%',
+          'value': 75
+        });
+
+        fbq('trackCustom', 'ScrollDepth', {
+          depth: '75%'
+        });
+
+        console.log('Scroll depth tracked: 75%');
+      }
+
+      if (scrollPercent >= 100 && !scrollTracked['100']) {
+        scrollTracked['100'] = true;
+
+        gtag('event', 'scroll_depth', {
+          'event_category': 'Engagement',
+          'event_label': '100%',
+          'value': 100
+        });
+
+        fbq('trackCustom', 'ScrollDepth', {
+          depth: '100%'
+        });
+
+        console.log('Scroll depth tracked: 100%');
+      }
+    }
+
+    // Throttle scroll events for performance
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+      scrollTimeout = setTimeout(trackScrollDepth, 100);
+    });
+
+    // Initial check in case page loads scrolled
+    trackScrollDepth();
+
+
+    // -------------------------------------------------------------------------
+    // ADDITIONAL TRACKING HELPERS
+    // -------------------------------------------------------------------------
+
+    // Track outbound links
+    const externalLinks = document.querySelectorAll('a[href^="http"]:not([href*="' + window.location.hostname + '"])');
+    externalLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        const url = this.getAttribute('href');
+        gtag('event', 'outbound_click', {
+          'event_category': 'Outbound Link',
+          'event_label': url
+        });
+        console.log('Outbound link tracked:', url);
+      });
+    });
+
+    // Track email clicks
+    const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+    emailLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        const email = this.getAttribute('href').replace('mailto:', '');
+        gtag('event', 'email_click', {
+          'event_category': 'Contact',
+          'event_label': email
+        });
+        fbq('track', 'Contact', {
+          contact_type: 'Email',
+          email: email
+        });
+        console.log('Email click tracked:', email);
+      });
+    });
+
+  });
+
+
+  // =============================================================================
+  // TESTING & DEBUGGING
+  // =============================================================================
+  // Open browser console and check for tracking events
+  // Use Google Tag Assistant Chrome extension to verify Google tracking
+  // Use Facebook Pixel Helper Chrome extension to verify Facebook tracking
+  // Check real-time reports in Google Analytics to see events
+
+</script>
+
+<!--
+=============================================================================
+IMPLEMENTATION INSTRUCTIONS
+=============================================================================
+
+TO ADD THIS TO YOUR INDEX.HTML:
+
+1. Copy this entire file
+2. Paste it in the <head> section of your index.html, preferably near the top
+3. Replace all placeholder IDs:
+   - AW-XXXXXXXXXX: Your Google Ads Conversion ID
+   - G-XXXXXXXXXX: Your GA4 Measurement ID
+   - XXXXXXXXXXXXXXXXX: Your Facebook Pixel ID
+   - CONVERSION_LABEL: Your form conversion label from Google Ads
+   - PHONE_CONVERSION_LABEL: Your phone conversion label from Google Ads
+
+4. Test using browser extensions:
+   - Google Tag Assistant (for Google Ads & GA4)
+   - Facebook Pixel Helper (for Facebook Pixel)
+
+5. Verify tracking in real-time:
+   - Google Analytics: Realtime > Events
+   - Google Ads: Tools > Conversions
+   - Facebook: Events Manager > Test Events
+
+=============================================================================
+-->

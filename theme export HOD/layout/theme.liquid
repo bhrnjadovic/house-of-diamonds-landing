@@ -1,0 +1,759 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ settings.text_direction }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_button }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+  <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
+  <link rel="dns-prefetch" href="https://ajax.googleapis.com">
+  <link rel="dns-prefetch" href="https://maps.googleapis.com">
+  <link rel="dns-prefetch" href="https://maps.gstatic.com">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+  {%- endif -%}
+
+  {%- render 'seo-title' -%}
+
+  {%- if page_description -%}
+  <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {%- render 'social-meta-tags' -%}
+
+  {%- render 'font-face' -%}
+  {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
+  {%- render 'css-variables' -%}
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+    window.theme = window.theme || {};
+    theme.routes = {
+      home: "{{ routes.root_url }}",
+      cart: "{{ routes.cart_url | append: '.js' }}",
+      cartPage: "{{ routes.cart_url }}",
+      cartAdd: "{{ routes.cart_add_url | append: '.js' }}",
+      cartChange: "{{ routes.cart_change_url | append: '.js' }}",
+      search: "{{ routes.search_url }}",
+      predictiveSearch: "{{ routes.predictive_search_url }}"
+    };
+    theme.strings = {
+      soldOut: {{ 'products.product.sold_out' | t | json }},
+      unavailable: {{ 'products.product.unavailable' | t | json }},
+      inStockLabel: {{ 'products.product.in_stock_label' | t | json }},
+      oneStockLabel: {{ 'products.product.stock_label.one' | t: count: '[count]' | json }},
+      otherStockLabel: {{ 'products.product.stock_label.other' | t: count: '[count]' | json }},
+      willNotShipUntil: {{ 'products.product.will_not_ship_until' | t: date: '[date]' | json }},
+      willBeInStockAfter: {{ 'products.product.will_be_in_stock_after' | t: date: '[date]' | json }},
+      waitingForStock: {{ 'products.product.waiting_for_stock' | t | json }},
+      savePrice: {{ 'products.general.save_html' | t: saved_amount: '[saved_amount]' | json }},
+      cartEmpty: {{ 'cart.general.empty' | t | json }},
+      cartTermsConfirmation: {{ 'cart.general.terms_confirm' | t | json }},
+      searchCollections: {{ 'general.search.collections' | t | json }},
+      searchPages: {{ 'general.search.pages' | t | json }},
+      searchArticles: {{ 'general.search.articles' | t | json }},
+      productFrom: {{ 'products.general.from_text_html' | t: price: '' | json }},
+      maxQuantity: {{ 'cart.general.max_quantity' | t: quantity: '[quantity]', title: '[title]' | json }}
+    };
+    theme.settings = {
+      cartType: {{ settings.cart_type | json }},
+      isCustomerTemplate: {% if request.page_type contains 'customers/' %}true{% else %}false{% endif %},
+      moneyFormat: {{ shop.money_format | json }},
+      saveType: {{ settings.product_save_type | json }},
+      productImageSize: {{ settings.product_grid_image_size | json }},
+      productImageCover: {{ settings.product_grid_image_fill }},
+      predictiveSearch: {{ settings.predictive_search_enabled }},
+      predictiveSearchType: {{ settings.search_type | json }},
+      predictiveSearchVendor: {{ settings.predictive_search_show_vendor | json }},
+      predictiveSearchPrice: {{ settings.predictive_search_show_price | json }},
+      quickView: {{ settings.quick_shop_enable }},
+      themeName: 'Impulse',
+      themeVersion: "7.3.4"
+    };
+  </script>
+
+
+<style>
+  /* Hide duplicated options with "(1)" suffix */
+
+  /* Diamond Carat: 1.50-1.55 (1) */
+  option[value="1.50-1.55 (1)"] {
+    display: none !important;
+  }
+
+  /* Diamond Colour: E (1) */
+  option[value="E (1)"] {
+    display: none !important;
+  }
+
+  /* Diamond Clarity: VS1 (1) */
+  option[value="VS1 (1)"] {
+    display: none !important;
+  }
+
+  /* Production Speed: 2 weeks production (1) */
+  option[value="2 weeks production (1)"] {
+    display: none !important;
+  }
+</style>
+
+
+<!-- Elfsight Google Reviews | Untitled Google Reviews 2 -->
+<script src="https://static.elfsight.com/platform/platform.js" async></script>
+<div class="elfsight-app-261e604a-8c49-40dc-a757-e744d1e0cf58" data-elfsight-app-lazy></div>
+
+
+
+
+
+{% if request.path contains '/pages/design-consultation' %}
+<style>
+    /* Hide announcement bar only on Design Consultation page */
+    .announcement-bar {
+        display: none !important;
+    }
+
+    /* Make navbar elements unclickable except the logo */
+    .site-header a:not(.site-header__logo-link) {
+        pointer-events: none;
+        opacity: 0.6; /* Optional: Slightly fade out other elements */
+    }
+
+    /* Adjust navbar styling (if needed) */
+    .site-header {
+        background-color: #fff; /* Match the theme */
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* Center the logo */
+    .header-item--logo {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+</style>
+{% endif %}
+
+
+
+
+  
+
+
+
+
+  {{ content_for_header }}
+
+  <script src="{{ 'vendor-scripts-v11.js' | asset_url | split: '?' | first }}" defer="defer"></script>
+
+  {%- if shop.enabled_currencies.size > 1 -%}
+    <link rel="stylesheet" href="{{ 'country-flags.css' | asset_url | split: '?' | first }}">
+  {%- endif -%}
+
+  <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+  {%- if request.page_type contains 'customers/' -%}
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+  {%- endif -%}
+
+  {% if request.design_mode %}
+    <script src="https://api.archetypethemes.co/design-mode.js" defer="defer"></script>
+  {% endif %}
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>   
+<script>
+  jQuery(document).ready(function(){
+   
+
+
+        setTimeout(() => {
+           jQuery(".grid-product__title").each(function(index, element) {
+            var product = $(element).text();
+            console.log(product);
+            if (product.includes("(") && product.includes(")")) {
+            		var extractedText = product.split("(")[0];
+                   console.log(extractedText);
+                  jQuery(element).text(extractedText);
+            }
+          });
+        }, "5000");
+
+      });
+
+
+  jQuery(window).on("scroll", function() {
+    jQuery(".grid-product__title").each(function(index, element) {
+            var product = $(element).text();
+            console.log(product);
+            if (product.includes("(") && product.includes(")")) {
+            		var extractedText = product.split("(")[0];
+                   console.log(extractedText);
+                  jQuery(element).text(extractedText);
+            }
+          });
+  });
+</script>
+<!-- Start: AvisPlus -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" defer="defer"></script> -->
+<script src="{{ 'avisplus-product-options-custom.js' | asset_url }}" defer="defer"></script>
+<!-- End: AvisPlus -->
+  
+{% assign targetCollections = 'all-mens-wedding-rings,womens-eternity-wedding-rings,titanium-and-zirconium,mens-diamond-wedding-rings' %}
+
+{% if targetCollections contains collection.handle %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.innerWidth <= 767) {
+        document.getElementById('show_mobile').style.display = 'none';
+      }
+    });
+  </script>
+{% endif %}
+
+  
+{% if collection.handle == 'all-women-wedding-rings' %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.innerWidth <= 767) {
+        document.getElementById('show_mobile').style.display = 'none';
+      }
+    });
+  </script>
+{% endif %}
+
+
+  
+
+
+{%- comment -%} Extra favicon sizes for Google Search {%- endcomment -%}
+<link rel="icon" type="image/png" sizes="48x48" href="https://cdn.shopify.com/s/files/1/0766/1223/9658/files/HOD_favicon_48x48_green_white_png.png?v=1754997976">
+<link rel="icon" type="image/png" sizes="192x192" href="https://cdn.shopify.com/s/files/1/0766/1223/9658/files/HOD_favicon_192x192_green_white.png_1.png?v=1754997976">
+
+
+<meta name="google-site-verification" content="YMR_dcka1RBG2r__BzWjG4XOx0AqrpKkBxjyuXwXsAE" />
+  
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3749949691970351');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=3749949691970351&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+{% include 'pagefly-app-header' %}
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "u281bjsc2k");
+</script>
+
+</head>
+
+<body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}" data-center-text="{{ settings.type_body_align_text }}" data-button_style="{{ settings.button_style }}" data-type_header_capitalize="{{ settings.type_header_capitalize }}" data-type_headers_align_text="{{ settings.type_headers_align_text }}" data-type_product_capitalize="{{ settings.type_product_capitalize }}" data-swatch_style="{{ settings.swatch_style }}" {% if settings.disable_animations %}data-disable-animations="true"{% endif %}>
+
+  <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  <div id="PageContainer" class="page-container">
+    <div class="transition-body">
+
+
+{% if request.path == '/pages/design-consultation' %}
+    {% render 'custom-design-header' %}
+{% else %}
+    {%- sections 'header-group' -%}
+{% endif %}
+      
+    {%- sections 'popup-group' -%}
+
+      <main class="main-content" id="MainContent">
+        {{ content_for_layout }}
+      </main>
+
+{% if request.path == '/pages/design-consultation' %}
+    {% render 'custom-design-footer' %}
+{% else %}
+      {%- sections 'footer-group' -%}
+{% endif %}
+
+    </div>
+  </div>
+
+  {%- liquid
+    render 'video-modal'
+    render 'photoswipe-template'
+    render 'tool-tip'
+  -%}
+
+  {% comment %} Image markup used when building product grid item via JS {% endcomment %}
+  <template id="naturalImageMarkup">
+    <div class="image-wrap" style="height: 0;">
+      <image-element data-aos="image-fade-in">
+        <img class="grid-product__image" width height src srcset loading="lazy" alt>
+      </image-element>
+    </div>
+  </template>
+  <template id="fixedRatioImageMarkup">
+    <div class="grid__image-ratio">
+      <image-element data-aos="image-fade-in">
+        <img width height src srcset loading="lazy" alt>
+      </image-element>
+    </div>
+  </template>
+
+<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+<div class="elfsight-app-261e604a-8c49-40dc-a757-e744d1e0cf58" data-elfsight-app-lazy></div>
+
+<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+<div class="elfsight-app-96ded887-87fa-46e4-ba85-53423dea6e38" data-elfsight-app-lazy></div>
+
+
+
+
+<!-- Elfsight Button | Untitled Button -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-2e153ef7-aae4-4989-a939-1b73822f0d92" data-elfsight-app-lazy></div>
+
+
+
+
+
+
+<script id='merchantWidgetScript' src="https://www.gstatic.com/shopping/merchant/merchantwidget.js" defer></script>
+
+<script type="text/javascript">
+  merchantWidgetScript.addEventListener('load', function () {
+    merchantwidget.start({
+      position: 'LEFT_BOTTOM',
+      sideMargin: 21,
+      bottomMargin: 5,          // ← changed from 33 to 5
+      mobileSideMargin: 11,
+      mobileBottomMargin: 5     // ← changed from 19 to 5
+    });
+  });
+</script>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    function removeIdentifierText() {
+        document.querySelectorAll("td.product__description, .cart-item__name, .product__description, .product__title").forEach(function (el) {
+            el.innerHTML = el.innerHTML.replace(/\(\d+\.\d+-\d+\.\d+ Carat [A-Z0-9-]+\)/g, '');
+        });
+    }
+  
+    // Run the function once on page load
+    removeIdentifierText();
+
+    // Keep checking every second (useful for Shopify's dynamic updates)
+    setInterval(removeIdentifierText, 1000);
+});
+</script>
+
+
+
+
+
+
+
+<!-- klaviyo  -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<style>
+
+.cart-item__name span,
+.checkout-summary .product__description span {
+    display: none;
+}
+
+
+.collection-seo-description {
+  position: relative;
+}
+
+ .description-text {
+  overflow: hidden;
+  max-height: 2em;
+  position: relative;
+  transition: max-height 0.3s ease;
+}
+
+.description-text.expanded {
+  max-height: none;
+}
+.description-text p{
+    display: inline;
+  }
+
+.toggle-button {
+  display: none; /* Hidden by default */
+  border: none;
+  cursor: pointer;
+  font-weight: 400;
+  color: #009688;
+  font-size: 17px;
+  background: transparent;
+  padding: 0;
+  border-bottom: none;
+  letter-spacing: 1px;
+  border-radius: 0;
+  text-decoration: underline;
+}
+
+</style>
+
+
+
+{{ 'custom.css' | asset_url | stylesheet_tag }}
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const descriptionText = document.querySelector('.description-text');
+  const toggleButton = document.querySelector('.toggle-button');
+
+  // Function to truncate text to the first n words
+  function truncateText(text, numWords) {
+    const words = text.split(/\s+/);
+    if (words.length <= numWords) return text;
+    return words.slice(0, numWords).join(' ') + '...';
+  }
+
+  if (descriptionText && toggleButton) {
+    // Store the full text and truncated version
+    const fullText = descriptionText.innerHTML;
+    const truncatedText = truncateText(fullText, 40); // Truncate to 40 words
+
+    // Check if the content is longer than 40 words
+    if (fullText.split(/\s+/).length > 40) {
+      // Set initial truncated text and display the button
+      descriptionText.innerHTML = truncatedText;
+      toggleButton.style.display = 'inline';
+    } else {
+      // Hide the button if the content is short
+      toggleButton.style.display = 'none';
+    }
+
+    // Add click event listener to toggle button
+    toggleButton.addEventListener('click', function () {
+      if (descriptionText.classList.contains('expanded')) {
+        descriptionText.classList.remove('expanded');
+        descriptionText.innerHTML = truncatedText; // Reset to truncated text
+        toggleButton.textContent = 'Read More';
+      } else {
+        descriptionText.classList.add('expanded');
+        descriptionText.innerHTML = fullText; // Show full text
+        toggleButton.textContent = 'Read Less';
+      }
+    });
+  }
+});
+</script>
+
+
+
+  
+ <!-- <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const descriptionText = document.querySelector('.description-text');
+  const toggleButton = document.querySelector('.toggle-button');
+
+  // Function to truncate text to the first n words
+  function truncateText(text, numWords) {
+    const words = text.split(/\s+/); // Split by whitespace
+    if (words.length <= numWords) return text; // No truncation needed
+
+    return words.slice(0, numWords).join(' ') + '...'; // Join first n words and add ellipsis
+  }
+
+  const fullText = descriptionText.textContent; // Get full text
+  const truncatedText = truncateText(fullText, 40); // Truncate to 10 words
+
+  // Set initial truncated text
+  descriptionText.textContent = truncatedText;
+
+  // Check if the content is longer than 10 words
+  if (fullText.split(/\s+/).length > 40) {
+    toggleButton.style.display = 'inline'; // Show button if content is longer than 10 words
+  }
+
+  toggleButton.addEventListener('click', function () {
+    if (descriptionText.classList.contains('expanded')) {
+      descriptionText.classList.remove('expanded');
+      descriptionText.textContent = truncatedText; // Reset to truncated text
+      toggleButton.textContent = 'Read More';
+    } else {
+      descriptionText.classList.add('expanded');
+      descriptionText.textContent = fullText; // Show full text
+      toggleButton.textContent = 'Read Less';
+    }
+  });
+});
+
+</script> -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    function removeExactIdentifier() {
+        document.querySelectorAll("td.product__description, .cart-item__name, .product__description, .product__title").forEach(function (el) {
+            el.innerHTML = el.innerHTML.replace("(1.00-1.15 Carat F-VS2)", "");
+        });
+    }
+  
+    // Run the function once on page load
+    removeExactIdentifier();
+
+    // Keep checking every second (useful for Shopify's dynamic updates)
+    setInterval(removeExactIdentifier, 1000);
+});
+</script>
+
+
+
+
+
+
+
+
+<style id="orbe-footer-override">
+  /* Beat Orbe's .footer__selector_container { background:#fff } */
+  footer.footer #shopify-section-footer .footer__selector_container.footer__selector_container,
+  footer.footer #shopify-section-footer .footer__selector_container .footer__selector,
+  footer.footer #shopify-section-footer .footer__selector_form,
+  footer.footer #shopify-section-footer .footer__selector_container *,
+  footer.footer #shopify-section-footer .footer__selector_form * {
+    background-color: #1d705b !important;
+  }
+
+  footer.footer #shopify-section-footer .footer__selector_container select,
+  footer.footer #shopify-section-footer .footer__selector_form select {
+    background-color: #1d705b !important;
+    color: #fff !important;
+    border: none !important;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+</style>
+
+
+
+
+{{ 'variant-sync-auto.js' | asset_url | script_tag }}
+
+
+
+
+<style>.variant-input-wrap input[type=radio]:checked+label {
+    box-shadow: 0px 0px 2px 2px hsl(165 59% 28% / 1);
+    /* border: solid; */
+    border-color: hsl(165deg, 59%, 28%, 100%);
+}</style>
+
+<style>
+  .color-swatch--round{
+    background-image:url(https://www.houseofdiamonds.com.au/cdn/shop/files/round.png?width=150&v=2) !important;
+    background-size:50px 50px !important;
+    background-repeat:no-repeat !important;
+    background-position:center !important;
+  }
+</style>
+
+<style>
+.color-swatch--jewelry{
+  background-image:url(https://www.houseofdiamonds.com.au/cdn/shop/files/round.png?width=150&v=2) !important;
+  background-size:50px 50px !important;
+  background-repeat:no-repeat !important;
+  background-position:center !important;
+}
+</style>
+
+<style>
+  .color-swatch--oval-shape{
+    background: none !important;
+    background-color: transparent !important;
+    background-image:url(https://www.houseofdiamonds.com.au/cdn/shop/files/oval-icon.png?width=150&v=4) !important;
+    background-size:50px 50px !important;
+    background-repeat:no-repeat !important;
+    background-position:center !important;
+  }
+</style>
+
+<style>
+  .color-swatch--oval{
+    background: none !important;
+    background-color: transparent !important;
+    background-image:url(https://www.houseofdiamonds.com.au/cdn/shop/files/oval-icon.png?width=150&v=4) !important;
+    background-size:50px 50px !important;
+    background-repeat:no-repeat !important;
+    background-position:center !important;
+  }
+</style>
+
+
+<style>
+ .color-swatch--radiant{
+   background-image:url(https://www.houseofdiamonds.com.au/cdn/shop/files/radiant-icon.png?width=150&v=3) !important;
+    background-size:50px 50px !important;
+    background-repeat:no-repeat !important;
+    background-position:center !important;
+  }
+</style>
+
+<style>
+ .color-swatch--cushion{
+   background-image:url(https://www.houseofdiamonds.com.au/cdn/shop/files/cushion-icon.png?width=150&v=3) !important;
+    background-size:50px 50px !important;
+    background-repeat:no-repeat !important;
+    background-position:center !important;
+  }
+</style>
+
+<style>
+ .color-swatch--pear{
+   background-image:url(https://www.houseofdiamonds.com.au/cdn/shop/files/pear-icon.png?width=150&v=3) !important;
+    background-size:50px 50px !important;
+    background-repeat:no-repeat !important;
+    background-position:center !important;
+  }
+</style>
+
+<style>
+ .color-swatch--emerald{
+   background-image:url(https://www.houseofdiamonds.com.au/cdn/shop/files/emerald-icon.png?width=150&v=3) !important;
+    background-size:50px 50px !important;
+    background-repeat:no-repeat !important;
+    background-position:center !important;
+  }
+</style>
+
+<style>
+ .color-swatch--princess{
+   background-image:url(https://www.houseofdiamonds.com.au/cdn/shop/files/princess-icon.png?width=150&v=3) !important;
+    background-size:50px 50px !important;
+    background-repeat:no-repeat !important;
+    background-position:center !important;
+  }
+</style>
+
+<style>
+.color-swatch {
+    background-color: white !important;
+}
+</style>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Check if NOT on design-consultation page
+    if (window.location.pathname !== "/pages/design-consultation") {
+      var script = document.createElement("script");
+      script.src = "https://elfsightcdn.com/platform.js";
+      script.async = true;
+      document.body.appendChild(script);
+
+      var div = document.createElement("div");
+      div.className = "elfsight-app-c896c9da-c1ab-4ddb-8d52-4b43d204d482";
+      div.setAttribute("data-elfsight-app-lazy", "");
+      document.body.appendChild(div);
+    }
+  });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  function tryCheckTerms() {
+    // Find the Klaviyo iframe inside your form container
+    const formContainer = document.querySelector('#klaviyo-consultation-form .klaviyo-form-XPDexx iframe');
+    if (!formContainer || !formContainer.contentWindow) {
+      setTimeout(tryCheckTerms, 500); // Try again until the iframe loads
+      return;
+    }
+
+    let doc;
+    try {
+      doc = formContainer.contentWindow.document;
+    } catch (e) {
+      setTimeout(tryCheckTerms, 500);
+      return;
+    }
+
+    // Find the checkbox inside the Klaviyo form iframe
+    const checkbox = doc.querySelector('input[type="checkbox"][name*="privacy"], input[type="checkbox"][id*="privacy"], input[type="checkbox"][name*="terms"], input[type="checkbox"][id*="terms"]');
+
+    if (checkbox && !checkbox.checked) {
+      checkbox.checked = true;
+      checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+    } else {
+      setTimeout(tryCheckTerms, 500); // keep checking until it appears
+    }
+  }
+
+  tryCheckTerms();
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  function tickConsent() {
+    const form = document.querySelector('#klaviyo-consultation-form');
+    if (!form) {
+      setTimeout(tickConsent, 500);
+      return;
+    }
+
+    // Look for any input type=checkbox inside this form block
+    const checkbox = form.querySelector('input[type="checkbox"]');
+
+    if (checkbox) {
+      if (!checkbox.checked) {
+        checkbox.checked = true;
+        checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      return; // done
+    }
+
+    setTimeout(tickConsent, 500); // keep checking until it appears
+  }
+
+  tickConsent();
+});
+</script>
+
+
+
+</body>
+</html>
+

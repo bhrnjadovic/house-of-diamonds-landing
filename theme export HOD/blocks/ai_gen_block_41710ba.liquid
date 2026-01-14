@@ -1,0 +1,175 @@
+{% doc %}
+  @prompt
+    thin gold divider
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-gold-divider-{{ ai_gen_id }} {
+    width: 100%;
+    display: flex;
+    justify-content: {{ block.settings.alignment }};
+    padding: {{ block.settings.spacing_top }}px 0 {{ block.settings.spacing_bottom }}px;
+  }
+
+  .ai-gold-divider-line-{{ ai_gen_id }} {
+    height: {{ block.settings.thickness }}px;
+    width: {{ block.settings.width }}%;
+    background: linear-gradient(
+      90deg,
+      {{ block.settings.gold_color_start }},
+      {{ block.settings.gold_color_middle }},
+      {{ block.settings.gold_color_end }}
+    );
+    border-radius: {{ block.settings.border_radius }}px;
+    opacity: {{ block.settings.opacity | divided_by: 100.0 }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-gold-divider-{{ ai_gen_id }} {
+      padding: {{ block.settings.spacing_top | times: 0.7 }}px 0 {{ block.settings.spacing_bottom | times: 0.7 }}px;
+    }
+    
+    .ai-gold-divider-line-{{ ai_gen_id }} {
+      width: {{ block.settings.mobile_width }}%;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-gold-divider-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-gold-divider-line-{{ ai_gen_id }}"></div>
+</div>
+
+{% schema %}
+{
+  "name": "Gold divider",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "range",
+      "id": "thickness",
+      "label": "Line thickness",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "width",
+      "label": "Width",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "mobile_width",
+      "label": "Mobile width",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 70
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "opacity",
+      "label": "Opacity",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Gold colors"
+    },
+    {
+      "type": "color",
+      "id": "gold_color_start",
+      "label": "Start color",
+      "default": "#B8860B"
+    },
+    {
+      "type": "color",
+      "id": "gold_color_middle",
+      "label": "Middle color",
+      "default": "#FFD700"
+    },
+    {
+      "type": "color",
+      "id": "gold_color_end",
+      "label": "End color",
+      "default": "#DAA520"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "spacing_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "spacing_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gold divider"
+    }
+  ]
+}
+{% endschema %}

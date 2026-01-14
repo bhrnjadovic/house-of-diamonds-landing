@@ -1,0 +1,616 @@
+
+{%- assign swatch_file_extension = 'png' -%}
+
+{%- capture size_chart_title -%}
+  {{ 'products.general.size_chart' | t }} <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-size-chart" viewBox="0 0 64 64"><defs><style>.a{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="a" d="M22.39 33.53c-7.46 0-13.5-3.9-13.5-8.72s6-8.72 13.5-8.72 13.5 3.9 13.5 8.72a12 12 0 0 1-.22 1.73"/><ellipse cx="22.39" cy="24.81" rx="3.28" ry="2.12"/><path class="a" d="M8.89 24.81V38.5c0 7.9 6.4 9.41 14.3 9.41h31.92V33.53H22.39m24.39 0v7.44m-8.13-7.44v7.44m-8.13-7.44v7.44m-8.13-7.44v7.44"/></svg>
+{%- endcapture -%}
+
+{%- liquid
+  assign is_size = false
+  assign size_trigger = 'products.general.size_trigger' | t | downcase
+  assign downcased_option = option.name | downcase
+   
+  if downcased_option contains size_trigger
+    assign is_size = true
+  endif
+-%}
+
+<style>
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  pointer-events:none;
+}
+
+.shimmer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(-45deg, #eee 40%, #fafafa 50%, #eee 60%);
+  animation: shimmer 3s infinite linear;
+}
+.pointer-none {
+    pointer-events: none;
+}
+@keyframes shimmer {
+  100% {
+    left: 100%;
+  }
+}
+</style>
+
+<div class="variant-wrapper js" data-type="button">
+  <label class="variant__label{% if option.name == 'Default' or option.name == 'Title' %} hidden-label{% endif %}{% unless variant_labels %} hidden-label{% endunless %}"
+    for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ forloop.index0 }}">
+    <span class="shapes">{{ option.name }}</span>
+    {%- if connect_to_sizechart and is_size -%}
+      <span class="variant__label-info">
+        &mdash;
+        {%- render
+          'tool-tip-trigger',
+          title: size_chart_title,
+          content: section.blocks[sizechart_index].settings.size_chart.content,
+          context: 'size-chart'
+        -%}
+      </span>
+    {%- endif -%}
+    {%- if is_color -%}
+      <span class="variant__label-info">
+        &mdash;
+        <span
+          data-variant-color-label
+          data-index="{{ forloop.index0 }}"
+          data-option-index="{{ color_option_index }}">
+          {{ option.selected_value }}
+        </span>
+      </span>
+    {%- endif -%}
+  </label>
+  {%- assign option_index = forloop.index -%}
+  <fieldset class="variant-input-wrap"
+    name="{{ option.name }}"
+    data-index="option{{ option_index }}"
+    data-handle="{{ option.name | handleize }}"
+    id="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ forloop.index0 }}">
+    <legend class="hide">{{ option.name }}</legend>
+    {%- for value in option.values -%}
+      {%- liquid
+        assign product_available = true
+        if product.options.size == 1
+          assign product_available = product.variants[forloop.index0].available
+        endif
+      -%}
+      <div
+        class="variant-input pointer-none"
+        data-index="option{{ option_index }}"
+        data-value="{{ value | escape }}">
+        
+        <input type="radio"
+          form="{{ form_id }}"
+         
+          value="{{ value | escape }}"
+          data-index="option{{ option_index }}"
+          name="{{ option.name }}"
+          data-variant-input
+          class="{% unless product_available %} disabled{% endunless %}{% if is_color %} 444 variant__input--color-swatch{% endif %}"
+          {% if is_color %} data-color-name="{{ value | escape }}"{% endif %}
+          {% if is_color %} data-color-index="{{ color_option_index }}"{% endif %}
+          id="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}">
+        {%- if is_color -%}
+          {%- liquid
+            assign color_file_name = value | handle | append: '.' | append: swatch_file_extension
+            assign color_image = color_file_name | file_img_url: '50x50' | prepend: 'https:' | split: '?' | first
+            assign color_swatch_fallback = '#ffffff'
+
+          -%}
+          <label
+            for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+            class="variant__button-label shimmer color-swatch color-swatch--{{ value | handle }}{% unless product_available %} disabled{% endunless %}"
+            style="background-color: {{ color_swatch_fallback }};{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% endif %}"
+
+          >
+            {{ value | escape }}
+          </label>
+        {%- else -%}
+              <label
+                for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+                class="variant__button-label{% unless product_available %} disabled{% endunless %}">{{ value | escape }}</label>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </fieldset>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>  
+<script>
+  var product_price = "{{ product.price | money }}";
+  localStorage.setItem("product_price", product_price);
+jQuery(document).ready(function(){
+  // Clear local storage to avoid interference
+    localStorage.removeItem("diamondCarat");
+    localStorage.removeItem("diamondColorType");
+    localStorage.removeItem("diamondClarityType");
+  $(document).on("change", "#avp01OxY2DuQfM2t9n6xX6TYh-6vlZr4m-0-0", function(){
+    var selectedSpanValue = $(this).find(":selected .money").text();
+    var product_price = localStorage.getItem("product_price");
+    var selectedSpanValue = selectedSpanValue.replace(/[$()+,]/g, '');
+    var product_price = product_price.replace(/[$()+,]/g, '');
+    var color = $("#avp79JgM7eiLxIJ9ZCp6wlu4ntB3_VQG2-0-1").find(":selected .money").text();
+    var color_price = color.replace(/[$()+,]/g, '');
+    var clarity = $("#avp7wQIpaq4A_rq9PP0RCS7aZnuCgL_Pr-0-2").find(":selected .money").text();
+    var clarity_price = clarity.replace(/[$()+,]/g, '');
+    var total = +selectedSpanValue + +product_price + +color_price + +clarity_price;
+    var formattedNumber = total.toLocaleString('en-US', { minimumFractionDigits: 2 });
+    $(".product__price").text("$"+formattedNumber);
+    var carat = $("#avp01OxY2DuQfM2t9n6xX6TYh-6vlZr4m-0-0").val();
+    var splitArray = carat.split('-');
+    var part1 = splitArray[0];
+    var part2 = splitArray[1];
+    $(".diamondCaratStart").text(part1);
+    $(".diamondCaratEnd").text(part2);  
+  });
+
+
+
+  $(document).on("change", "#avp79JgM7eiLxIJ9ZCp6wlu4ntB3_VQG2-0-1", function(){
+    var selectedSpanValue = $(this).find(":selected .money").text();
+    var product_price = localStorage.getItem("product_price");
+    var selectedSpanValue = selectedSpanValue.replace(/[$()+,]/g, '');
+    var product_price = product_price.replace(/[$()+,]/g, '');
+    var carat = $("#avp01OxY2DuQfM2t9n6xX6TYh-6vlZr4m-0-0").find(":selected .money").text();
+    var carat_price = carat.replace(/[$()+,]/g, '');
+    var clarity = $("#avp7wQIpaq4A_rq9PP0RCS7aZnuCgL_Pr-0-2").find(":selected .money").text();
+    var clarity_price = clarity.replace(/[$()+,]/g, '');
+    var total = +selectedSpanValue + +product_price + +carat_price + +clarity_price;
+    var formattedNumber = total.toLocaleString('en-US', { minimumFractionDigits: 2 });
+    $(".product__price").text("$"+formattedNumber);
+  });
+  
+    $(document).on("change", "#avp7wQIpaq4A_rq9PP0RCS7aZnuCgL_Pr-0-2", function(){
+      var selectedSpanValue = $(this).find(":selected .money").text();
+      var product_price = localStorage.getItem("product_price");
+      var selectedSpanValue = selectedSpanValue.replace(/[$()+,]/g, '');
+      var product_price = product_price.replace(/[$()+,]/g, '');
+      var carat = $("#avp01OxY2DuQfM2t9n6xX6TYh-6vlZr4m-0-0").find(":selected .money").text();
+      var carat_price = carat.replace(/[$()+,]/g, '');
+      var color = $("#avp79JgM7eiLxIJ9ZCp6wlu4ntB3_VQG2-0-1").find(":selected .money").text();
+      var color_price = color.replace(/[$()+,]/g, '');
+      var total = +selectedSpanValue + +product_price + +color_price + +carat_price;
+      var formattedNumber = total.toLocaleString('en-US', { minimumFractionDigits: 2 });
+      $(".product__price").text("$"+formattedNumber);
+    });
+
+
+
+ 
+
+
+setTimeout(function () {
+      var color = $("#avp79JgM7eiLxIJ9ZCp6wlu4ntB3_VQG2-0-1").find(":selected .apo-option-value").text();
+      $(".diamondColorType").text(color);
+      var clarity = $("#avp7wQIpaq4A_rq9PP0RCS7aZnuCgL_Pr-0-2").val();
+       $(".diamondClarityType").text(clarity);
+      var carat = $("#avp01OxY2DuQfM2t9n6xX6TYh-6vlZr4m-0-0").val();
+      var splitArray = carat.split('-');
+      var part1 = splitArray[0];
+      var part2 = splitArray[1];
+      $(".diamondCaratStart").text(part1);
+      $(".diamondCaratEnd").text(part2);  
+      },2000)
+    setTimeout(function(){
+    
+      var product_price = "{{ product.price | money }}";
+      localStorage.setItem("product_price", product_price);
+      $("select").each(function(){
+      	if($(this).find('option').eq(0).val() == ''){
+      		$(this).prop("selectedIndex", 1).val(); 
+      	}else if($(this).find('option').eq(0).val() != ''){
+      		$(this).prop("selectedIndex", 0).val(); 
+      	}
+      });
+      $(".variant__button-label").each(function(){
+          $(this).removeClass("shimmer"); 
+      });
+      $(".variant-input").each(function(){
+          $(this).removeClass("pointer-none"); 
+      });
+   },1000);   
+      // Diamond shapes name change of colour
+      jQuery(".shapes").each(function() {
+          var text = jQuery(this).text().trim();
+          if (text === 'Color') {
+              jQuery(this).text('Diamond Shape');
+          }
+      });
+        var product = $(".product-single__title").text();
+        if (product.includes("(") && product.includes(")")) {
+                var extractedText = product.split("(")[0];
+               //console.log(extractedText);
+              jQuery(".product-single__title").text(extractedText);
+        }
+      // Disable clickable events before the setTimeout
+      jQuery(".variant-input").off("click");
+     // jQuery(".diamondCaret select").off("change");
+      //jQuery(".diamondColor select").off("change");
+      //jQuery(".diamondClarity select").off("change");
+    
+      var url = window.location.href;
+	        var parts = url.split('/');
+    	    var product = parts[parts.length - 1];
+    	    var productSplitValue = product.split("-");
+    	    var productCheckedValue = productSplitValue[0];
+    	    console.log(productCheckedValue+"------");
+    	    var regexPattern = /\d+\.\d+|\d+/;
+            var match = product.match(regexPattern);
+            
+            var dataArray = [];
+            
+            if (match) {
+                var startIndex = product.indexOf(match[0]);
+                dataArray.push(product.substring(startIndex));
+            }
+            var dataArray = dataArray[0].split('-').map(function(item) {
+                return item.trim();
+            });
+            var caret1 = dataArray[0]+'.'+ dataArray[1];
+            if(caret1 === '1.00'){
+    			var caret2 = '1.05';
+    		}
+    		else if(caret1 === '1.50'){
+    			var caret2 = '1.55';
+    		}
+    		else if(caret1 === '2.00'){
+    			var caret2 = '2.05';
+    		}
+    		else if(caret1 === '2.50'){
+    			var caret2 = '2.55';
+    		}
+    		else if(caret1 === '3.00'){
+    			var caret2 = '3.05';
+    		}
+    		else if(caret1 === '3.50'){
+    			var caret2 = '3.55';
+    		}
+    		else if(caret1 === '4.00'){
+    			var caret2 = '4.05';
+    		}
+    		else if(caret1 === '4.50'){
+    			var caret2 = '4.55';
+    		}
+    		else if(caret1 === '5.00'){
+    			var caret2 = '5.05';
+    		}
+    		else if(caret1 === '5.50'){
+    			var caret2 = '5.55';
+    		}
+    		else if(caret1 === '6.00'){
+    			var caret2 = '6.05';
+    		}
+    		var caret = caret1+ '-' + caret2;
+            var diamondColor = dataArray[3].toUpperCase();
+            var clarity = dataArray[4].toUpperCase();
+            var arr = clarity.split("?");
+            console.log(arr);
+            clarity = arr[0];
+
+    setTimeout(function(){   
+          var diamondColor = localStorage.getItem("diamondColorType");
+          if(diamondColor == ""){
+            
+          }else{
+    	  jQuery("option[value='" + diamondColor + "']").prop("selected", true).change();
+          }
+          var diamondClarityType = localStorage.getItem("diamondClarityType");
+         if(diamondClarityType == ""){
+         }else{
+          $("option[value='" + diamondClarityType + "']").prop("selected",true).change(); 
+         }
+          var diamondCarat = localStorage.getItem("diamondCarat");
+        if(diamondCarat == ""){
+          
+        }else{
+         $("option[value='" + diamondCarat + "']").prop("selected",true).change(); 
+        }
+       }, 1000);
+
+
+
+ setTimeout(function(){
+$(".variant-input").find("input[type='radio'], input[type='checkbox']").each(function() {
+  $(this).prop("checked", false).removeAttr("checked");
+});
+ 
+ 
+  const $firstRadio = $('[data-index="option2"] input[type="radio"]').first();
+
+  if ($firstRadio.length) {
+    $firstRadio.trigger("click");
+
+    setTimeout(() => {
+      const selectedVariantId = $("input[name='id']").val();
+
+      if (selectedVariantId) {
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.set("variant", selectedVariantId);
+        window.history.replaceState({}, '', newUrl.toString());
+
+        console.log("Variant selected:", selectedVariantId);
+      } else {
+        console.warn("Variant ID not found after click.");
+      }
+    }, 200);
+  }
+ }, 1000);
+
+	  setTimeout(function(){  
+  // ----------------- Code With JS (Started) ----------------- 
+
+
+
+
+        
+         var upperStringCase = productCheckedValue.charAt(0).toUpperCase() + productCheckedValue.slice(1);
+        console.clear();
+        console.log("productCheckedValue : ");
+          console.log(productCheckedValue);
+// alert(upperStringCase);
+//         return false;
+          if(productCheckedValue == "radiant"){
+            console.log("***** *******");
+           $("div[data-value='Radiant']").find("label").css("border","1px solid");
+           $("div[data-value='Radiant']").find("input").prop("checked", true).trigger("change");;
+            $("span[data-option-index=0]").text(upperStringCase);
+          }
+         if (productCheckedValue == "oval") {
+  $("div[data-value='Oval']").find("label").css("border","1px solid");
+  $("div[data-value='Oval']").find("input").prop("checked", true).trigger("change");
+  $("span[data-option-index=0]").text(upperStringCase);
+}
+        if(productCheckedValue == "cushion"){
+            console.log("***** *******");
+           $("div[data-value='Cushion']").find("label").css("border","1px solid");
+           $("div[data-value='Cushion']").find("input").prop("checked", true).trigger("change");;
+            $("span[data-option-index=0]").text(upperStringCase);
+          }
+        if(productCheckedValue == "pear"){
+            console.log("***** pear Sele *******");
+           $("div[data-value='Pear']").find("label").css("border","1px solid");
+           $("div[data-value='Pear']").find("input").prop("checked", true).trigger("change");;
+            $("span[data-option-index=0]").text(upperStringCase);
+          }
+        if(productCheckedValue == "emerald"){
+           console.log("***** emerald *******");
+           $("div[data-value='Emerald']").find("label").css("border","1px solid");
+            $("span[data-option-index=0]").text(upperStringCase);;
+           $("div[data-value='Emerald']").find("input").prop("checked", true).trigger("change");;
+          }
+        if(productCheckedValue == "princess"){
+          console.log("***** princess *******");
+           $("div[data-value='Princess']").find("label").css("border","1px solid");
+           $("div[data-value='Princess']").find("input").prop("checked", true).trigger("change");;
+            $("span[data-option-index=0]").text(upperStringCase);
+          }
+       if (productCheckedValue == "round" || productCheckedValue == "jewelry") {
+  $("div[data-value='Jewelry']").find("label").css("border","1px solid");
+  $("div[data-value='Jewelry']").find("input").prop("checked", true).trigger("change");
+  $("span[data-option-index=0]").text(upperStringCase);
+}
+  }, 1200);
+  // ----------------- Code With JS (Ended) ----------------- 
+         
+         setTimeout(function(){  
+    	  jQuery("option[value='" + diamondColor + "']").prop("selected", true).change();
+    	  $("option[value='" + clarity + "']").prop("selected",true).change();      
+    	  $(".diamondCaret").find("select option").each(function () {
+    	   const optionValue = $(this).val();
+    	   if(optionValue.indexOf(caret) != -1){
+    		 $("option[value='" + optionValue + "']").prop("selected", true).change();
+    	   }
+    	 });
+    		var uiShape = productCheckedValue;
+if (uiShape === 'round') uiShape = 'Jewelry';
+if (uiShape === 'jewelry') uiShape = 'Jewelry'; // support both
+if (uiShape === 'oval')  uiShape = 'Oval';
+
+$(".variant__input--color-swatch").each(function(){
+  var value = $(this).val();
+  var index = $(this).attr("data-index");
+  if (index == "option1") {
+    $(this).prop('checked', false).removeAttr("checked");
+    if (value === uiShape) {
+      $(this).prop('checked', true).change();
+      $(this).attr("checked","checked");
+    }
+  }
+});
+
+
+    		$(".variant__label-info").each(function(){
+    		  var index = $(this).find("span").attr("data-index");
+    		  if(index == 0){
+    			//$(this).find("span").text(" "+productCheckedValue+ " ");
+    		  }
+    		});
+            jQuery(document).on("click",".grid__item-image-wrapper",function(){
+              var hostname =jQuery(location).attr('hostname'); 
+              var values = jQuery(this).find("a").attr("href");
+             window.location.href = "https://"+hostname+""+values;
+            });
+            $(".variant-input").each(function(index){
+              if(index == 0){
+                $(this).find("input").attr("checked","checked");
+              }
+              
+            })
+
+            //clickable and changable events are started.
+            jQuery(document).on("click",".variant-input",function(event){
+              var checkName = $(this).find("input").attr("name");
+              var lowervalue = checkName.toLowerCase();
+              if(lowervalue == "metal color"){
+              }else{
+        	  var checkedValue = $(this).find("input").attr("checked");
+        	  var currentOption = $(this).attr("data-index");
+        	  if(currentOption == "option1"){
+        		event.preventDefault();
+
+        	  var dataValue = jQuery(this).attr("data-value");
+        	  var result = dataValue.toLowerCase();
+        	  var values = result.split(" ");
+        	  var diamondShape = values[0];
+            // map UI 'jewelry' back to legacy 'round' handle
+if (diamondShape === 'jewelry') diamondShape = 'round';
+// (oval already equals 'oval' — good)
+        	  var diamondCaretValues = $(".diamondCaret").find("select option:selected").val();
+        	  var diamondCaretSplit = diamondCaretValues.split("-");
+        	  var diamondCaretReplace = diamondCaretSplit[0];
+        	  var diamondCaret = diamondCaretReplace.replace(".", "-");
+              //setTimeout(function(){
+                  var diamondColor = $(".diamondColor").find("select option:selected").val();
+            	  var diamondColor = diamondColor.toLowerCase();
+                  var diamondClarity = $(".diamondClarity").find("select option:selected").val();
+            	  var diamondClarity = diamondClarity.toLowerCase();
+                  console.log('diamondClarity',diamondClarity); 
+             // },2000);
+                
+        	  var diamondClarity = $(".diamondClarity").find("select option:selected").val();
+        	  var diamondClarity = diamondClarity.toLowerCase();
+
+              var url = window.location.href;
+    	        var parts = url.split('/');
+        	    var product = parts[parts.length - 1];
+                  var productSplitValue = product.split("-");
+            	  var productCheckedValue = productSplitValue[0];
+            	  var regexPattern = /\d+\.\d+|\d+/;
+                    var match = product.match(regexPattern);
+                    
+                    var dataArray = [];
+                    
+                    if (match) {
+                        var startIndex = product.indexOf(match[0]);
+                        dataArray.push(product.substring(startIndex));
+                    }
+                    var dataArray = dataArray[0].split('-').map(function(item) {
+                        return item.trim();
+                    });
+              
+              var centerText = product.substring(product.indexOf(productCheckedValue) + productCheckedValue.length, product.lastIndexOf(dataArray[0])).replace(/^-+|-+$/g, '');
+        	  var product = diamondShape+"-"+centerText+"-1-00-carat-f-vs2";
+        	  console.log('product',product);
+                 window.location.href = product;
+        	  }
+            }
+        	});
+        
+            jQuery(document).on('change','.diamondCaret select', function (event) {
+                 if(event.isTrigger == 3){
+                  //event condition with code  
+               }
+                 else{
+                    var val = $(this).val();
+                    var values = val.split("-");
+                    var caret = values[0];
+                   console.log(caret);
+                    if(caret === '1.00'){
+                        var caratHeader = '1.00-1.05';
+                        var caretStart = '1.00';
+                        var caretEnd = '1.05';
+                   }
+                   if(caret === '2.00'){
+                        var caratHeader = '2.00-2.05';
+                        var caretStart = '2.00';
+                        var caretEnd = '2.05';
+                   }
+                   if(caret === '2.50'){
+                        var caratHeader = '2.50-2.55';
+                        var caretStart = '2.50';
+                        var caretEnd = '2.55';
+                   }
+                   if(caret === '3.00'){
+                        var caratHeader = '3.00-3.05';
+                        var caretStart = '3.00';
+                        var caretEnd = '3.05';
+                   }
+                    if(caret === '3.50'){
+                        var caratHeader = '3.50-3.55';
+                        var caretStart = '3.50';
+                        var caretEnd = '3.55';
+                   }
+                   if(caret === '4.00'){
+                        var caratHeader = '4.00-4.05';
+                        var caretStart = '4.00';
+                        var caretEnd = '4.05';
+                   }
+                    if(caret === '4.50'){
+                        var caratHeader = '4.50-4.55';
+                        var caretStart = '4.50';
+                        var caretEnd = '4.55';
+                   }
+                   if(caret === '5.00'){
+                        var caratHeader = '5.00-5.05';
+                        var caretStart = '5.00';
+                        var caretEnd = '5.05';
+                   }
+                   if(caret === '6.00'){
+                        var caratHeader = '6.00-6.05';
+                        var caretStart = '6.00';
+                        var caretEnd = '6.05';
+                   }
+        
+                   jQuery(".caratHeader").text(caratHeader);
+                   jQuery(".diamondCaratStart").text(caretStart);
+                   jQuery(".diamondCaratEnd").text(caretEnd);
+                   localStorage.setItem("diamondCarat", caratHeader);
+                 }
+            });
+        
+            jQuery(document).on('change','.diamondColor select', function (event){
+        	   if(event.isTrigger == 3){
+        			//event condition with code  
+        		 }else{
+        		  var diamondColor = $(this).val();
+        		  jQuery(".colorHeader").text(diamondColor);   
+                 jQuery(".diamondColorType").text(diamondColor);
+                 localStorage.setItem("diamondColorType", diamondColor);
+        		}
+        	});
+        
+            jQuery(document).on('change','.diamondClarity select', function (event){
+        	   if(event.isTrigger == 3){
+        			//event condition with code  
+        		 }else{
+        		  var clarity = $(this).val();
+        		  jQuery(".clarityHeader").text(clarity);   
+        		  jQuery(".diamondClarityType").text(clarity);
+                  localStorage.setItem("diamondClarityType", clarity);
+        		  
+        		 }
+        	});
+        
+            
+        
+            if (jQuery(window).width() < 768) {
+              jQuery(document).on("click", ".color-swatch", function(event) {
+                $('html, body').stop().animate({ scrollTop: 0 }, 500);
+              });
+            }
+
+
+
+
+            jQuery("select").each(function() {
+                var test = " ";       
+                jQuery(this).find("span.money:first").text(test);
+              });
+           
+        
+		}, 300);
+
+          
+            
+    
+                         
+}); 
+</script>
