@@ -1008,7 +1008,9 @@
                         </p>
 
                         <!-- Klaviyo Form Embed -->
-                        <div class="klaviyo-form-XPDexx"></div>
+                        <div id="klaviyo-consultation-form">
+                            <div class="klaviyo-form-XPDexx"></div>
+                        </div>
 
                         <p class="text-xs text-gray-500 text-center mt-6">
                             We respect your privacy. Your information is secure
@@ -1901,5 +1903,111 @@
                 });
             });
         </script>
+
+        <!-- Klaviyo Form Submission Handler - Redirects to Calendly -->
+        <script>
+            (function () {
+                const CALENDLY =
+                    "https://calendly.com/houseofdiamonds-info/30min";
+                let hasRedirected = false; // prevent duplicates
+
+                // Normalise metadata keys from Klaviyo
+                function normalizeMeta(meta) {
+                    const out = {};
+                    Object.keys(meta || {}).forEach((k) => {
+                        const v = meta[k];
+                        const key = String(k)
+                            .toLowerCase()
+                            .replace(/\$/g, "")
+                            .replace(/[\s_-]+/g, "")
+                            .trim();
+                        out[key] = v;
+                    });
+                    return out;
+                }
+
+                function pickFirst(obj, keys) {
+                    for (const k of keys) {
+                        if (obj[k] && String(obj[k]).trim() !== "")
+                            return String(obj[k]).trim();
+                    }
+                    return "";
+                }
+
+                function buildCalendlyUrl(metaRaw) {
+                    const m = normalizeMeta(metaRaw);
+                    const first = pickFirst(m, [
+                        "firstname",
+                        "first",
+                        "first_name",
+                    ]);
+                    const last = pickFirst(m, [
+                        "lastname",
+                        "last",
+                        "last_name",
+                    ]);
+                    const email = pickFirst(m, ["email", "emailaddress"]);
+                    const phone = pickFirst(m, [
+                        "phone",
+                        "phonenumber",
+                        "mobile",
+                    ]);
+                    const fullName = [first, last]
+                        .filter(Boolean)
+                        .join(" ")
+                        .trim();
+
+                    const enc = encodeURIComponent;
+                    const params = [];
+                    if (fullName) params.push("name=" + enc(fullName));
+                    if (email) params.push("email=" + enc(email));
+                    if (phone) params.push("a1=" + enc(phone));
+                    return params.length
+                        ? `${CALENDLY}?${params.join("&")}`
+                        : CALENDLY;
+                }
+
+                window.addEventListener("klaviyoForms", function (e) {
+                    const type = (e?.detail?.type || "").toLowerCase();
+                    const meta = e?.detail?.metaData || {};
+
+                    if (hasRedirected) return; // avoid duplicate fire
+
+                    if (
+                        [
+                            "success",
+                            "submit",
+                            "formsubmitted",
+                            "stepsubmit",
+                            "redirectedtourl",
+                        ].includes(type)
+                    ) {
+                        hasRedirected = true;
+
+                        // Fire FB pixel once
+                        if (typeof fbq === "function") {
+                            fbq("trackCustom", "KlaviyoFormSubmitted", {
+                                source: "Klaviyo Form",
+                            });
+                        }
+
+                        // Short delay so Meta receives event before redirect
+                        setTimeout(() => {
+                            window.location.href = buildCalendlyUrl(meta);
+                        }, 400); // 0.4s = enough for pixel flush, barely noticeable to user
+                    }
+                });
+            })();
+        </script>
+
+        <!-- Elfsight Button Widget -->
+        <script
+            src="https://static.elfsight.com/platform/platform.js"
+            async
+        ></script>
+        <div
+            class="elfsight-app-1022fc2b-adae-419c-b0ec-9f9d9df1b610"
+            data-elfsight-app-lazy
+        ></div>
     </body>
 </html>
