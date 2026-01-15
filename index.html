@@ -335,7 +335,11 @@
                                         />
                                     </svg>
                                 </div>
-                                <span class="text-white/80 text-sm">(104)</span>
+                                <span
+                                    class="text-white/80 text-sm"
+                                    id="hero-review-count"
+                                    >(104)</span
+                                >
                             </div>
                         </a>
                     </div>
@@ -465,6 +469,7 @@
                         </div>
                         <div
                             class="text-sm text-gray-500 group-hover:text-brand-primary transition-colors"
+                            id="trust-review-count"
                         >
                             104 Google Reviews
                         </div>
@@ -1733,5 +1738,69 @@
                 });
             });
         </script>
+
+        <!-- Google Places API for dynamic review count -->
+        <script>
+            // Configuration - Replace YOUR_API_KEY with your actual Google Places API key
+            const GOOGLE_PLACES_API_KEY = "YOUR_API_KEY";
+            const PLACE_ID = "ChIJN1t_tDeuEmsRUsoyG83frY4"; // House of Diamonds Place ID - update if needed
+
+            function updateReviewCounts(rating, reviewCount) {
+                // Update hero section
+                const heroCount = document.getElementById("hero-review-count");
+                if (heroCount) {
+                    heroCount.textContent = `(${reviewCount})`;
+                }
+
+                // Update trust badges section
+                const trustCount =
+                    document.getElementById("trust-review-count");
+                if (trustCount) {
+                    trustCount.textContent = `${reviewCount} Google Reviews`;
+                }
+            }
+
+            function initGooglePlaces() {
+                if (
+                    typeof google === "undefined" ||
+                    !google.maps ||
+                    !google.maps.places
+                ) {
+                    console.warn("Google Places API not loaded");
+                    return;
+                }
+
+                // Create a dummy map element (required by Places API)
+                const mapDiv = document.createElement("div");
+                const service = new google.maps.places.PlacesService(mapDiv);
+
+                service.getDetails(
+                    {
+                        placeId: PLACE_ID,
+                        fields: ["rating", "user_ratings_total"],
+                    },
+                    (place, status) => {
+                        if (
+                            status ===
+                                google.maps.places.PlacesServiceStatus.OK &&
+                            place
+                        ) {
+                            const rating = place.rating || 5.0;
+                            const reviewCount = place.user_ratings_total || 104;
+                            updateReviewCounts(rating, reviewCount);
+                        }
+                    },
+                );
+            }
+
+            // Initialize when Google Maps API is loaded
+            window.initGooglePlaces = initGooglePlaces;
+        </script>
+
+        <!-- Load Google Places API - Replace YOUR_API_KEY with your actual API key -->
+        <script
+            async
+            src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initGooglePlaces"
+        ></script>
     </body>
 </html>
