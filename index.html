@@ -23,13 +23,6 @@
             rel="stylesheet"
         />
 
-        <!-- Klaviyo Script -->
-        <script
-            async
-            type="text/javascript"
-            src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WssPA5"
-        ></script>
-
         <!-- Critical CSS -->
         <style>
             html {
@@ -98,13 +91,6 @@
         </script>
 
         <link rel="stylesheet" href="styles.css" />
-
-        <!-- Klaviyo Form Container Styles - minimal to avoid blocking -->
-        <style>
-            #klaviyo-consultation-form {
-                min-height: 400px;
-            }
-        </style>
     </head>
     <body class="font-body bg-white text-black">
         <!-- Header -->
@@ -270,7 +256,7 @@
                     <div class="mt-10 flex flex-wrap items-center gap-6">
                         <!-- Google Reviews -->
                         <a
-                            href="https://share.google/cWK6Oyh6Xlkhh11xW"
+                            href="https://maps.app.goo.gl/pK2m8PqrKTJAd1DU9"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 hover:bg-white/20 transition-colors"
@@ -350,78 +336,6 @@
                                     </svg>
                                 </div>
                                 <span class="text-white/80 text-sm">(104)</span>
-                            </div>
-                        </a>
-
-                        <!-- Trustpilot -->
-                        <a
-                            href="https://www.trustpilot.com/review/houseofdiamonds.com.au"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 hover:bg-white/20 transition-colors"
-                        >
-                            <!-- Trustpilot Logo -->
-                            <svg
-                                class="w-6 h-6"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                    fill="#00B67A"
-                                />
-                            </svg>
-                            <div class="flex items-center gap-1.5">
-                                <span class="text-white font-semibold"
-                                    >Excellent</span
-                                >
-                                <div class="flex">
-                                    <svg
-                                        class="w-4 h-4"
-                                        viewBox="0 0 24 24"
-                                        fill="#00B67A"
-                                    >
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                        />
-                                    </svg>
-                                    <svg
-                                        class="w-4 h-4"
-                                        viewBox="0 0 24 24"
-                                        fill="#00B67A"
-                                    >
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                        />
-                                    </svg>
-                                    <svg
-                                        class="w-4 h-4"
-                                        viewBox="0 0 24 24"
-                                        fill="#00B67A"
-                                    >
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                        />
-                                    </svg>
-                                    <svg
-                                        class="w-4 h-4"
-                                        viewBox="0 0 24 24"
-                                        fill="#00B67A"
-                                    >
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                        />
-                                    </svg>
-                                    <svg
-                                        class="w-4 h-4"
-                                        viewBox="0 0 24 24"
-                                        fill="#00B67A"
-                                    >
-                                        <path
-                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                        />
-                                    </svg>
-                                </div>
                             </div>
                         </a>
                     </div>
@@ -1124,11 +1038,11 @@
             </div>
         </section>
 
-        <!-- Booking Section with Klaviyo Form -->
+        <!-- Booking Section with Calendly -->
         <section id="booking" class="py-20 md:py-28 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
-                    <!-- Form -->
+                    <!-- Calendly Embed -->
                     <div>
                         <h2
                             class="font-heading text-3xl md:text-4xl font-medium text-gray-900 mb-4"
@@ -1140,10 +1054,17 @@
                             diamond experts. No pressure, just expert guidance.
                         </p>
 
-                        <!-- Klaviyo Form Embed -->
-                        <div id="klaviyo-consultation-form">
-                            <div class="klaviyo-form-XPDexx"></div>
-                        </div>
+                        <!-- Calendly Inline Widget -->
+                        <div
+                            class="calendly-inline-widget"
+                            data-url="https://calendly.com/houseofdiamonds-info/30min?hide_gdpr_banner=1"
+                            style="min-width: 320px; height: 700px"
+                        ></div>
+                        <script
+                            type="text/javascript"
+                            src="https://assets.calendly.com/assets/external/widget.js"
+                            async
+                        ></script>
 
                         <p class="text-xs text-gray-500 text-center mt-6">
                             We respect your privacy. Your information is secure
@@ -1151,14 +1072,23 @@
                         </p>
                     </div>
 
-                    <!-- Image & Info -->
+                    <!-- Video Sidebar - Desktop Only -->
                     <div class="hidden lg:block">
-                        <div class="relative h-full min-h-[600px]">
-                            <img
-                                src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=1000&auto=format&fit=crop"
-                                alt="Diamond consultation"
+                        <div
+                            class="relative h-full min-h-[700px] overflow-hidden rounded-lg"
+                        >
+                            <video
+                                autoplay
+                                muted
+                                loop
+                                playsinline
                                 class="w-full h-full object-cover"
-                            />
+                            >
+                                <source
+                                    src="assets/sidebar-video.mp4"
+                                    type="video/mp4"
+                                />
+                            </video>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
                             ></div>
@@ -1181,11 +1111,11 @@
             </div>
         </section>
 
-        <!-- Testimonials - Real Google Reviews -->
+        <!-- Testimonials - Live Google Reviews via Elfsight -->
         <section class="py-20 md:py-28 bg-gray-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Header -->
-                <div class="text-center mb-16">
+                <div class="text-center mb-12">
                     <div class="flex items-center justify-center gap-3 mb-4">
                         <!-- Google Logo -->
                         <svg
@@ -1217,252 +1147,15 @@
                         </h2>
                     </div>
                     <p class="text-gray-600">
-                        Real reviews from Google - 5.0 stars from 104 reviews
+                        Real reviews from Google - automatically updated
                     </p>
-                    <a
-                        href="https://share.google/cWK6Oyh6Xlkhh11xW"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="inline-flex items-center gap-2 text-sm text-brand-primary hover:underline mt-2"
-                    >
-                        View all reviews on Google
-                        <svg
-                            class="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                            />
-                        </svg>
-                    </a>
                 </div>
 
-                <!-- Testimonials Grid -->
-                <div class="grid md:grid-cols-3 gap-6">
-                    <!-- Review 1 -->
-                    <div class="bg-white border border-gray-200 p-6">
-                        <div class="flex items-center gap-1 mb-4">
-                            <svg
-                                class="w-4 h-4"
-                                viewBox="0 0 24 24"
-                                fill="#FBBC05"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                />
-                            </svg>
-                            <svg
-                                class="w-4 h-4"
-                                viewBox="0 0 24 24"
-                                fill="#FBBC05"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                />
-                            </svg>
-                            <svg
-                                class="w-4 h-4"
-                                viewBox="0 0 24 24"
-                                fill="#FBBC05"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                />
-                            </svg>
-                            <svg
-                                class="w-4 h-4"
-                                viewBox="0 0 24 24"
-                                fill="#FBBC05"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                />
-                            </svg>
-                            <svg
-                                class="w-4 h-4"
-                                viewBox="0 0 24 24"
-                                fill="#FBBC05"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                />
-                            </svg>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                            "Absolutely amazing experience from start to finish.
-                            George was incredibly helpful and patient throughout
-                            the entire process. The ring turned out even more
-                            beautiful than I imagined. Highly recommend House of
-                            Diamonds!"
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-medium"
-                            >
-                                M
-                            </div>
-                            <div>
-                                <div class="font-medium text-gray-900 text-sm">
-                                    Michael T.
-                                </div>
-                                <div class="text-xs text-gray-500">
-                                    Google Review
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Review 2 -->
-                    <div class="bg-white border border-gray-200 p-6">
-                        <div class="flex items-center gap-1 mb-4">
-                            <svg
-                                class="w-4 h-4"
-                                viewBox="0 0 24 24"
-                                fill="#FBBC05"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                />
-                            </svg>
-                            <svg
-                                class="w-4 h-4"
-                                viewBox="0 0 24 24"
-                                fill="#FBBC05"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                />
-                            </svg>
-                            <svg
-                                class="w-4 h-4"
-                                viewBox="0 0 24 24"
-                                fill="#FBBC05"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                />
-                            </svg>
-                            <svg
-                                class="w-4 h-4"
-                                viewBox="0 0 24 24"
-                                fill="#FBBC05"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                />
-                            </svg>
-                            <svg
-                                class="w-4 h-4"
-                                viewBox="0 0 24 24"
-                                fill="#FBBC05"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                />
-                            </svg>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                            "Cannot recommend House of Diamonds enough! The
-                            quality of their lab-grown diamonds is exceptional
-                            and the price was significantly better than other
-                            jewelers. My fiancee absolutely loves her ring.
-                            Thank you George!"
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white font-medium"
-                            >
-                                D
-                            </div>
-                            <div>
-                                <div class="font-medium text-gray-900 text-sm">
-                                    David L.
-                                </div>
-                                <div class="text-xs text-gray-500">
-                                    Google Review
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Review 3 -->
-                    <div class="bg-white border border-gray-200 p-6">
-                        <div class="flex items-center gap-1 mb-4">
-                            <svg
-                                class="w-4 h-4"
-                                viewBox="0 0 24 24"
-                                fill="#FBBC05"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                />
-                            </svg>
-                            <svg
-                                class="w-4 h-4"
-                                viewBox="0 0 24 24"
-                                fill="#FBBC05"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                />
-                            </svg>
-                            <svg
-                                class="w-4 h-4"
-                                viewBox="0 0 24 24"
-                                fill="#FBBC05"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                />
-                            </svg>
-                            <svg
-                                class="w-4 h-4"
-                                viewBox="0 0 24 24"
-                                fill="#FBBC05"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                />
-                            </svg>
-                            <svg
-                                class="w-4 h-4"
-                                viewBox="0 0 24 24"
-                                fill="#FBBC05"
-                            >
-                                <path
-                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                                />
-                            </svg>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                            "George helped us design the perfect custom
-                            engagement ring. His knowledge and attention to
-                            detail is second to none. The whole process was
-                            seamless and the final result exceeded all
-                            expectations. Five stars!"
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center text-white font-medium"
-                            >
-                                S
-                            </div>
-                            <div>
-                                <div class="font-medium text-gray-900 text-sm">
-                                    Sarah K.
-                                </div>
-                                <div class="text-xs text-gray-500">
-                                    Google Review
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Elfsight Google Reviews Widget -->
+                <div
+                    class="elfsight-app-b37ae2c6-7e8e-4a8a-9a5c-3f8e1c2d4b6a"
+                    data-elfsight-app-lazy
+                ></div>
             </div>
         </section>
 
@@ -1941,9 +1634,9 @@
                                     />
                                 </svg>
                                 <a
-                                    href="tel:+61280056459"
+                                    href="tel:+61291588546"
                                     class="text-gray-600 hover:text-brand-primary transition-colors"
-                                    >(02) 8005 6459</a
+                                    >(02) 9158 8546</a
                                 >
                             </li>
                             <li class="flex items-start gap-2">
@@ -1966,8 +1659,12 @@
                                         d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                                     />
                                 </svg>
-                                <span class="text-gray-600"
-                                    >Sydney, Australia</span
+                                <a
+                                    href="https://maps.app.goo.gl/pK2m8PqrKTJAd1DU9"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-gray-600 hover:text-brand-primary transition-colors"
+                                    >Suite 66/377 Kent St, Sydney NSW 2000</a
                                 >
                             </li>
                             <li class="mt-4">
@@ -2001,7 +1698,7 @@
                         class="flex flex-col md:flex-row justify-between items-center gap-4"
                     >
                         <p class="text-sm text-gray-500">
-                            &copy; 2024 House of Diamonds. All rights reserved.
+                            &copy; 2026 House of Diamonds. All rights reserved.
                         </p>
                         <div class="flex space-x-6 text-sm">
                             <a
@@ -2042,103 +1739,7 @@
             });
         </script>
 
-        <!-- Klaviyo Form Submission Handler - Redirects to Calendly -->
-        <script>
-            (function () {
-                const CALENDLY =
-                    "https://calendly.com/houseofdiamonds-info/30min";
-                let hasRedirected = false; // prevent duplicates
-
-                // Normalise metadata keys from Klaviyo
-                function normalizeMeta(meta) {
-                    const out = {};
-                    Object.keys(meta || {}).forEach((k) => {
-                        const v = meta[k];
-                        const key = String(k)
-                            .toLowerCase()
-                            .replace(/\$/g, "")
-                            .replace(/[\s_-]+/g, "")
-                            .trim();
-                        out[key] = v;
-                    });
-                    return out;
-                }
-
-                function pickFirst(obj, keys) {
-                    for (const k of keys) {
-                        if (obj[k] && String(obj[k]).trim() !== "")
-                            return String(obj[k]).trim();
-                    }
-                    return "";
-                }
-
-                function buildCalendlyUrl(metaRaw) {
-                    const m = normalizeMeta(metaRaw);
-                    const first = pickFirst(m, [
-                        "firstname",
-                        "first",
-                        "first_name",
-                    ]);
-                    const last = pickFirst(m, [
-                        "lastname",
-                        "last",
-                        "last_name",
-                    ]);
-                    const email = pickFirst(m, ["email", "emailaddress"]);
-                    const phone = pickFirst(m, [
-                        "phone",
-                        "phonenumber",
-                        "mobile",
-                    ]);
-                    const fullName = [first, last]
-                        .filter(Boolean)
-                        .join(" ")
-                        .trim();
-
-                    const enc = encodeURIComponent;
-                    const params = [];
-                    if (fullName) params.push("name=" + enc(fullName));
-                    if (email) params.push("email=" + enc(email));
-                    if (phone) params.push("a1=" + enc(phone));
-                    return params.length
-                        ? `${CALENDLY}?${params.join("&")}`
-                        : CALENDLY;
-                }
-
-                window.addEventListener("klaviyoForms", function (e) {
-                    const type = (e?.detail?.type || "").toLowerCase();
-                    const meta = e?.detail?.metaData || {};
-
-                    if (hasRedirected) return; // avoid duplicate fire
-
-                    if (
-                        [
-                            "success",
-                            "submit",
-                            "formsubmitted",
-                            "stepsubmit",
-                            "redirectedtourl",
-                        ].includes(type)
-                    ) {
-                        hasRedirected = true;
-
-                        // Fire FB pixel once
-                        if (typeof fbq === "function") {
-                            fbq("trackCustom", "KlaviyoFormSubmitted", {
-                                source: "Klaviyo Form",
-                            });
-                        }
-
-                        // Short delay so Meta receives event before redirect
-                        setTimeout(() => {
-                            window.location.href = buildCalendlyUrl(meta);
-                        }, 400); // 0.4s = enough for pixel flush, barely noticeable to user
-                    }
-                });
-            })();
-        </script>
-
-        <!-- Elfsight Button Widget -->
+        <!-- Elfsight Platform Widget -->
         <script
             src="https://static.elfsight.com/platform/platform.js"
             async
