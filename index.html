@@ -190,6 +190,13 @@
                     <a
                         href="#contact"
                         class="block text-sm font-medium text-gray-600 hover:text-brand-primary"
+                        onclick="
+                            event.preventDefault();
+                            window.scrollTo({
+                                top: document.body.scrollHeight,
+                                behavior: 'smooth',
+                            });
+                        "
                         >Contact</a
                     >
                     <a
