@@ -95,7 +95,7 @@
     <body class="font-body bg-white text-black">
         <!-- Header -->
         <header
-            class="fixed top-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-md shadow-sm"
+            class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100"
         >
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16 md:h-20">
@@ -138,7 +138,7 @@
                     <!-- CTA Button -->
                     <a
                         href="#calendly-widget"
-                        class="hidden md:inline-flex items-center px-6 py-2.5 bg-brand-primary text-white text-sm font-medium rounded-full hover:bg-brand-dark hover:shadow-lg transition-all duration-300"
+                        class="hidden md:inline-flex items-center px-5 py-2.5 bg-brand-primary text-white text-sm font-medium hover:bg-brand-dark transition-colors"
                     >
                         Book Consultation
                     </a>
@@ -167,7 +167,10 @@
             </div>
 
             <!-- Mobile Menu -->
-            <div class="hidden md:hidden bg-white shadow-lg" id="mobile-menu">
+            <div
+                class="hidden md:hidden bg-white border-t border-gray-100"
+                id="mobile-menu"
+            >
                 <div class="px-4 py-4 space-y-3">
                     <a
                         href="#services"
@@ -198,7 +201,7 @@
                     >
                     <a
                         href="#calendly-widget"
-                        class="block w-full text-center px-5 py-3 bg-brand-primary text-white text-sm font-medium mt-4 rounded-full"
+                        class="block w-full text-center px-5 py-2.5 bg-brand-primary text-white text-sm font-medium mt-4"
                     >
                         Book Consultation
                     </a>
@@ -244,13 +247,13 @@
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a
                             href="#calendly-widget"
-                            class="inline-flex items-center justify-center px-8 py-4 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark hover:shadow-xl transition-all duration-300 text-base"
+                            class="inline-flex items-center justify-center px-8 py-4 bg-brand-primary text-white font-medium hover:bg-brand-dark transition-colors text-base"
                         >
                             Book Free Consultation
                         </a>
                         <a
                             href="#services"
-                            class="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white font-medium rounded-full hover:bg-white/20 transition-all duration-300 text-base"
+                            class="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white font-medium hover:bg-white/20 transition-colors text-base"
                         >
                             Explore Services
                         </a>
@@ -505,9 +508,7 @@
                 <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     <!-- Video -->
                     <div class="-mx-4 sm:mx-0">
-                        <div
-                            class="w-full aspect-[4/3] relative rounded-2xl overflow-hidden shadow-lg"
-                        >
+                        <div class="w-full aspect-[4/3] relative">
                             <iframe
                                 id="vimeo-player"
                                 src="https://player.vimeo.com/video/1154860741?title=0&byline=0&portrait=0&muted=1"
@@ -685,7 +686,7 @@
                     <!-- Video Sidebar - Desktop Only -->
                     <div class="hidden lg:block">
                         <div
-                            class="relative h-full min-h-[700px] overflow-hidden rounded-2xl shadow-xl"
+                            class="relative h-full min-h-[700px] overflow-hidden rounded-lg"
                         >
                             <video
                                 autoplay
@@ -739,13 +740,13 @@
                 </div>
 
                 <!-- Services Grid -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Custom Design -->
                     <div
-                        class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300"
+                        class="bg-white border border-gray-200 p-6 hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300"
                     >
                         <div
-                            class="w-14 h-14 bg-brand-primary/10 flex items-center justify-center mb-5 rounded-xl"
+                            class="w-12 h-12 bg-brand-primary/10 flex items-center justify-center mb-4"
                         >
                             <svg
                                 class="w-6 h-6 text-brand-primary"
@@ -795,10 +796,10 @@
 
                     <!-- Premium Diamonds -->
                     <div
-                        class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300"
+                        class="bg-white border border-gray-200 p-6 hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300"
                     >
                         <div
-                            class="w-14 h-14 bg-brand-primary/10 flex items-center justify-center mb-5 rounded-xl"
+                            class="w-12 h-12 bg-brand-primary/10 flex items-center justify-center mb-4"
                         >
                             <svg
                                 class="w-6 h-6 text-brand-primary"
@@ -847,10 +848,10 @@
 
                     <!-- Expert Consultation -->
                     <div
-                        class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300"
+                        class="bg-white border border-gray-200 p-6 hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300"
                     >
                         <div
-                            class="w-14 h-14 bg-brand-primary/10 flex items-center justify-center mb-5 rounded-xl"
+                            class="w-12 h-12 bg-brand-primary/10 flex items-center justify-center mb-4"
                         >
                             <svg
                                 class="w-6 h-6 text-brand-primary"
@@ -899,10 +900,10 @@
 
                     <!-- Flexible Appointments -->
                     <div
-                        class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300"
+                        class="bg-white border border-gray-200 p-6 hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300"
                     >
                         <div
-                            class="w-14 h-14 bg-brand-primary/10 flex items-center justify-center mb-5 rounded-xl"
+                            class="w-12 h-12 bg-brand-primary/10 flex items-center justify-center mb-4"
                         >
                             <svg
                                 class="w-6 h-6 text-brand-primary"
@@ -951,10 +952,10 @@
 
                     <!-- Diamond Shapes -->
                     <div
-                        class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300"
+                        class="bg-white border border-gray-200 p-6 hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300"
                     >
                         <div
-                            class="w-14 h-14 bg-brand-primary/10 flex items-center justify-center mb-5 rounded-xl"
+                            class="w-12 h-12 bg-brand-primary/10 flex items-center justify-center mb-4"
                         >
                             <svg
                                 class="w-6 h-6 text-brand-primary"
@@ -981,55 +982,55 @@
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Round</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Oval</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Radiant</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Cushion</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Pear</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Emerald</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Princess</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Marquise</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Asscher</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Heart</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Trillion</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Baguette</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-brand-primary/10 text-brand-primary text-xs font-medium rounded-full"
+                                class="px-2.5 py-1 bg-brand-primary/10 text-brand-primary text-xs font-medium"
                                 >Other</span
                             >
                         </div>
@@ -1037,10 +1038,10 @@
 
                     <!-- Ring Styles -->
                     <div
-                        class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300"
+                        class="bg-white border border-gray-200 p-6 hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300"
                     >
                         <div
-                            class="w-14 h-14 bg-brand-primary/10 flex items-center justify-center mb-5 rounded-xl"
+                            class="w-12 h-12 bg-brand-primary/10 flex items-center justify-center mb-4"
                         >
                             <svg
                                 class="w-6 h-6 text-brand-primary"
@@ -1067,51 +1068,51 @@
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Solitaire</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Halo</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Hidden Halo</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Cathedral</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Three-Stone</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Pave</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Vintage</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Bezel</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Tension</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Split Shank</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                class="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs"
                                 >Cluster</span
                             >
                             <span
-                                class="px-3 py-1.5 bg-brand-primary/10 text-brand-primary text-xs font-medium rounded-full"
+                                class="px-2.5 py-1 bg-brand-primary/10 text-brand-primary text-xs font-medium"
                                 >Other</span
                             >
                         </div>
@@ -1190,7 +1191,7 @@
 
                 <!-- FAQ Items -->
                 <div class="space-y-4">
-                    <details class="group bg-gray-50 rounded-xl p-6">
+                    <details class="group border border-gray-200 p-6">
                         <summary
                             class="flex items-center justify-between cursor-pointer list-none"
                         >
@@ -1223,7 +1224,7 @@
                         </p>
                     </details>
 
-                    <details class="group bg-gray-50 rounded-xl p-6">
+                    <details class="group border border-gray-200 p-6">
                         <summary
                             class="flex items-center justify-between cursor-pointer list-none"
                         >
@@ -1257,7 +1258,7 @@
                         </p>
                     </details>
 
-                    <details class="group bg-gray-50 rounded-xl p-6">
+                    <details class="group border border-gray-200 p-6">
                         <summary
                             class="flex items-center justify-between cursor-pointer list-none"
                         >
@@ -1289,7 +1290,7 @@
                         </p>
                     </details>
 
-                    <details class="group bg-gray-50 rounded-xl p-6">
+                    <details class="group border border-gray-200 p-6">
                         <summary
                             class="flex items-center justify-between cursor-pointer list-none"
                         >
@@ -1320,7 +1321,7 @@
                         </p>
                     </details>
 
-                    <details class="group bg-gray-50 rounded-xl p-6">
+                    <details class="group border border-gray-200 p-6">
                         <summary
                             class="flex items-center justify-between cursor-pointer list-none"
                         >
@@ -1351,7 +1352,7 @@
                         </p>
                     </details>
 
-                    <details class="group bg-gray-50 rounded-xl p-6">
+                    <details class="group border border-gray-200 p-6">
                         <summary
                             class="flex items-center justify-between cursor-pointer list-none"
                         >
@@ -1390,7 +1391,7 @@
         <section class="relative py-24 md:py-32 overflow-hidden bg-gray-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div
-                    class="bg-brand-primary rounded-3xl p-10 md:p-16 text-center shadow-2xl"
+                    class="bg-brand-primary rounded-2xl p-10 md:p-16 text-center"
                 >
                     <h2
                         class="font-heading text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-6"
@@ -1406,7 +1407,7 @@
                     </p>
                     <a
                         href="#calendly-widget"
-                        class="inline-flex items-center px-8 py-4 bg-white text-brand-primary font-medium rounded-full hover:bg-gray-100 hover:shadow-lg transition-all duration-300"
+                        class="inline-flex items-center px-8 py-4 bg-white text-brand-primary font-medium hover:bg-gray-100 transition-colors"
                     >
                         Book Your Free Consultation
                         <svg
