@@ -467,5 +467,22 @@ img:not([loading="lazy"]) {
 }
 
 /* ============================================
+   21. MOMENTS SLIDER
+   ============================================ */
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.moments-slider {
+    scroll-behavior: smooth;
+}
+
+/* ============================================
    End of Custom CSS
    ============================================ */
