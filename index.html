@@ -221,10 +221,17 @@
                     <img
                         src="assets/houseofdiamonds_george_p1.jpg"
                         alt="Diamond engagement ring"
-                        class="w-full h-full object-cover"
+                        class="w-full h-full object-cover md:object-center object-[70%_center]"
                     />
                 </picture>
-                <div class="absolute inset-0 bg-black/50"></div>
+                <!-- Gradient overlay: darker on left (text side), lighter on right (ring side) -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30 md:from-black/60 md:via-black/40 md:to-black/20"
+                ></div>
+                <!-- Additional bottom gradient for text readability -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"
+                ></div>
             </div>
 
             <!-- Content -->
@@ -796,7 +803,7 @@
                     >
                         <!-- Santorini Proposal -->
                         <a
-                            href="https://www.instagram.com/houseofdiamonds.au_/"
+                            href="https://www.instagram.com/houseofdiamonds.au_/p/DNKskGfhTbG/"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group"
@@ -844,7 +851,7 @@
 
                         <!-- Banff Proposal -->
                         <a
-                            href="https://www.instagram.com/houseofdiamonds.au_/"
+                            href="https://www.instagram.com/houseofdiamonds.au_/p/DQtVZ7sAa90/"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group"
@@ -890,9 +897,9 @@
                             </div>
                         </a>
 
-                        <!-- Sydney Proposal -->
+                        <!-- Royal Garden Proposal -->
                         <a
-                            href="https://www.instagram.com/houseofdiamonds.au_/"
+                            href="https://www.instagram.com/houseofdiamonds.au_/p/DOF8p-nAarn/"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group"
@@ -938,9 +945,9 @@
                             </div>
                         </a>
 
-                        <!-- Opera House Proposal -->
+                        <!-- Sydney Proposal -->
                         <a
-                            href="https://www.instagram.com/houseofdiamonds.au_/"
+                            href="https://www.instagram.com/houseofdiamonds.au_/p/DLWXIKqhgUS/"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group"
@@ -1434,10 +1441,10 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Header -->
                 <div class="text-center mb-12">
-                    <div class="flex items-center justify-center gap-3 mb-4">
-                        <!-- Instagram Icon -->
+                    <!-- Instagram Icon - Centered above heading -->
+                    <div class="flex justify-center mb-4">
                         <svg
-                            class="w-8 h-8"
+                            class="w-10 h-10"
                             viewBox="0 0 24 24"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -1477,12 +1484,12 @@
                                 </linearGradient>
                             </defs>
                         </svg>
-                        <h2
-                            class="font-heading text-3xl md:text-4xl font-medium text-gray-900"
-                        >
-                            Follow Us on Instagram
-                        </h2>
                     </div>
+                    <h2
+                        class="font-heading text-3xl md:text-4xl font-medium text-gray-900 mb-4"
+                    >
+                        Follow Us on Instagram
+                    </h2>
                     <p class="text-gray-600">
                         <a
                             href="https://www.instagram.com/houseofdiamonds.com.au_/"
@@ -2122,14 +2129,9 @@
             });
         </script>
 
-        <!-- Google Places API for dynamic review count -->
+        <!-- Dynamic review count from Elfsight widget -->
         <script>
-            // Configuration
-            const GOOGLE_PLACES_API_KEY =
-                "AIzaSyCOcuKXph-xumH37ksiF747umz1KPvBP4w";
-            const PLACE_ID = "ChIJrcrwRgKuEmsR5BsCHKkdGXk"; // House of Diamonds Sydney Place ID
-
-            function updateReviewCounts(rating, reviewCount) {
+            function updateReviewCounts(reviewCount) {
                 // Update hero section
                 const heroCount = document.getElementById("hero-review-count");
                 if (heroCount) {
@@ -2144,47 +2146,80 @@
                 }
             }
 
-            function initGooglePlaces() {
-                if (
-                    typeof google === "undefined" ||
-                    !google.maps ||
-                    !google.maps.places
-                ) {
-                    console.warn("Google Places API not loaded");
-                    return;
-                }
-
-                // Create a dummy map element (required by Places API)
-                const mapDiv = document.createElement("div");
-                const service = new google.maps.places.PlacesService(mapDiv);
-
-                service.getDetails(
-                    {
-                        placeId: PLACE_ID,
-                        fields: ["rating", "user_ratings_total"],
-                    },
-                    (place, status) => {
-                        if (
-                            status ===
-                                google.maps.places.PlacesServiceStatus.OK &&
-                            place
-                        ) {
-                            const rating = place.rating || 5.0;
-                            const reviewCount = place.user_ratings_total || 104;
-                            updateReviewCounts(rating, reviewCount);
-                        }
-                    },
+            // Function to extract review count from Elfsight widget
+            function extractElfsightReviewCount() {
+                // Look for the Elfsight Google Reviews widget
+                const elfsightWidget = document.querySelector(
+                    ".elfsight-app-6b0842d6-849c-4c01-9858-3f51d512cad9",
                 );
+                if (!elfsightWidget) return null;
+
+                // Try to find review count text within the widget
+                // Elfsight typically displays "X reviews" or "(X)" format
+                const allText =
+                    elfsightWidget.innerText || elfsightWidget.textContent;
+
+                // Look for patterns like "104 reviews", "104 Reviews", "(104)"
+                const reviewPatterns = [
+                    /(\d+)\s*reviews?/i,
+                    /\((\d+)\)/,
+                    /Based on (\d+)/i,
+                ];
+
+                for (const pattern of reviewPatterns) {
+                    const match = allText.match(pattern);
+                    if (match && match[1]) {
+                        return parseInt(match[1], 10);
+                    }
+                }
+                return null;
             }
 
-            // Initialize when Google Maps API is loaded
-            window.initGooglePlaces = initGooglePlaces;
-        </script>
+            // Observer to watch for Elfsight widget loading
+            function observeElfsightWidget() {
+                const targetNode = document.body;
+                const config = {
+                    childList: true,
+                    subtree: true,
+                    characterData: true,
+                };
 
-        <!-- Load Google Places API - Replace YOUR_API_KEY with your actual API key -->
-        <script
-            async
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOcuKXph-xumH37ksiF747umz1KPvBP4w&libraries=places&callback=initGooglePlaces"
-        ></script>
+                let lastCount = null;
+
+                const checkForReviewCount = () => {
+                    const count = extractElfsightReviewCount();
+                    if (count && count !== lastCount) {
+                        lastCount = count;
+                        updateReviewCounts(count);
+                    }
+                };
+
+                const observer = new MutationObserver((mutations) => {
+                    checkForReviewCount();
+                });
+
+                observer.observe(targetNode, config);
+
+                // Also check periodically for the first 30 seconds
+                let attempts = 0;
+                const interval = setInterval(() => {
+                    checkForReviewCount();
+                    attempts++;
+                    if (attempts >= 30 || lastCount !== null) {
+                        clearInterval(interval);
+                    }
+                }, 1000);
+            }
+
+            // Start observing when DOM is ready
+            if (document.readyState === "loading") {
+                document.addEventListener(
+                    "DOMContentLoaded",
+                    observeElfsightWidget,
+                );
+            } else {
+                observeElfsightWidget();
+            }
+        </script>
     </body>
 </html>
