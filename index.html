@@ -221,17 +221,14 @@
                     <img
                         src="assets/houseofdiamonds_george_p1.jpg"
                         alt="Diamond engagement ring"
-                        class="w-full h-full object-cover md:object-center object-[70%_center]"
+                        class="w-full h-full object-cover md:object-center object-[50%_70%]"
                     />
                 </picture>
-                <!-- Gradient overlay: darker on left (text side), lighter on right (ring side) -->
+                <!-- Mobile only: gradient overlay for text readability -->
                 <div
-                    class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30 md:from-black/60 md:via-black/40 md:to-black/20"
+                    class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/30 to-transparent md:hidden"
                 ></div>
-                <!-- Additional bottom gradient for text readability -->
-                <div
-                    class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"
-                ></div>
+                <!-- Desktop: no overlay, clean image -->
             </div>
 
             <!-- Content -->
