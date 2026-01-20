@@ -216,17 +216,20 @@
                 <img
                     src="assets/houseofdiamonds_george_p1.webp"
                     alt="Diamond engagement ring"
-                    class="hero-slide absolute inset-0 w-full h-full object-cover md:object-center md:scale-100 scale-[1.3] object-[50%_60%] opacity-100 transition-opacity duration-1000"
+                    class="hero-slide absolute inset-0 w-full h-full object-cover md:object-center md:scale-100 scale-[1.3] object-[50%_60%]"
+                    style="opacity: 1; transition: opacity 1s ease-in-out"
                 />
                 <img
                     src="assets/530457274_1287702943364855_1365951960222475392_n.jpeg"
                     alt="Diamond engagement ring"
-                    class="hero-slide absolute inset-0 w-full h-full object-cover md:object-center md:scale-100 scale-[1.3] object-[50%_60%] opacity-0 transition-opacity duration-1000"
+                    class="hero-slide absolute inset-0 w-full h-full object-cover md:object-center md:scale-100 scale-[1.3] object-[50%_60%]"
+                    style="opacity: 0; transition: opacity 1s ease-in-out"
                 />
                 <img
                     src="assets/530637246_4172172049720723_5412200742070665639_n.jpeg"
                     alt="Diamond engagement ring"
-                    class="hero-slide absolute inset-0 w-full h-full object-cover md:object-center md:scale-100 scale-[1.3] object-[50%_60%] opacity-0 transition-opacity duration-1000"
+                    class="hero-slide absolute inset-0 w-full h-full object-cover md:object-center md:scale-100 scale-[1.3] object-[50%_60%]"
+                    style="opacity: 0; transition: opacity 1s ease-in-out"
                 />
             </div>
 
@@ -2328,15 +2331,13 @@
 
                 setInterval(function () {
                     // Fade out current slide
-                    slides[currentSlide].classList.remove("opacity-100");
-                    slides[currentSlide].classList.add("opacity-0");
+                    slides[currentSlide].style.opacity = "0";
 
                     // Move to next slide
                     currentSlide = (currentSlide + 1) % slides.length;
 
                     // Fade in next slide
-                    slides[currentSlide].classList.remove("opacity-0");
-                    slides[currentSlide].classList.add("opacity-100");
+                    slides[currentSlide].style.opacity = "1";
                 }, 2000);
             });
         </script>
