@@ -211,19 +211,23 @@
 
         <!-- Hero Section -->
         <section class="relative min-h-[60vh] flex items-center pt-16 md:pt-20">
-            <!-- Background Image -->
-            <div class="absolute inset-0 overflow-hidden">
-                <picture>
-                    <source
-                        srcset="assets/houseofdiamonds_george_p1.webp"
-                        type="image/webp"
-                    />
-                    <img
-                        src="assets/houseofdiamonds_george_p1.jpg"
-                        alt="Diamond engagement ring"
-                        class="w-full h-full object-cover md:object-center md:scale-100 scale-[1.3] object-[50%_60%]"
-                    />
-                </picture>
+            <!-- Background Image Slideshow -->
+            <div class="absolute inset-0 overflow-hidden" id="hero-slideshow">
+                <img
+                    src="assets/houseofdiamonds_george_p1.webp"
+                    alt="Diamond engagement ring"
+                    class="hero-slide absolute inset-0 w-full h-full object-cover md:object-center md:scale-100 scale-[1.3] object-[50%_60%] opacity-100 transition-opacity duration-1000"
+                />
+                <img
+                    src="assets/530457274_1287702943364855_1365951960222475392_n.jpeg"
+                    alt="Diamond engagement ring"
+                    class="hero-slide absolute inset-0 w-full h-full object-cover md:object-center md:scale-100 scale-[1.3] object-[50%_60%] opacity-0 transition-opacity duration-1000"
+                />
+                <img
+                    src="assets/530637246_4172172049720723_5412200742070665639_n.jpeg"
+                    alt="Diamond engagement ring"
+                    class="hero-slide absolute inset-0 w-full h-full object-cover md:object-center md:scale-100 scale-[1.3] object-[50%_60%] opacity-0 transition-opacity duration-1000"
+                />
             </div>
 
             <!-- Content -->
@@ -2311,6 +2315,29 @@
                 link.addEventListener("click", () => {
                     mobileMenu.classList.add("hidden");
                 });
+            });
+        </script>
+
+        <!-- Hero Slideshow Script -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const slides = document.querySelectorAll(".hero-slide");
+                if (slides.length === 0) return;
+
+                let currentSlide = 0;
+
+                setInterval(function () {
+                    // Fade out current slide
+                    slides[currentSlide].classList.remove("opacity-100");
+                    slides[currentSlide].classList.add("opacity-0");
+
+                    // Move to next slide
+                    currentSlide = (currentSlide + 1) % slides.length;
+
+                    // Fade in next slide
+                    slides[currentSlide].classList.remove("opacity-0");
+                    slides[currentSlide].classList.add("opacity-100");
+                }, 2000);
             });
         </script>
 
