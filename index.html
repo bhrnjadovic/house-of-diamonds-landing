@@ -15,6 +15,20 @@
             House of Diamonds - Premium Diamond Engagement Rings Sydney
         </title>
 
+        <!-- Google tag (gtag.js) -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=AW-17491862983"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "AW-17491862983");
+        </script>
+
         <!-- Preconnect for fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -2324,6 +2338,24 @@
                 link.addEventListener("click", () => {
                     mobileMenu.classList.add("hidden");
                 });
+            });
+        </script>
+
+        <!-- Google Ads Conversion Tracking for Calendly -->
+        <script>
+            // Listen for Calendly events
+            window.addEventListener("message", function (e) {
+                if (
+                    e.origin === "https://calendly.com" &&
+                    e.data.event === "calendly.event_scheduled"
+                ) {
+                    // Fire Google Ads conversion event
+                    gtag("event", "conversion", {
+                        send_to: "AW-17491862983/wrAWCImQqOYbEMfL4pRB",
+                        value: 1.0,
+                        currency: "AUD",
+                    });
+                }
             });
         </script>
 
