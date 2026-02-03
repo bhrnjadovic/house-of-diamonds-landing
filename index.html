@@ -3427,53 +3427,56 @@
 
         <script>
             // Ring Modal Logic
-            const ringModal = document.getElementById("ring-modal");
-            const modalClose = document.getElementById("modal-close");
-            const modalRingName = document.getElementById("modal-ring-name");
-            const modalWhatsApp = document.getElementById("modal-whatsapp");
-            const modalEnquiry = document.getElementById("modal-enquiry");
-            const enquiryForm = document.getElementById("enquiry-form");
-            const enquiryMessage = enquiryForm.querySelector(
-                'textarea[name="message"]',
-            );
+            document.addEventListener("DOMContentLoaded", function () {
+                const ringModal = document.getElementById("ring-modal");
+                const modalClose = document.getElementById("modal-close");
+                const modalRingName =
+                    document.getElementById("modal-ring-name");
+                const modalWhatsApp = document.getElementById("modal-whatsapp");
+                const modalEnquiry = document.getElementById("modal-enquiry");
+                const enquiryFormEl = document.getElementById("enquiry-form");
+                const enquiryMessage = enquiryFormEl.querySelector(
+                    'textarea[name="message"]',
+                );
 
-            let currentRingData = {};
+                let currentRingData = {};
 
-            document.querySelectorAll(".ring-card").forEach((card) => {
-                card.addEventListener("click", function (e) {
-                    e.preventDefault();
-                    currentRingData = {
-                        name: this.dataset.ringName,
-                        price: this.dataset.ringPrice,
-                        whatsappUrl: this.dataset.whatsappUrl,
-                    };
-                    modalRingName.textContent = currentRingData.name;
-                    modalWhatsApp.href = currentRingData.whatsappUrl;
-                    ringModal.classList.remove("hidden");
-                    ringModal.classList.add("flex");
+                document.querySelectorAll(".ring-card").forEach((card) => {
+                    card.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        currentRingData = {
+                            name: this.dataset.ringName,
+                            price: this.dataset.ringPrice,
+                            whatsappUrl: this.dataset.whatsappUrl,
+                        };
+                        modalRingName.textContent = currentRingData.name;
+                        modalWhatsApp.href = currentRingData.whatsappUrl;
+                        ringModal.classList.remove("hidden");
+                        ringModal.classList.add("flex");
+                    });
                 });
-            });
 
-            modalClose.addEventListener("click", function () {
-                ringModal.classList.add("hidden");
-                ringModal.classList.remove("flex");
-            });
-
-            ringModal.addEventListener("click", function (e) {
-                if (e.target === ringModal) {
+                modalClose.addEventListener("click", function () {
                     ringModal.classList.add("hidden");
                     ringModal.classList.remove("flex");
-                }
-            });
+                });
 
-            modalEnquiry.addEventListener("click", function () {
-                ringModal.classList.add("hidden");
-                ringModal.classList.remove("flex");
-                enquiryMessage.value = `Hi! I'm interested in the ${currentRingData.name} starting at ${currentRingData.price}. `;
-                document
-                    .getElementById("send-message")
-                    .scrollIntoView({ behavior: "smooth" });
-                setTimeout(() => enquiryMessage.focus(), 500);
+                ringModal.addEventListener("click", function (e) {
+                    if (e.target === ringModal) {
+                        ringModal.classList.add("hidden");
+                        ringModal.classList.remove("flex");
+                    }
+                });
+
+                modalEnquiry.addEventListener("click", function () {
+                    ringModal.classList.add("hidden");
+                    ringModal.classList.remove("flex");
+                    enquiryMessage.value = `Hi! I'm interested in the ${currentRingData.name} starting at ${currentRingData.price}. `;
+                    document
+                        .getElementById("send-message")
+                        .scrollIntoView({ behavior: "smooth" });
+                    setTimeout(() => enquiryMessage.focus(), 500);
+                });
             });
         </script>
 
