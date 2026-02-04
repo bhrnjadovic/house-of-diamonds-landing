@@ -1801,9 +1801,11 @@
                         id="moments-slider"
                     >
                         <!-- Santorini Proposal -->
-                        <a
-                            href="#instagram"
-                            class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group"
+                        <div
+                            class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
+                            data-moment-title="Santorini Proposal"
+                            data-moment-image="assets/santorini-proposal1.jpeg"
+                            data-moment-caption="A breathtaking proposal against the iconic blue domes of Santorini"
                         >
                             <div
                                 class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg"
@@ -1827,7 +1829,7 @@
                                     <span
                                         class="text-sm text-white/80 flex items-center gap-2 group-hover:text-white transition-colors"
                                     >
-                                        Explore
+                                        View
                                         <svg
                                             class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
                                             fill="none"
@@ -1844,12 +1846,14 @@
                                     </span>
                                 </div>
                             </div>
-                        </a>
+                        </div>
 
                         <!-- Banff Proposal -->
-                        <a
-                            href="#instagram"
-                            class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group"
+                        <div
+                            class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
+                            data-moment-title="Banff Proposal"
+                            data-moment-image="assets/Banff-proposal1.jpeg"
+                            data-moment-caption="A magical mountain proposal in the heart of the Canadian Rockies"
                         >
                             <div
                                 class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg"
@@ -1873,7 +1877,7 @@
                                     <span
                                         class="text-sm text-white/80 flex items-center gap-2 group-hover:text-white transition-colors"
                                     >
-                                        Explore
+                                        View
                                         <svg
                                             class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
                                             fill="none"
@@ -1890,12 +1894,14 @@
                                     </span>
                                 </div>
                             </div>
-                        </a>
+                        </div>
 
                         <!-- Royal Garden Proposal -->
-                        <a
-                            href="#instagram"
-                            class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group"
+                        <div
+                            class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
+                            data-moment-title="Royal Garden Proposal"
+                            data-moment-image="assets/sydney-proposal2.jpeg"
+                            data-moment-caption="An elegant proposal in Sydney's beautiful Royal Botanic Garden"
                         >
                             <div
                                 class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg"
@@ -1919,7 +1925,7 @@
                                     <span
                                         class="text-sm text-white/80 flex items-center gap-2 group-hover:text-white transition-colors"
                                     >
-                                        Explore
+                                        View
                                         <svg
                                             class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
                                             fill="none"
@@ -1936,12 +1942,14 @@
                                     </span>
                                 </div>
                             </div>
-                        </a>
+                        </div>
 
                         <!-- Sydney Proposal -->
-                        <a
-                            href="#instagram"
-                            class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group"
+                        <div
+                            class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
+                            data-moment-title="Sydney Proposal"
+                            data-moment-image="assets/opera-house-proposal2.jpeg"
+                            data-moment-caption="A stunning proposal with the iconic Sydney Opera House as the backdrop"
                         >
                             <div
                                 class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg"
@@ -1965,7 +1973,7 @@
                                     <span
                                         class="text-sm text-white/80 flex items-center gap-2 group-hover:text-white transition-colors"
                                     >
-                                        Explore
+                                        View
                                         <svg
                                             class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
                                             fill="none"
@@ -1982,7 +1990,7 @@
                                     </span>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
 
                     <!-- Navigation Arrows -->
@@ -3357,6 +3365,113 @@
                         "Something went wrong. Please try again or contact us via WhatsApp.",
                     );
                 }
+            });
+        </script>
+
+        <!-- Moments Lightbox Modal -->
+        <div
+            id="moments-lightbox"
+            class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm"
+        >
+            <button
+                id="lightbox-close"
+                class="absolute top-4 right-4 text-white/80 hover:text-white z-10"
+            >
+                <svg
+                    class="w-8 h-8"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"
+                    />
+                </svg>
+            </button>
+            <div class="max-w-4xl w-full mx-4 relative">
+                <img
+                    id="lightbox-image"
+                    src=""
+                    alt=""
+                    class="w-full max-h-[70vh] object-contain rounded-lg"
+                />
+                <div class="text-center mt-6">
+                    <h3
+                        id="lightbox-title"
+                        class="font-heading text-2xl font-medium text-white mb-2"
+                    ></h3>
+                    <p id="lightbox-caption" class="text-white/70 mb-6"></p>
+                    <a
+                        href="#calendly-widget"
+                        id="lightbox-cta"
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark transition-all duration-300"
+                    >
+                        Plan Your Moment
+                        <svg
+                            class="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Moments Lightbox Logic
+            document.addEventListener("DOMContentLoaded", function () {
+                const lightbox = document.getElementById("moments-lightbox");
+                const lightboxClose = document.getElementById("lightbox-close");
+                const lightboxImage = document.getElementById("lightbox-image");
+                const lightboxTitle = document.getElementById("lightbox-title");
+                const lightboxCaption =
+                    document.getElementById("lightbox-caption");
+                const lightboxCta = document.getElementById("lightbox-cta");
+
+                document.querySelectorAll(".moment-card").forEach((card) => {
+                    card.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        lightboxImage.src = this.dataset.momentImage;
+                        lightboxImage.alt = this.dataset.momentTitle;
+                        lightboxTitle.textContent = this.dataset.momentTitle;
+                        lightboxCaption.textContent =
+                            this.dataset.momentCaption;
+                        lightbox.classList.remove("hidden");
+                        lightbox.classList.add("flex");
+                        document.body.style.overflow = "hidden";
+                    });
+                });
+
+                lightboxClose.addEventListener("click", function () {
+                    lightbox.classList.add("hidden");
+                    lightbox.classList.remove("flex");
+                    document.body.style.overflow = "";
+                });
+
+                lightbox.addEventListener("click", function (e) {
+                    if (e.target === lightbox) {
+                        lightbox.classList.add("hidden");
+                        lightbox.classList.remove("flex");
+                        document.body.style.overflow = "";
+                    }
+                });
+
+                lightboxCta.addEventListener("click", function () {
+                    lightbox.classList.add("hidden");
+                    lightbox.classList.remove("flex");
+                    document.body.style.overflow = "";
+                });
             });
         </script>
 
