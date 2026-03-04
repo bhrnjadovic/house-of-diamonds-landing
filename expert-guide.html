@@ -413,28 +413,26 @@
                             A jeweller&rsquo;s guide to engagement ring quality
                         </p>
 
-                        <!-- 16:9 Video Placeholder -->
+                        <!-- 16:9 Video -->
                         <div
-                            class="relative w-full rounded-2xl overflow-hidden shadow-lg bg-gray-900 cursor-pointer group"
+                            class="relative w-full rounded-2xl overflow-hidden shadow-lg bg-gray-900"
                             style="padding-top: 56.25%"
                         >
-                            <div
-                                class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900"
+                            <iframe
+                                id="vimeo-player"
+                                src="https://player.vimeo.com/video/1154860741?title=0&byline=0&portrait=0&muted=1"
+                                class="absolute inset-0 w-full h-full"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                            <!-- Unmute Button - Mobile Only -->
+                            <button
+                                id="vimeo-unmute-btn"
+                                class="absolute top-4 left-1/2 -translate-x-1/2 bg-black text-white text-sm font-medium px-4 py-2 rounded md:hidden z-10"
                             >
-                                <div
-                                    class="w-16 h-16 md:w-20 md:h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110"
-                                >
-                                    <svg
-                                        class="w-8 h-8 md:w-10 md:h-10 text-white ml-1"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path d="M8 5v14l11-7z" />
-                                    </svg>
-                                </div>
-                                <!-- TODO: Replace with actual video embed -->
-                                <!-- <iframe src="VIDEO_URL" class="absolute inset-0 w-full h-full" frameborder="0" allowfullscreen></iframe> -->
-                            </div>
+                                Unmute
+                            </button>
                         </div>
 
                         <!-- Video description — desktop only (below video) -->
@@ -2940,6 +2938,34 @@
                     videoObserver.observe(videoEl);
                 }
             })();
+        </script>
+
+        <!-- Vimeo Player SDK -->
+        <script src="https://player.vimeo.com/api/player.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const iframe = document.getElementById("vimeo-player");
+                const unmuteBtn = document.getElementById("vimeo-unmute-btn");
+
+                if (!iframe) return;
+
+                const player = new Vimeo.Player(iframe);
+
+                // Autoplay after 5 seconds
+                setTimeout(function () {
+                    player.play().catch(function (error) {
+                        console.log("Autoplay prevented:", error);
+                    });
+                }, 5000);
+
+                // Unmute button click handler
+                if (unmuteBtn) {
+                    unmuteBtn.addEventListener("click", function () {
+                        player.setMuted(false);
+                        unmuteBtn.style.display = "none";
+                    });
+                }
+            });
         </script>
 
         <!-- Dynamic review count from Elfsight widget -->
