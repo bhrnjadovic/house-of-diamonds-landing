@@ -2608,12 +2608,18 @@
 
                 const player = new Vimeo.Player(iframe);
 
-                // Autoplay after 5 seconds
+                // Autoplay and unmute after 3 seconds
                 setTimeout(function () {
-                    player.play().catch(function (error) {
-                        console.log("Autoplay prevented:", error);
-                    });
-                }, 5000);
+                    player
+                        .play()
+                        .then(function () {
+                            player.setMuted(false);
+                            if (unmuteBtn) unmuteBtn.style.display = "none";
+                        })
+                        .catch(function (error) {
+                            console.log("Autoplay prevented:", error);
+                        });
+                }, 3000);
 
                 // Unmute button click handler
                 if (unmuteBtn) {
