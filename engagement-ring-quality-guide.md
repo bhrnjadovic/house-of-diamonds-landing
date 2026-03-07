@@ -260,7 +260,7 @@ When evaluating a ring, resist the temptation to assess any component in isolati
 
 ---
 
-# Section 2: Craftsmanship Inspection Guide
+# Section 2: Craftsmanship Methods and Inspection Guide
 
 ### Why Craftsmanship Matters
 
@@ -376,6 +376,54 @@ High-quality manufacturers use vacuum-assisted or centrifugal casting to minimis
 During casting, multiple rings are typically cast simultaneously on a branching structure called a casting tree. Each ring is connected to the tree by a small channel called a sprue. After casting, the rings are cut from the tree and the sprue attachment point is filed and polished away.
 
 In well-finished pieces, the sprue point should be completely invisible. In poorly finished pieces, you may see a small flat spot, bump, or discoloured area -- usually on the inside of the band -- where the sprue was attached. This is a minor defect but indicative of insufficient finishing attention.
+
+### Handmade Jewellery vs Cast Jewellery
+
+The previous section focused on casting quality because casting is, by a wide margin, the most common method used to produce engagement rings today. But it is not the only method. Some jewellers build rings entirely by hand from solid metal stock -- a process known as hand fabrication. Understanding the difference between these two approaches helps you ask better questions and evaluate what you are being shown.
+
+#### Cast Jewellery
+
+As described above, cast jewellery is produced by pouring molten metal into a mould. The mould is created from a wax or resin model of the ring, which is itself often produced using CAD (computer-aided design) and 3D printing. This method is efficient, repeatable, and allows for highly complex and intricate designs that would be extremely difficult or impossible to produce by hand -- detailed filigree work, elaborate halo settings, and ornate gallery designs, for example.
+
+The quality of cast jewellery depends almost entirely on the casting process itself. When the temperatures are precisely controlled, the vacuum is properly drawn, the alloy composition is correct, and the finishing is thorough, cast jewellery can be excellent. A well-cast ring with dense, porosity-free metal and careful hand-finishing will serve its wearer reliably for decades.
+
+The critical point, covered in detail above, is that not all casting is equal. A ring that has been cast under poor conditions -- without vacuum assistance, at incorrect temperatures, or with an inferior alloy -- will contain internal weaknesses that may not be apparent at the time of purchase but will reveal themselves over years of wear.
+
+#### Handmade (Hand-Fabricated) Jewellery
+
+Hand-fabricated rings are built by a jeweller working directly with solid metal stock: wire, sheet, tubing, and bar. Rather than pouring metal into a mould, the jeweller shapes the ring through a series of manual and mechanical processes:
+
+- **Forging** -- hammering or pressing the metal to shape it and refine its grain structure
+- **Bending** -- shaping wire or sheet metal around mandrels and forming tools
+- **Soldering** -- joining separate metal components together using a torch and solder alloy
+- **Machining** -- using lathes, mills, or other precision tools to achieve exact dimensions
+- **Hand finishing** -- filing, sanding, and polishing every surface by hand to the final standard
+
+One of the structural advantages of hand fabrication is that working the metal -- particularly forging -- compresses and aligns its crystalline grain structure. This process, sometimes called work-hardening, can increase the metal's density and strength compared to cast metal of the same alloy. A forged band, for instance, tends to be harder and more resistant to bending than a cast band of identical dimensions and karat.
+
+However, hand fabrication has practical limitations. It is significantly more labour-intensive than casting, which means it costs more -- often considerably more -- for an equivalent design. Not every design lends itself to fabrication; highly complex or sculptural forms that are straightforward to cast may be impractical or impossible to build from solid stock. And hand fabrication requires a high level of skill. Poorly executed fabrication -- uneven soldering, inconsistent thickness, rough filing -- can produce results worse than a well-managed casting process.
+
+#### A Balanced View
+
+It would be misleading to declare one method universally superior to the other. The reality is more nuanced:
+
+- Hand-fabricated jewellery can offer superior metal density and structural strength, particularly in simple band designs where the forging process provides a genuine material advantage.
+- High-quality cast jewellery, produced under controlled conditions with proper finishing, can be equally durable and allows for a far wider range of design possibilities.
+- The craftsmanship and engineering applied to the ring matter more than the production method alone. A beautifully cast ring from a skilled manufacturer will outperform a poorly fabricated ring from an unskilled bench jeweller, and vice versa.
+
+The following table summarises the key differences:
+
+| Feature | Cast Jewellery | Handmade Jewellery |
+|---|---|---|
+| Production method | Molten metal poured into a mould | Built from solid metal stock |
+| Metal density | Depends on casting quality | Often increased through forging |
+| Design flexibility | Very high | More limited |
+| Labour required | Lower | Much higher |
+| Typical cost | Lower | Higher |
+
+Most high-quality engagement rings sold today are cast, and there is nothing wrong with that. What truly matters is dense casting, proper alloy control, precise setting work, and thoughtful ring engineering. A well-cast ring that ticks all of those boxes will last a lifetime.
+
+That said, it is worth asking your jeweller how their rings are made and finished. Not because one answer is right and another is wrong, but because the answer tells you something about the jeweller's process, their attention to detail, and whether they understand the material properties of what they are selling. A jeweller who can explain their production method clearly -- and why they have chosen it -- is one who takes their craft seriously.
 
 ### Basket and Gallery Inspection
 
