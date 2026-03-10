@@ -408,7 +408,7 @@
 
                         <!-- Trust row -->
                         <div class="flex flex-wrap gap-x-5 gap-y-3 justify-center lg:justify-start">
-                            <a href="#book" class="flex items-center gap-2.5 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 hover:bg-white/20 transition-colors">
+                            <a href="#reviews" class="flex items-center gap-2.5 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 hover:bg-white/20 transition-colors">
                                 <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                                     <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -424,7 +424,7 @@
                                         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                                         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                                     </div>
-                                    <span class="text-white/80 text-sm">(110+)</span>
+                                    <span class="text-white/80 text-sm" id="hero-review-count">(110+)</span>
                                 </div>
                             </a>
                             <div class="flex items-center gap-2 text-sm text-gray-400">
@@ -1375,6 +1375,55 @@
 
 
         <!-- ================================================
+             REVIEWS
+        ================================================ -->
+        <section id="reviews" class="py-10 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 fade-in">
+                    <h2 class="font-heading text-3xl md:text-4xl text-gray-900 mb-4" style="font-weight: 400;">
+                        What Our Clients Say
+                    </h2>
+                    <p class="text-gray-600 hidden md:block">Real reviews from Google &mdash; automatically updated</p>
+                </div>
+                <script src="https://elfsightcdn.com/platform.js" async></script>
+                <div class="elfsight-app-6b0842d6-849c-4c01-9858-3f51d512cad9" data-elfsight-app-lazy></div>
+            </div>
+        </section>
+
+
+        <!-- ================================================
+             OUR LATEST CREATIONS
+        ================================================ -->
+        <section class="py-10 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <div class="flex justify-center mb-4">
+                        <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill="url(#ig-gradient-meta)"/>
+                            <defs>
+                                <linearGradient id="ig-gradient-meta" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#ffdc80"/>
+                                    <stop offset="25%" style="stop-color:#f77737"/>
+                                    <stop offset="50%" style="stop-color:#e1306c"/>
+                                    <stop offset="75%" style="stop-color:#c13584"/>
+                                    <stop offset="100%" style="stop-color:#833ab4"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h2 class="font-heading text-3xl md:text-4xl text-gray-900 mb-4" style="font-weight: 400;">
+                        Our Latest Creations
+                    </h2>
+                    <p class="text-gray-600">
+                        <a href="https://www.instagram.com/houseofdiamonds.au_/" target="_blank" rel="noopener noreferrer" style="color:#238c72;" class="hover:underline">@houseofdiamonds.au_</a>
+                    </p>
+                </div>
+                <div class="elfsight-app-ae15ad64-39a9-4daa-a0c6-90f844012c74" data-elfsight-app-lazy></div>
+            </div>
+        </section>
+
+
+        <!-- ================================================
              10. FINAL CTA
         ================================================ -->
         <section class="relative py-28 md:py-36 overflow-hidden">
@@ -1630,6 +1679,66 @@
                     btn.style.opacity = "1";
                     alert("Something went wrong. Please try again or call us on 1800 845 320.");
                 });
+            }
+        </script>
+
+        <!-- Dynamic review count from Elfsight widget -->
+        <script>
+            function updateReviewCounts(reviewCount) {
+                const heroCount = document.getElementById("hero-review-count");
+                if (heroCount) heroCount.textContent = "(" + reviewCount + ")";
+            }
+
+            function extractElfsightReviewCount() {
+                const elfsightWidget = document.querySelector(
+                    ".elfsight-app-6b0842d6-849c-4c01-9858-3f51d512cad9"
+                );
+                if (!elfsightWidget) return null;
+
+                const allText = elfsightWidget.innerText || elfsightWidget.textContent;
+                const reviewPatterns = [
+                    /(\d+)\s*reviews?/i,
+                    /\((\d+)\)/,
+                    /Based on (\d+)/i,
+                ];
+
+                for (const pattern of reviewPatterns) {
+                    const match = allText.match(pattern);
+                    if (match && match[1]) {
+                        return parseInt(match[1], 10);
+                    }
+                }
+                return null;
+            }
+
+            function observeElfsightWidget() {
+                const targetNode = document.body;
+                const config = { childList: true, subtree: true, characterData: true };
+                let lastCount = null;
+
+                const checkForReviewCount = () => {
+                    const count = extractElfsightReviewCount();
+                    if (count && count !== lastCount) {
+                        lastCount = count;
+                        updateReviewCounts(count);
+                    }
+                };
+
+                const observer = new MutationObserver(() => { checkForReviewCount(); });
+                observer.observe(targetNode, config);
+
+                let attempts = 0;
+                const interval = setInterval(() => {
+                    checkForReviewCount();
+                    attempts++;
+                    if (attempts >= 30 || lastCount !== null) clearInterval(interval);
+                }, 1000);
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", observeElfsightWidget);
+            } else {
+                observeElfsightWidget();
             }
         </script>
 
