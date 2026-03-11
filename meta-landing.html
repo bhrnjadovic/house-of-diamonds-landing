@@ -390,22 +390,7 @@
 
                         <!-- Google badge — mobile only, between label and heading -->
                         <a href="#reviews" class="lg:hidden inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-1.5 mb-6 hover:bg-white/15 transition-colors">
-                            <!-- Google wordmark -->
-                            <span class="font-medium text-base tracking-tight" style="font-family: 'Product Sans', Arial, sans-serif;">
-                                <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
-                            </span>
-                            <span class="w-px h-5 bg-white/20"></span>
-                            <div class="flex items-center gap-1.5">
-                                <span class="text-white font-semibold text-sm">5.0</span>
-                                <div class="flex gap-0.5">
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                </div>
-                                <span class="text-white/70 text-sm" id="hero-review-count-mobile">(110+)</span>
-                            </div>
+                            <span class="text-white text-sm"><span id="hero-review-count-mobile">110</span>+ Reviews</span>
                         </a>
 
                         <h1 class="font-heading text-white mb-6" style="font-size: clamp(1.8rem, 4.5vw, 3.4rem); line-height: 1.1; font-weight: 500;">
@@ -1914,7 +1899,7 @@
                 const heroCount = document.getElementById("hero-review-count");
                 if (heroCount) heroCount.textContent = "(" + reviewCount + ")";
                 const heroCountMobile = document.getElementById("hero-review-count-mobile");
-                if (heroCountMobile) heroCountMobile.textContent = "(" + reviewCount + ")";
+                if (heroCountMobile) heroCountMobile.textContent = reviewCount;
             }
 
             function extractElfsightReviewCount() {
