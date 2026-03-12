@@ -381,16 +381,15 @@
         ================================================ -->
         <section id="hero" class="bg-gray-900 text-white overflow-hidden pt-20 md:pt-24 lg:pt-28 pb-12 md:pb-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto text-center">
+                <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
                     <!-- Left: Text content -->
-                    <div>
+                    <div class="text-center lg:text-left">
 
                         <p class="section-label mb-5">Custom Engagement Rings &mdash; Sydney</p>
 
-                        <!-- Google badge — between label and heading -->
-                        <a href="#reviews" class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-1.5 mb-6 hover:bg-white/15 transition-colors">
-                            <!-- Google wordmark -->
+                        <!-- Google badge — mobile only -->
+                        <a href="#reviews" class="lg:hidden inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-1.5 mb-6 hover:bg-white/15 transition-colors">
                             <span class="font-medium text-base tracking-tight" style="font-family: 'Product Sans', Arial, sans-serif;">
                                 <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
                             </span>
@@ -413,13 +412,13 @@
                             <span class="text-white" style="font-weight: 300;">built for your budget,<br class="hidden sm:block"> not a jewellery store markup.</span>
                         </h1>
 
-                        <div class="text-gray-400 leading-relaxed mb-10 mx-auto space-y-3" style="font-size: 1rem; max-width: 480px;">
+                        <div class="text-gray-400 leading-relaxed mb-10 mx-auto lg:mx-0 space-y-3" style="font-size: 1rem; max-width: 480px;">
                             <p>Most jewellery stores price rings at roughly 2.5&ndash;4&times; their wholesale cost.</p>
                             <p>Every ring at House of Diamonds is made locally with materials delivered factory-direct, no wholesalers &mdash; so more of your budget goes into the diamond and craftsmanship, not the retail supply chain.</p>
                         </div>
 
                         <!-- CTA buttons -->
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
                             <a href="#book" class="btn-primary" style="font-size: 15px;">
                                 Get My Ring Options
                             </a>
@@ -428,7 +427,24 @@
                             </a>
                         </div>
 
+                    </div>
 
+                    <!-- Right: Video (desktop only) -->
+                    <div class="hidden lg:block">
+                        <p class="text-sm font-medium text-gray-400 mb-3 text-center">A jeweller&rsquo;s guide to engagement ring quality</p>
+                        <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-gray-900" style="padding-top: 56.25%;">
+                            <iframe
+                                id="vimeo-player"
+                                src="https://player.vimeo.com/video/1154860741?title=0&byline=0&portrait=0&muted=1"
+                                class="absolute inset-0 w-full h-full"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-3 text-center">
+                            Belmir explains what actually determines ring quality, what Sydney jewellers rarely advertise, and how to get more diamond for your budget.
+                        </p>
                     </div>
 
                 </div>
@@ -668,33 +684,6 @@
             </div>
         </section>
 
-
-        <!-- ================================================
-             VIDEO SECTION
-        ================================================ -->
-        <section class="py-16 md:py-24 bg-gray-900">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-10 fade-in">
-                    <p class="section-label mb-4">Watch First</p>
-                    <h2 class="font-heading text-3xl md:text-4xl text-white" style="font-weight: 400;">
-                        See how the process works
-                    </h2>
-                </div>
-                <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-black fade-in" style="padding-top: 56.25%;">
-                    <iframe
-                        id="vimeo-player"
-                        src="https://player.vimeo.com/video/1154860741?title=0&byline=0&portrait=0"
-                        class="absolute inset-0 w-full h-full"
-                        frameborder="0"
-                        allow="fullscreen; picture-in-picture"
-                        allowfullscreen
-                    ></iframe>
-                </div>
-                <p class="text-gray-400 text-sm text-center mt-4">
-                    Belmir explains what actually determines ring quality, what Sydney jewellers rarely advertise, and how to get more diamond for your budget.
-                </p>
-            </div>
-        </section>
 
 
         <!-- ================================================
