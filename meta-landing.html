@@ -446,41 +446,102 @@
 
                     <!-- Left: Context -->
                     <div class="fade-in">
-                        <h2 class="font-heading text-3xl md:text-4xl text-gray-900 mb-8" style="font-weight: 400; line-height: 1.2;">
-                            Design your custom engagement ring
-                        </h2>
-                        <ul class="space-y-5">
-                            <li class="flex items-start gap-4">
-                                <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(29,112,91,0.1);">
-                                    <svg class="w-4 h-4" style="color:#238c72;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
+
+                        <!-- Desktop: original layout -->
+                        <div class="hidden md:block">
+                            <p class="section-label mb-4">Book Your Consultation</p>
+                            <h2 class="font-heading text-3xl md:text-4xl text-gray-900 mb-6" style="font-weight: 400; line-height: 1.2;">
+                                Get your ring options &mdash; starting with your budget.
+                            </h2>
+                            <p class="text-gray-500 text-base leading-relaxed mb-8">
+                                Tell Belmir a little about what you are looking for. He will come back to you personally with a clear starting point.
+                            </p>
+
+                            <!-- What to expect -->
+                            <div class="space-y-5 mb-10">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(29,112,91,0.1);">
+                                        <svg class="w-4 h-4" style="color:#238c72;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-800 text-sm">30-minute private consultation</p>
+                                        <p class="text-gray-500 text-sm">At our Sydney showroom or virtually</p>
+                                    </div>
                                 </div>
-                                <div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(29,112,91,0.1);">
+                                        <svg class="w-4 h-4" style="color:#238c72;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-800 text-sm">Free. No obligation.</p>
+                                        <p class="text-gray-500 text-sm">You are not committing to anything by getting in touch</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(29,112,91,0.1);">
+                                        <svg class="w-4 h-4" style="color:#238c72;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-800 text-sm">Personally with Belmir</p>
+                                        <p class="text-gray-500 text-sm">Not a sales assistant. Not a rotating staff member.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ring image -->
+                            <div class="relative overflow-hidden rounded-2xl">
+                                <img
+                                    src="assets/houseofdiamonds_george_p1.webp"
+                                    alt="Engagement ring"
+                                    class="w-full h-56 object-cover"
+                                />
+                                <div class="absolute inset-0 rounded-2xl" style="background: linear-gradient(to top, rgba(7,43,49,0.5) 0%, transparent 60%);"></div>
+                                <div class="absolute bottom-5 left-5">
+                                    <p class="text-white text-sm font-medium">Level 17, 175 Pitt Street</p>
+                                    <p class="text-white/60 text-xs">Sydney NSW 2000</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile: simplified trust bullets -->
+                        <div class="md:hidden">
+                            <h2 class="font-heading text-3xl text-gray-900 mb-8" style="font-weight: 400; line-height: 1.2;">
+                                Design your custom engagement ring
+                            </h2>
+                            <ul class="space-y-5">
+                                <li class="flex items-start gap-4">
+                                    <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(29,112,91,0.1);">
+                                        <svg class="w-4 h-4" style="color:#238c72;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
                                     <p class="font-medium text-gray-800 text-base">110+ five-star Google reviews</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-4">
-                                <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(29,112,91,0.1);">
-                                    <svg class="w-4 h-4" style="color:#238c72;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                    </svg>
-                                </div>
-                                <div>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(29,112,91,0.1);">
+                                        <svg class="w-4 h-4" style="color:#238c72;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        </svg>
+                                    </div>
                                     <p class="font-medium text-gray-800 text-base">Sydney-based private jeweller</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-4">
-                                <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(29,112,91,0.1);">
-                                    <svg class="w-4 h-4" style="color:#238c72;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
-                                    </svg>
-                                </div>
-                                <div>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(29,112,91,0.1);">
+                                        <svg class="w-4 h-4" style="color:#238c72;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+                                        </svg>
+                                    </div>
                                     <p class="font-medium text-gray-800 text-base">Lab-grown and natural diamond options</p>
-                                </div>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
+                        </div>
+
                     </div>
 
                     <!-- Right: Form -->
