@@ -623,19 +623,6 @@
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2" for="meta-budget">Approximate Budget</label>
-                                    <select id="meta-budget" name="budget" class="form-input" required>
-                                        <option value="" disabled selected>Select your range...</option>
-                                        <option value="Under $2,000">Under $2,000</option>
-                                        <option value="$2,000 – $4,000">$2,000 &ndash; $4,000</option>
-                                        <option value="$4,000 – $6,000">$4,000 &ndash; $6,000</option>
-                                        <option value="$6,000 – $9,000">$6,000 &ndash; $9,000</option>
-                                        <option value="$9,000 – $12,000">$9,000 &ndash; $12,000</option>
-                                        <option value="$12,000+">$12,000+</option>
-                                    </select>
-                                </div>
-
-                                <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2" for="meta-timeline">Engagement Timeline</label>
                                     <select id="meta-timeline" name="timeline" class="form-input">
                                         <option value="" disabled selected>Select timeline...</option>
@@ -1559,7 +1546,6 @@
                     name: document.getElementById("meta-name").value,
                     email: document.getElementById("meta-email").value,
                     phone: document.getElementById("meta-phone").value,
-                    budget: document.getElementById("meta-budget").value,
                     timeline: document.getElementById("meta-timeline").value,
                     message: document.getElementById("meta-message").value,
                     source: "Meta Landing Page",
