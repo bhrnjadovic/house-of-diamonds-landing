@@ -311,6 +311,54 @@
             /* Scrollbar hide */
             .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
             .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+            /* ── Sticky bottom CTA bar (mobile only) ── */
+            .sticky-cta-bar {
+                position: fixed;
+                bottom: 0; left: 0; right: 0;
+                z-index: 40;
+                padding: 12px 16px 20px;
+                background: rgba(7,43,49,0.97);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-top: 1px solid rgba(255,255,255,0.08);
+                transform: translateY(110%);
+                transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
+            }
+            .sticky-cta-bar.visible { transform: translateY(0); }
+            @media (min-width: 1024px) { .sticky-cta-bar { display: none !important; } }
+
+            /* ── CTA pulse (fires once on load) ── */
+            @keyframes cta-pulse {
+                0%   { box-shadow: 0 0 0 0 rgba(35,140,114,0.55); }
+                70%  { box-shadow: 0 0 0 14px rgba(35,140,114,0); }
+                100% { box-shadow: 0 0 0 0 rgba(35,140,114,0); }
+            }
+            .btn-pulse { animation: cta-pulse 1.3s ease-out 1.2s 2; }
+
+            /* ── Staggered hero entrance ── */
+            @keyframes hero-reveal {
+                from { opacity: 0; transform: translateY(22px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+            .hero-item {
+                opacity: 0;
+                animation: hero-reveal 0.75s cubic-bezier(0.16,1,0.3,1) forwards;
+            }
+            .hero-item-1 { animation-delay: 0.05s; }
+            .hero-item-2 { animation-delay: 0.2s; }
+            .hero-item-3 { animation-delay: 0.35s; }
+            .hero-item-4 { animation-delay: 0.5s; }
+            .hero-item-5 { animation-delay: 0.65s; }
+
+            /* ── Swipe hint ── */
+            @keyframes swipe-hint {
+                0%   { transform: translateX(0); }
+                30%  { transform: translateX(-48px); }
+                60%  { transform: translateX(0); }
+                100% { transform: translateX(0); }
+            }
+            .swipe-hint-active { animation: swipe-hint 0.9s cubic-bezier(0.25,0.46,0.45,0.94) forwards; }
         </style>
     </head>
 
@@ -386,10 +434,10 @@
                     <!-- Left: Text content -->
                     <div class="text-center lg:text-left">
 
-                        <p class="section-label mb-5">Custom Engagement Rings &mdash; Sydney</p>
+                        <p class="section-label mb-5 hero-item hero-item-1">Custom Engagement Rings &mdash; Sydney</p>
 
                         <!-- Google badge — mobile only -->
-                        <a href="#reviews" class="lg:hidden inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-1.5 mb-6 hover:bg-white/15 transition-colors">
+                        <a href="#reviews" class="lg:hidden inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-1.5 mb-6 hover:bg-white/15 transition-colors hero-item hero-item-2">
                             <span class="font-medium text-base tracking-tight" style="font-family: 'Product Sans', Arial, sans-serif;">
                                 <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
                             </span>
@@ -407,19 +455,19 @@
                             </div>
                         </a>
 
-                        <h1 class="font-heading text-white mb-6" style="font-size: clamp(1.8rem, 4.5vw, 3.4rem); line-height: 1.1; font-weight: 500;">
+                        <h1 class="font-heading text-white mb-6 hero-item hero-item-2" style="font-size: clamp(1.8rem, 4.5vw, 3.4rem); line-height: 1.1; font-weight: 500;">
                             The ring she&rsquo;ll love &mdash;<br>
                             <span class="text-white" style="font-weight: 300;">built for your budget,<br class="hidden sm:block"> not a jewellery store markup.</span>
                         </h1>
 
-                        <div class="text-gray-400 leading-relaxed mb-10 mx-auto lg:mx-0 space-y-3" style="font-size: 1rem; max-width: 480px;">
+                        <div class="text-gray-400 leading-relaxed mb-10 mx-auto lg:mx-0 space-y-3 hero-item hero-item-3" style="font-size: 1rem; max-width: 480px;">
                             <p>Most jewellery stores price rings at roughly 2.5&ndash;4&times; their wholesale cost.</p>
                             <p>Every ring at House of Diamonds is made locally with materials delivered factory-direct, no wholesalers &mdash; so more of your budget goes into the diamond and craftsmanship, not the retail supply chain.</p>
                         </div>
 
                         <!-- CTA buttons -->
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
-                            <a href="#book" class="btn-primary" style="font-size: 15px;">
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 hero-item hero-item-4">
+                            <a href="#book" class="btn-primary btn-pulse" style="font-size: 15px;">
                                 Get My Ring Options
                             </a>
                             <a href="#booking" class="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300 text-sm tracking-wide">
@@ -428,7 +476,7 @@
                         </div>
 
                         <!-- Trust bar — mobile only -->
-                        <div class="lg:hidden flex flex-wrap justify-center gap-3 text-xs text-gray-400 mt-4">
+                        <div class="lg:hidden flex flex-wrap justify-center gap-3 text-xs text-gray-400 mt-4 hero-item hero-item-5">
                             <a href="#showroom-map" class="flex items-center gap-1 hover:text-white transition-colors">
                                 <svg class="w-3.5 h-3.5" style="color:#238c72;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
@@ -1802,6 +1850,87 @@
                     });
                 });
             });
+        </script>
+
+        <!-- Sticky bottom CTA (mobile only) -->
+        <div class="sticky-cta-bar" id="sticky-cta">
+            <a href="#booking" class="btn-primary block w-full text-center" style="font-size:15px; padding: 14px 24px;">
+                Book a Private Consultation
+            </a>
+        </div>
+
+        <script>
+        (function() {
+            // ── Sticky CTA bar ──
+            var stickyCTA = document.getElementById('sticky-cta');
+            var heroEl = document.getElementById('hero') || document.querySelector('section');
+            var bookingEl = document.getElementById('booking') || document.getElementById('calendly-widget');
+
+            if (stickyCTA && heroEl) {
+                var heroObs = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (!e.isIntersecting) stickyCTA.classList.add('visible');
+                        else stickyCTA.classList.remove('visible');
+                    });
+                }, { threshold: 0.05 });
+                heroObs.observe(heroEl);
+            }
+
+            if (stickyCTA && bookingEl) {
+                var bookObs = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) stickyCTA.classList.remove('visible');
+                        else if (window.scrollY > 200) stickyCTA.classList.add('visible');
+                    });
+                }, { threshold: 0.2 });
+                bookObs.observe(bookingEl);
+            }
+
+            // ── Count-up for review numbers ──
+            function countUp(el, target, duration) {
+                var start = null;
+                function step(ts) {
+                    if (!start) start = ts;
+                    var progress = Math.min((ts - start) / duration, 1);
+                    var ease = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = Math.floor(ease * target);
+                    if (progress < 1) requestAnimationFrame(step);
+                    else el.textContent = target;
+                }
+                requestAnimationFrame(step);
+            }
+
+            var countEls = document.querySelectorAll('#hero-review-count, #hero-review-count-mobile');
+            if (countEls.length && 'IntersectionObserver' in window) {
+                var countObs = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) {
+                            countUp(e.target, parseInt(e.target.textContent) || 110, 1400);
+                            countObs.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 1 });
+                countEls.forEach(function(el) { countObs.observe(el); });
+            }
+
+            // ── Moments slider swipe hint ──
+            var sliderEl = document.getElementById('moments-slider-meta') || document.getElementById('moments-slider');
+            if (sliderEl && !sessionStorage.getItem('swipeHintShown') && 'IntersectionObserver' in window) {
+                var sliderObs = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) {
+                            sessionStorage.setItem('swipeHintShown', '1');
+                            setTimeout(function() {
+                                sliderEl.classList.add('swipe-hint-active');
+                                setTimeout(function() { sliderEl.classList.remove('swipe-hint-active'); }, 950);
+                            }, 600);
+                            sliderObs.unobserve(sliderEl);
+                        }
+                    });
+                }, { threshold: 0.6 });
+                sliderObs.observe(sliderEl);
+            }
+        })();
         </script>
 
     </body>

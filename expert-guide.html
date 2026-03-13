@@ -226,6 +226,54 @@
                 margin-top: 1.5rem;
                 margin-bottom: 1.5rem;
             }
+
+            /* ── Sticky bottom CTA bar (mobile only) ── */
+            .sticky-cta-bar {
+                position: fixed;
+                bottom: 0; left: 0; right: 0;
+                z-index: 40;
+                padding: 12px 16px 20px;
+                background: rgba(7,43,49,0.97);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-top: 1px solid rgba(255,255,255,0.08);
+                transform: translateY(110%);
+                transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
+            }
+            .sticky-cta-bar.visible { transform: translateY(0); }
+            @media (min-width: 1024px) { .sticky-cta-bar { display: none !important; } }
+
+            /* ── CTA pulse (fires once on load) ── */
+            @keyframes cta-pulse {
+                0%   { box-shadow: 0 0 0 0 rgba(35,140,114,0.55); }
+                70%  { box-shadow: 0 0 0 14px rgba(35,140,114,0); }
+                100% { box-shadow: 0 0 0 0 rgba(35,140,114,0); }
+            }
+            .btn-pulse { animation: cta-pulse 1.3s ease-out 1.2s 2; }
+
+            /* ── Staggered hero entrance ── */
+            @keyframes hero-reveal {
+                from { opacity: 0; transform: translateY(22px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+            .hero-item {
+                opacity: 0;
+                animation: hero-reveal 0.75s cubic-bezier(0.16,1,0.3,1) forwards;
+            }
+            .hero-item-1 { animation-delay: 0.05s; }
+            .hero-item-2 { animation-delay: 0.2s; }
+            .hero-item-3 { animation-delay: 0.35s; }
+            .hero-item-4 { animation-delay: 0.5s; }
+            .hero-item-5 { animation-delay: 0.65s; }
+
+            /* ── Swipe hint ── */
+            @keyframes swipe-hint {
+                0%   { transform: translateX(0); }
+                30%  { transform: translateX(-48px); }
+                60%  { transform: translateX(0); }
+                100% { transform: translateX(0); }
+            }
+            .swipe-hint-active { animation: swipe-hint 0.9s cubic-bezier(0.25,0.46,0.45,0.94) forwards; }
         </style>
     </head>
     <body class="font-body bg-white">
@@ -356,12 +404,12 @@
                     <!-- Left: Hero text -->
                     <div class="text-center lg:text-left">
                         <p
-                            class="text-sm font-medium uppercase tracking-wider mb-4"
+                            class="text-sm font-medium uppercase tracking-wider mb-4 hero-item hero-item-1"
                             style="color: #238c72"
                         >
                             From Sydney Jewellers With 30+ Years Experience
                         </p>
-                        <a href="#reviews" class="md:hidden inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-1.5 mb-6 hover:bg-white/15 transition-colors">
+                        <a href="#reviews" class="md:hidden inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-1.5 mb-6 hover:bg-white/15 transition-colors hero-item hero-item-2">
                             <span class="font-medium text-base tracking-tight" style="font-family: 'Product Sans', Arial, sans-serif;">
                                 <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
                             </span>
@@ -379,13 +427,13 @@
                             </div>
                         </a>
                         <h1
-                            class="font-heading text-[1.75rem] md:text-[2.75rem] lg:text-[3rem] font-medium text-white mb-5 leading-[1.1]"
+                            class="font-heading text-[1.75rem] md:text-[2.75rem] lg:text-[3rem] font-medium text-white mb-5 leading-[1.1] hero-item hero-item-2"
                         >
                             Before You Buy an Engagement Ring, Understand What
                             Actually Determines Quality
                         </h1>
                         <!-- Full paragraph — hidden on mobile, shown on desktop -->
-                        <p class="hidden md:block text-lg text-gray-400 mb-8">
+                        <p class="hidden md:block text-lg text-gray-400 mb-8 hero-item hero-item-3">
                             Most couples overspend because they misunderstand a
                             few critical factors &mdash; diamond cut, ring
                             craftsmanship, and how pricing actually works. This
@@ -394,17 +442,17 @@
                             from us or not.
                         </p>
                         <!-- Shortened mobile text -->
-                        <p class="md:hidden text-base text-gray-400 mb-3">
+                        <p class="md:hidden text-base text-gray-400 mb-3 hero-item hero-item-3">
                             Watch Belmir explain what actually matters &mdash;
                             in under a minute.
                         </p>
 
                         <!-- Mobile: CTAs + trust bar (inline in left col, shown below short text) -->
-                        <div class="lg:hidden">
+                        <div class="lg:hidden hero-item hero-item-4">
                             <div class="flex flex-col gap-3 mb-6">
                                 <a
                                     href="#guide"
-                                    class="inline-flex items-center justify-center px-7 py-3.5 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark hover:shadow-xl transition-all duration-300 text-base"
+                                    class="inline-flex items-center justify-center px-7 py-3.5 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark hover:shadow-xl transition-all duration-300 text-base btn-pulse"
                                 >
                                     <svg
                                         class="mr-2 w-5 h-5"
@@ -559,10 +607,10 @@
                         </div>
 
                         <!-- CTAs — hidden on mobile (shown below video instead) -->
-                        <div class="hidden md:flex flex-row gap-3 mb-8">
+                        <div class="hidden md:flex flex-row gap-3 mb-8 hero-item hero-item-4">
                             <a
                                 href="#calendly-widget"
-                                class="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300 text-sm tracking-wide"
+                                class="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300 text-sm tracking-wide btn-pulse"
                             >
                                 Book a Private Consultation
                             </a>
@@ -3451,5 +3499,86 @@
         - Belmir portrait added (belmir-2.png)
         - Connect guide PDF to form submission flow
         -->
+
+        <!-- Sticky bottom CTA (mobile only) -->
+        <div class="sticky-cta-bar" id="sticky-cta">
+            <a href="#calendly-widget" class="block w-full text-center btn-pulse" style="font-size:15px; padding: 14px 24px; background:#1d705b; color:white; border-radius:9999px; font-weight:500; text-decoration:none; display:block;">
+                Book a Private Consultation
+            </a>
+        </div>
+
+        <script>
+        (function() {
+            // ── Sticky CTA bar ──
+            var stickyCTA = document.getElementById('sticky-cta');
+            var heroEl = document.getElementById('hero') || document.querySelector('section');
+            var bookingEl = document.getElementById('booking') || document.getElementById('calendly-widget');
+
+            if (stickyCTA && heroEl) {
+                var heroObs = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (!e.isIntersecting) stickyCTA.classList.add('visible');
+                        else stickyCTA.classList.remove('visible');
+                    });
+                }, { threshold: 0.05 });
+                heroObs.observe(heroEl);
+            }
+
+            if (stickyCTA && bookingEl) {
+                var bookObs = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) stickyCTA.classList.remove('visible');
+                        else if (window.scrollY > 200) stickyCTA.classList.add('visible');
+                    });
+                }, { threshold: 0.2 });
+                bookObs.observe(bookingEl);
+            }
+
+            // ── Count-up for review numbers ──
+            function countUp(el, target, duration) {
+                var start = null;
+                function step(ts) {
+                    if (!start) start = ts;
+                    var progress = Math.min((ts - start) / duration, 1);
+                    var ease = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = Math.floor(ease * target);
+                    if (progress < 1) requestAnimationFrame(step);
+                    else el.textContent = target;
+                }
+                requestAnimationFrame(step);
+            }
+
+            var countEls = document.querySelectorAll('#hero-review-count, #hero-review-count-mobile');
+            if (countEls.length && 'IntersectionObserver' in window) {
+                var countObs = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) {
+                            countUp(e.target, parseInt(e.target.textContent) || 110, 1400);
+                            countObs.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 1 });
+                countEls.forEach(function(el) { countObs.observe(el); });
+            }
+
+            // ── Moments slider swipe hint ──
+            var sliderEl = document.getElementById('moments-slider-meta') || document.getElementById('moments-slider');
+            if (sliderEl && !sessionStorage.getItem('swipeHintShown') && 'IntersectionObserver' in window) {
+                var sliderObs = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) {
+                            sessionStorage.setItem('swipeHintShown', '1');
+                            setTimeout(function() {
+                                sliderEl.classList.add('swipe-hint-active');
+                                setTimeout(function() { sliderEl.classList.remove('swipe-hint-active'); }, 950);
+                            }, 600);
+                            sliderObs.unobserve(sliderEl);
+                        }
+                    });
+                }, { threshold: 0.6 });
+                sliderObs.observe(sliderEl);
+            }
+        })();
+        </script>
     </body>
 </html>
