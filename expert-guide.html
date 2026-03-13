@@ -227,23 +227,7 @@
                 margin-bottom: 1.5rem;
             }
 
-            /* ── Sticky bottom CTA bar (mobile only) ── */
-            .sticky-cta-bar {
-                position: fixed;
-                bottom: 0; left: 0; right: 0;
-                z-index: 40;
-                padding: 12px 16px 20px;
-                background: rgba(7,43,49,0.97);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                border-top: 1px solid rgba(255,255,255,0.08);
-                transform: translateY(110%);
-                transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
-            }
-            .sticky-cta-bar.visible { transform: translateY(0); }
-            @media (min-width: 1024px) { .sticky-cta-bar { display: none !important; } }
-
-            /* ── CTA pulse (fires once on load) ── */
+/* ── CTA pulse (fires once on load) ── */
             @keyframes cta-pulse {
                 0%   { box-shadow: 0 0 0 0 rgba(35,140,114,0.55); }
                 70%  { box-shadow: 0 0 0 14px rgba(35,140,114,0); }
@@ -582,7 +566,6 @@
                                     </div>
                                     <span
                                         class="text-white/80"
-                                        id="hero-review-count-mobile"
                                         >(110+)</span
                                     >
                                 </a>
@@ -3500,40 +3483,8 @@
         - Connect guide PDF to form submission flow
         -->
 
-        <!-- Sticky bottom CTA (mobile only) -->
-        <div class="sticky-cta-bar" id="sticky-cta">
-            <a href="#calendly-widget" class="block w-full text-center btn-pulse" style="font-size:15px; padding: 14px 24px; background:#1d705b; color:white; border-radius:9999px; font-weight:500; text-decoration:none; display:block;">
-                Book a Private Consultation
-            </a>
-        </div>
-
         <script>
         (function() {
-            // ── Sticky CTA bar ──
-            var stickyCTA = document.getElementById('sticky-cta');
-            var heroEl = document.getElementById('hero') || document.querySelector('section');
-            var bookingEl = document.getElementById('booking') || document.getElementById('calendly-widget');
-
-            if (stickyCTA && heroEl) {
-                var heroObs = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(e) {
-                        if (!e.isIntersecting) stickyCTA.classList.add('visible');
-                        else stickyCTA.classList.remove('visible');
-                    });
-                }, { threshold: 0.05 });
-                heroObs.observe(heroEl);
-            }
-
-            if (stickyCTA && bookingEl) {
-                var bookObs = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(e) {
-                        if (e.isIntersecting) stickyCTA.classList.remove('visible');
-                        else if (window.scrollY > 200) stickyCTA.classList.add('visible');
-                    });
-                }, { threshold: 0.2 });
-                bookObs.observe(bookingEl);
-            }
-
             // ── Count-up for review numbers ──
             function countUp(el, target, duration) {
                 var start = null;
