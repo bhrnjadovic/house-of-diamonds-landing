@@ -497,13 +497,13 @@
         <section id="book" class="md:py-28 bg-white">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                <div class="grid md:grid-cols-2 gap-14 items-start">
+                <div class="grid md:grid-cols-2 gap-14 items-stretch">
 
                     <!-- Left: Context -->
-                    <div class="fade-in">
+                    <div class="fade-in md:flex md:flex-col">
 
                         <!-- Desktop: original layout -->
-                        <div class="hidden md:block">
+                        <div class="hidden md:flex md:flex-col flex-1">
                             <p class="section-label mb-4">Book Your Consultation</p>
                             <h2 class="font-heading text-3xl md:text-4xl text-gray-900 mb-6" style="font-weight: 400; line-height: 1.2;">
                                 Get your ring options &mdash; starting with your budget.
@@ -550,11 +550,11 @@
                             </div>
 
                             <!-- Ring image -->
-                            <div class="relative overflow-hidden rounded-2xl">
+                            <div class="relative overflow-hidden rounded-2xl flex-1 min-h-0" style="min-height: 200px;">
                                 <img
                                     src="assets/house of diamonds office.jpg"
                                     alt="House of Diamonds Sydney showroom"
-                                    class="w-full h-auto"
+                                    class="absolute inset-0 w-full h-full object-cover"
                                 />
                                 <div class="absolute inset-0 rounded-2xl" style="background: linear-gradient(to top, rgba(7,43,49,0.5) 0%, transparent 60%);"></div>
                                 <div class="absolute bottom-5 left-5">
