@@ -682,51 +682,26 @@
                                 <input type="hidden" id="meta_utm_content" name="utm_content" />
                                 <input type="hidden" name="source" value="Meta Landing Page" />
                                 <input type="hidden" name="tag" value="Meta Consultation Lead" />
-                                <input type="hidden" id="meta-timeline-hidden" name="timeline" />
-                                <input type="hidden" id="meta-budget-hidden" name="budget" />
-
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-3">Engagement Timeline</label>
-                                    <div class="option-pills">
-                                        <span class="option-pill">
-                                            <input type="radio" name="timeline_choice" id="tl-1" value="2–6 weeks" onchange="document.getElementById('meta-timeline-hidden').value=this.value">
-                                            <label for="tl-1">2–6 weeks</label>
-                                        </span>
-                                        <span class="option-pill">
-                                            <input type="radio" name="timeline_choice" id="tl-2" value="6–12 weeks" onchange="document.getElementById('meta-timeline-hidden').value=this.value">
-                                            <label for="tl-2">6–12 weeks</label>
-                                        </span>
-                                        <span class="option-pill">
-                                            <input type="radio" name="timeline_choice" id="tl-3" value="3–6 months+" onchange="document.getElementById('meta-timeline-hidden').value=this.value">
-                                            <label for="tl-3">3–6 months+</label>
-                                        </span>
-                                        <span class="option-pill">
-                                            <input type="radio" name="timeline_choice" id="tl-4" value="Just exploring" onchange="document.getElementById('meta-timeline-hidden').value=this.value">
-                                            <label for="tl-4">Just exploring</label>
-                                        </span>
-                                    </div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2" for="meta-timeline">Engagement Timeline</label>
+                                    <select id="meta-timeline" name="timeline" class="form-input">
+                                        <option value="" disabled selected>Select timeline...</option>
+                                        <option value="2–6 weeks">2–6 weeks</option>
+                                        <option value="6–12 weeks">6–12 weeks</option>
+                                        <option value="3–6 months+">3–6 months+</option>
+                                        <option value="Just exploring">Just exploring</option>
+                                    </select>
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-3">Budget Range</label>
-                                    <div class="option-pills">
-                                        <span class="option-pill">
-                                            <input type="radio" name="budget_choice" id="bud-1" value="$2k–$4k" onchange="document.getElementById('meta-budget-hidden').value=this.value">
-                                            <label for="bud-1">$2k–$4k</label>
-                                        </span>
-                                        <span class="option-pill">
-                                            <input type="radio" name="budget_choice" id="bud-2" value="$4k–$7k" onchange="document.getElementById('meta-budget-hidden').value=this.value">
-                                            <label for="bud-2">$4k–$7k</label>
-                                        </span>
-                                        <span class="option-pill">
-                                            <input type="radio" name="budget_choice" id="bud-3" value="$7k–$12k" onchange="document.getElementById('meta-budget-hidden').value=this.value">
-                                            <label for="bud-3">$7k–$12k</label>
-                                        </span>
-                                        <span class="option-pill">
-                                            <input type="radio" name="budget_choice" id="bud-4" value="$12k+" onchange="document.getElementById('meta-budget-hidden').value=this.value">
-                                            <label for="bud-4">$12k+</label>
-                                        </span>
-                                    </div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2" for="meta-budget">Budget Range</label>
+                                    <select id="meta-budget" name="budget" class="form-input">
+                                        <option value="" disabled selected>Select budget...</option>
+                                        <option value="$2k–$4k">$2k–$4k</option>
+                                        <option value="$4k–$7k">$4k–$7k</option>
+                                        <option value="$7k–$12k">$7k–$12k</option>
+                                        <option value="$12k+">$12k+</option>
+                                    </select>
                                 </div>
 
                                 <div>
