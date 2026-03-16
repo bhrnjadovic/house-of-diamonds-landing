@@ -2081,7 +2081,7 @@
         </script>
 
         <!-- Elfsight sticky widgets -->
-        <div id="elfsight-reviews-wrapper" style="transition: opacity 0.3s;">
+        <div id="elfsight-reviews-wrapper">
             <div class="elfsight-app-261e604a-8c49-40dc-a757-e744d1e0cf58" data-elfsight-app-lazy></div>
         </div>
         <div class="elfsight-app-2e153ef7-aae4-4989-a939-1b73822f0d92" data-elfsight-app-lazy></div>
@@ -2158,8 +2158,7 @@
                     waFloater.style.pointerEvents = "auto";
                     waFloater.style.transform = "scale(1)";
                     if (reviewsWrapper) {
-                        reviewsWrapper.style.opacity = "1";
-                        reviewsWrapper.style.pointerEvents = "auto";
+                        reviewsWrapper.style.display = "block";
                     }
                 }
 
@@ -2169,10 +2168,9 @@
                     return;
                 }
 
-                // Mobile: hide reviews wrapper initially
+                // Mobile: hide reviews wrapper initially (prevents Elfsight lazy-loading before scroll)
                 if (reviewsWrapper) {
-                    reviewsWrapper.style.opacity = "0";
-                    reviewsWrapper.style.pointerEvents = "none";
+                    reviewsWrapper.style.display = "none";
                 }
 
                 // Mobile: show after 30% scroll
