@@ -374,16 +374,15 @@
 
                     <!-- Desktop Nav -->
                     <nav class="hidden md:flex items-center space-x-7">
-                        <a href="#about" class="nav-link">The Process</a>
-                        <a href="#steps" class="nav-link">How It Works</a>
-                        <a href="#why" class="nav-link">Why Us</a>
+                        <a href="#about" class="nav-link">Why We're Different</a>
+                        <a href="#why" class="nav-link">Our Process</a>
                         <a href="#faq" class="nav-link">FAQ</a>
                         <a href="#reviews" class="nav-link">Reviews</a>
                     </nav>
 
                     <!-- CTA -->
                     <div class="flex items-center gap-3">
-                        <a href="#calendly-widget" class="hidden md:inline-flex btn-primary py-2.5 px-6 text-sm">
+                        <a href="#calendly-widget" class="hidden md:inline-flex items-center px-6 py-2.5 bg-teal text-white text-sm font-medium rounded-full hover:bg-teal-dark hover:shadow-lg transition-all duration-300">
                             Book Private Appointment
                         </a>
                         <!-- Mobile phone icon -->
@@ -405,9 +404,8 @@
             <!-- Mobile Menu -->
             <div class="hidden md:hidden bg-white border-t border-gray-100" id="mobile-menu">
                 <div class="px-5 py-5 space-y-4">
-                    <a href="#about" class="block text-sm font-medium text-gray-600 hover:text-teal transition-colors">The Process</a>
-                    <a href="#steps" class="block text-sm font-medium text-gray-600 hover:text-teal transition-colors">How It Works</a>
-                    <a href="#why" class="block text-sm font-medium text-gray-600 hover:text-teal transition-colors">Why Us</a>
+                    <a href="#about" class="block text-sm font-medium text-gray-600 hover:text-teal transition-colors">Why We're Different</a>
+                    <a href="#why" class="block text-sm font-medium text-gray-600 hover:text-teal transition-colors">Our Process</a>
                     <a href="#faq" class="block text-sm font-medium text-gray-600 hover:text-teal transition-colors">FAQ</a>
                     <a href="#reviews" class="block text-sm font-medium text-gray-600 hover:text-teal transition-colors">Reviews</a>
                     <a href="#calendly-widget" class="block w-full text-center btn-primary mt-2">Book Private Appointment</a>
@@ -703,12 +701,21 @@
                 </div>
                 <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-black fade-in" style="padding-top: 56.25%;">
                     <iframe
-                        src="https://player.vimeo.com/video/1154860741?title=0&byline=0&portrait=0"
+                        id="vimeo-player-meta"
+                        src="https://player.vimeo.com/video/1154860741?title=0&byline=0&portrait=0&muted=1"
                         class="absolute inset-0 w-full h-full"
                         frameborder="0"
-                        allow="fullscreen; picture-in-picture"
+                        allow="autoplay; fullscreen; picture-in-picture"
                         allowfullscreen
                     ></iframe>
+                    <button
+                        id="vimeo-unmute-btn-meta"
+                        class="absolute top-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/70 hover:bg-black/90 text-white text-sm font-medium px-4 py-2 rounded-full z-10 transition-colors"
+                        style="backdrop-filter: blur(4px);"
+                    >
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                        Unmute
+                    </button>
                 </div>
                 <p class="text-sm text-gray-400 mt-4 text-center">
                     Belmir explains what actually determines ring quality, what Sydney jewellers rarely advertise, and how to get more diamond for your budget.
@@ -857,7 +864,7 @@
                     <h2 class="font-heading text-3xl md:text-4xl text-gray-900" style="font-weight: 400;">
                         What Sydney couples want from the process
                     </h2>
-                    <div class="gold-divider mt-6 mb-5"></div>
+                    <div class="gold-divider mt-6 mb-10"></div>
                     <p class="text-gray-500 text-base">The outcomes below are what most clients care about when they first get in touch — and what the House of Diamonds experience is designed to deliver.</p>
                 </div>
 
@@ -1167,7 +1174,7 @@
                         <div class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
                             data-moment-title="Santorini Proposal"
                             data-moment-caption="A breathtaking proposal against the iconic blue domes of Santorini"
-                            data-moment-images='["assets/santorini-proposal1.jpeg","assets/santorini-proposal2.jpeg","assets/santorini-proposal3.jpeg","assets/santorini-proposal4.jpeg"]'>
+                            data-moment-images="[&quot;{{ 'santorini-proposal1.jpeg' | asset_url }}&quot;,&quot;{{ 'santorini-proposal2.jpeg' | asset_url }}&quot;,&quot;{{ 'santorini-proposal3.jpeg' | asset_url }}&quot;,&quot;{{ 'santorini-proposal4.jpeg' | asset_url }}&quot;]">
                             <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
                                 <img src="{{ 'santorini-proposal1.jpeg' | asset_url }}" alt="Santorini Proposal"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -1188,7 +1195,7 @@
                         <div class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
                             data-moment-title="Banff Proposal"
                             data-moment-caption="A magical mountain proposal in the heart of the Canadian Rockies"
-                            data-moment-images='["assets/Banff-proposal1.jpeg","assets/banff-proposal2.jpeg","assets/banff-proposal3.jpeg"]'>
+                            data-moment-images="[&quot;{{ 'Banff-proposal1.jpeg' | asset_url }}&quot;,&quot;{{ 'banff-proposal2.jpeg' | asset_url }}&quot;,&quot;{{ 'banff-proposal3.jpeg' | asset_url }}&quot;]">
                             <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
                                 <img src="{{ 'Banff-proposal1.jpeg' | asset_url }}" alt="Banff Proposal"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -1209,7 +1216,7 @@
                         <div class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
                             data-moment-title="Sydney Proposal"
                             data-moment-caption="A breathtaking beach proposal with the ocean as the perfect backdrop"
-                            data-moment-images='["assets/opera-house-proposal2.jpeg","assets/opera-house-proposal1.jpeg"]'>
+                            data-moment-images="[&quot;{{ 'opera-house-proposal2.jpeg' | asset_url }}&quot;,&quot;{{ 'opera-house-proposal1.jpeg' | asset_url }}&quot;]">
                             <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
                                 <img src="{{ 'opera-house-proposal2.jpeg' | asset_url }}" alt="Sydney Proposal"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -1230,7 +1237,7 @@
                         <div class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
                             data-moment-title="Royal Garden Proposal"
                             data-moment-caption="An elegant proposal in Sydney's beautiful Royal Botanic Garden"
-                            data-moment-images='["assets/royal-garden-1.jpeg","assets/royal-garden-2.jpeg","assets/royal-garden-3.jpeg"]'>
+                            data-moment-images="[&quot;{{ 'royal-garden-1.jpeg' | asset_url }}&quot;,&quot;{{ 'royal-garden-2.jpeg' | asset_url }}&quot;,&quot;{{ 'royal-garden-3.jpeg' | asset_url }}&quot;]">
                             <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
                                 <img src="{{ 'royal-garden-1.jpeg' | asset_url }}" alt="Royal Garden Proposal"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -1251,7 +1258,7 @@
                         <div class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
                             data-moment-title="Beach Proposal"
                             data-moment-caption="A magical beach proposal at golden hour by the water"
-                            data-moment-images='["assets/beach-proposal-1.jpeg","assets/beach-proposal-2.jpeg","assets/beach-proposal-3.jpeg"]'>
+                            data-moment-images="[&quot;{{ 'beach-proposal-1.jpeg' | asset_url }}&quot;,&quot;{{ 'beach-proposal-2.jpeg' | asset_url }}&quot;,&quot;{{ 'beach-proposal-3.jpeg' | asset_url }}&quot;]">
                             <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
                                 <img src="{{ 'beach-proposal-1.jpeg' | asset_url }}" alt="Beach Proposal"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -1272,7 +1279,7 @@
                         <div class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
                             data-moment-title="Harbour Bridge Proposal"
                             data-moment-caption="An unforgettable proposal overlooking Sydney's iconic Harbour Bridge"
-                            data-moment-images='["assets/haris_proposal.webp","assets/harbour-bridge-2.jpeg"]'>
+                            data-moment-images="[&quot;{{ 'haris_proposal.webp' | asset_url }}&quot;,&quot;{{ 'harbour-bridge-2.jpeg' | asset_url }}&quot;]">
                             <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
                                 <img src="{{ 'haris_proposal.webp' | asset_url }}" alt="Harbour Bridge Proposal"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -1998,6 +2005,59 @@
         </script>
 
     
+        <!-- Vimeo Player SDK -->
+        <script src="https://player.vimeo.com/api/player.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var iframe = document.getElementById("vimeo-player-meta");
+                var unmuteBtn = document.getElementById("vimeo-unmute-btn-meta");
+                if (!iframe) return;
+                var player = new Vimeo.Player(iframe);
+                setTimeout(function () {
+                    player.setMuted(true);
+                    player.play().catch(function () {});
+                }, 3000);
+                if (unmuteBtn) {
+                    unmuteBtn.addEventListener("click", function () {
+                        player.setMuted(false);
+                        unmuteBtn.style.display = "none";
+                    });
+                }
+            });
+        </script>
+
+        <!-- WhatsApp Floater -->
+        <div id="wa-floater" class="fixed z-40 transition-all duration-300" style="bottom: 80px; right: 16px; opacity: 0; pointer-events: none; transform: scale(0.8);">
+            <a
+                href="https://wa.me/61410744631?text=Hi%20Belmir%2C%20I%27m%20looking%20at%20engagement%20rings%20and%20had%20a%20quick%20question."
+                target="_blank"
+                rel="noopener"
+                class="flex items-center justify-center w-14 h-14 rounded-full shadow-xl hover:scale-110 transition-transform"
+                style="background: #25D366;"
+                aria-label="Chat on WhatsApp"
+            >
+                <svg class="w-7 h-7" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </a>
+        </div>
+        <script>
+            (function () {
+                var waFloater = document.getElementById("wa-floater");
+                if (!waFloater) return;
+                function showWA() {
+                    waFloater.style.opacity = "1";
+                    waFloater.style.pointerEvents = "auto";
+                    waFloater.style.transform = "scale(1)";
+                }
+                if (window.innerWidth >= 768) { showWA(); return; }
+                function onScroll() {
+                    var scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+                    if (scrolled >= 0.30) { showWA(); window.removeEventListener("scroll", onScroll); }
+                }
+                window.addEventListener("scroll", onScroll, { passive: true });
+                onScroll();
+            })();
+        </script>
+
 {% schema %}
 {
   "name": "Meta Landing Page",
