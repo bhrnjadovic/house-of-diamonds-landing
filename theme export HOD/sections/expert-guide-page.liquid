@@ -1,0 +1,3539 @@
+        <!-- Meta Pixel -->
+        <script>
+            !(function (f, b, e, v, n, t, s) {
+                if (f.fbq) return;
+                n = f.fbq = function () {
+                    n.callMethod
+                        ? n.callMethod.apply(n, arguments)
+                        : n.queue.push(arguments);
+                };
+                if (!f._fbq) f._fbq = n;
+                n.push = n;
+                n.loaded = !0;
+                n.version = "2.0";
+                n.queue = [];
+                t = b.createElement(e);
+                t.async = !0;
+                t.src = v;
+                s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s);
+            })(
+                window,
+                document,
+                "script",
+                "https://connect.facebook.net/en_US/fbevents.js",
+            );
+            fbq("init", "3749949691970351");
+            fbq("track", "PageView");
+        </script>
+        <noscript
+            ><img
+                height="1"
+                width="1"
+                style="display: none"
+                src="https://www.facebook.com/tr?id=3749949691970351&ev=PageView&noscript=1"
+        /></noscript>
+
+        <!-- Microsoft Clarity -->
+        <script type="text/javascript">
+            (function (c, l, a, r, i, t, y) {
+                c[a] =
+                    c[a] ||
+                    function () {
+                        (c[a].q = c[a].q || []).push(arguments);
+                    };
+                t = l.createElement(r);
+                t.async = 1;
+                t.src = "https://www.clarity.ms/tag/" + i;
+                y = l.getElementsByTagName(r)[0];
+                y.parentNode.insertBefore(t, y);
+            })(window, document, "clarity", "script", "v5onrlxmra");
+        </script>
+
+        <!-- Google tag (gtag.js) -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=AW-17894796124"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "AW-17894796124");
+        </script>
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            brand: {
+                                primary: "#1d705b",
+                                dark: "#145c47",
+                                light: "#238c72",
+                            },
+                            google: {
+                                blue: "#4285F4",
+                                red: "#EA4335",
+                                yellow: "#FBBC05",
+                                green: "#34A853",
+                            },
+                        },
+                        fontFamily: {
+                            heading: ["Poppins", "sans-serif"],
+                            body: ["Outfit", "sans-serif"],
+                        },
+                    },
+                },
+            };
+        </script>
+
+        <link rel="stylesheet" href="styles.css" />
+
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                margin: 0;
+                font-family: "Outfit", sans-serif;
+                font-weight: 300;
+                font-size: 18px;
+                line-height: 1.5;
+                letter-spacing: 0.025em;
+                color: #1a1a1a;
+                background: #fff;
+            }
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: "Poppins", sans-serif;
+                font-weight: 400;
+                line-height: 1.15;
+            }
+            .fade-in {
+                opacity: 0;
+                transform: translateY(24px);
+                transition:
+                    opacity 0.7s ease,
+                    transform 0.7s ease;
+            }
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .accordion-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+            }
+            .accordion-content.open {
+                max-height: 600px;
+            }
+            .guide-form input,
+            .guide-form select {
+                transition:
+                    border-color 0.2s ease,
+                    box-shadow 0.2s ease;
+            }
+            .guide-form input:focus,
+            .guide-form select:focus {
+                border-color: #1d705b;
+                box-shadow: 0 0 0 3px rgba(29, 112, 91, 0.1);
+            }
+            .myth-card {
+                transition:
+                    transform 0.3s ease,
+                    box-shadow 0.3s ease;
+            }
+            .myth-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            }
+            /* Hide scrollbar for moments slider */
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .section-label {
+                font-family: "Outfit", sans-serif;
+                font-size: 13px;
+                font-weight: 500;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: #238c72;
+            }
+            .gold-divider {
+                width: 48px;
+                height: 2px;
+                background: #238c72;
+                margin: 0 auto;
+            }
+            .mt-6 {
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+/* ── CTA pulse (fires once on load) ── */
+            @keyframes cta-pulse {
+                0%   { box-shadow: 0 0 0 0 rgba(35,140,114,0.55); }
+                70%  { box-shadow: 0 0 0 14px rgba(35,140,114,0); }
+                100% { box-shadow: 0 0 0 0 rgba(35,140,114,0); }
+            }
+            .btn-pulse { animation: cta-pulse 1.3s ease-out 1.2s 2; }
+
+            /* ── Staggered hero entrance ── */
+            @keyframes hero-reveal {
+                from { opacity: 0; transform: translateY(22px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+            .hero-item {
+                opacity: 0;
+                animation: hero-reveal 0.75s cubic-bezier(0.16,1,0.3,1) forwards;
+            }
+            .hero-item-1 { animation-delay: 0.05s; }
+            .hero-item-2 { animation-delay: 0.2s; }
+            .hero-item-3 { animation-delay: 0.35s; }
+            .hero-item-4 { animation-delay: 0.5s; }
+            .hero-item-5 { animation-delay: 0.65s; }
+
+            /* ── Swipe hint ── */
+            @keyframes swipe-hint {
+                0%   { transform: translateX(0); }
+                30%  { transform: translateX(-48px); }
+                60%  { transform: translateX(0); }
+                100% { transform: translateX(0); }
+            }
+            .swipe-hint-active { animation: swipe-hint 0.9s cubic-bezier(0.25,0.46,0.45,0.94) forwards; }
+        </style>
+        <!-- ===== STICKY HEADER ===== -->
+        <header
+            class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100"
+        >
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16 md:h-20">
+                    <a
+                        href="https://www.houseofdiamonds.com.au"
+                        class="flex items-center"
+                    >
+                        <img
+                            src="https://www.houseofdiamonds.com.au/cdn/shop/files/House_of_diamonds_logo_standard-svg.svg?v=1695613849&width=200"
+                            alt="House of Diamonds"
+                            class="h-10 md:h-12 w-auto"
+                        />
+                    </a>
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a
+                            href="#guide"
+                            class="text-sm font-medium text-gray-600 hover:text-brand-primary transition-colors"
+                            >The Guide</a
+                        >
+                        <a
+                            href="#consultation"
+                            class="text-sm font-medium text-gray-600 hover:text-brand-primary transition-colors"
+                            >Consultation</a
+                        >
+                        <a
+                            href="#process"
+                            class="text-sm font-medium text-gray-600 hover:text-brand-primary transition-colors"
+                            >Our Process</a
+                        >
+                        <a
+                            href="#reviews"
+                            class="text-sm font-medium text-gray-600 hover:text-brand-primary transition-colors"
+                            >Reviews</a
+                        >
+                    </nav>
+                    <div class="flex items-center gap-3">
+                        <a
+                            href="#calendly-widget"
+                            class="hidden md:inline-flex items-center px-6 py-2.5 bg-brand-primary text-white text-sm font-medium rounded-full hover:bg-brand-dark hover:shadow-lg transition-all duration-300"
+                            >Book Private Consultation</a
+                        >
+                        <a
+                            href="tel:+61410744631"
+                            class="md:hidden inline-flex items-center justify-center w-9 h-9 bg-brand-primary text-white rounded-full"
+                            aria-label="Call us"
+                        >
+                            <svg
+                                class="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                                />
+                            </svg>
+                        </a>
+                        <button
+                            type="button"
+                            class="md:hidden p-2 text-gray-600"
+                            id="mobile-menu-btn"
+                        >
+                            <svg
+                                class="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="hidden md:hidden bg-white border-t border-gray-100"
+                id="mobile-menu"
+            >
+                <div class="px-4 py-4 space-y-3">
+                    <a
+                        href="#guide"
+                        class="block text-sm font-medium text-gray-600"
+                        >The Guide</a
+                    >
+                    <a
+                        href="#consultation"
+                        class="block text-sm font-medium text-gray-600"
+                        >Consultation</a
+                    >
+                    <a
+                        href="#process"
+                        class="block text-sm font-medium text-gray-600"
+                        >Our Process</a
+                    >
+                    <a
+                        href="#reviews"
+                        class="block text-sm font-medium text-gray-600"
+                        >Reviews</a
+                    >
+                    <a
+                        href="#calendly-widget"
+                        class="block w-full text-center px-5 py-3 bg-brand-primary text-white text-sm font-medium mt-4 rounded-full"
+                        >Book Private Consultation</a
+                    >
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== HERO + VIDEO COMBINED ===== -->
+        <section class="pt-24 md:pt-32 pb-12 md:pb-20 bg-gray-900 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Desktop: Two columns side by side -->
+                <div class="grid lg:grid-cols-2 gap-6 lg:gap-16 items-center">
+                    <!-- Left: Hero text -->
+                    <div class="text-center lg:text-left">
+                        <p
+                            class="text-sm font-medium uppercase tracking-wider mb-4 hero-item hero-item-1"
+                            style="color: #238c72"
+                        >
+                            From Sydney Jewellers With 30+ Years Experience
+                        </p>
+                        <a href="#reviews" class="md:hidden inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-1.5 mb-6 hover:bg-white/15 transition-colors hero-item hero-item-2">
+                            <span class="font-medium text-base tracking-tight" style="font-family: 'Product Sans', Arial, sans-serif;">
+                                <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
+                            </span>
+                            <span class="w-px h-5 bg-white/20"></span>
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-white font-semibold text-sm">5.0</span>
+                                <div class="flex gap-0.5">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                                </div>
+                                <span class="text-white/70 text-sm">(<span id="hero-review-count-mobile">110</span>+ Reviews)</span>
+                            </div>
+                        </a>
+                        <h1
+                            class="font-heading text-[1.75rem] md:text-[2.75rem] lg:text-[3rem] font-medium text-white mb-5 leading-[1.1] hero-item hero-item-2"
+                        >
+                            Before You Buy an Engagement Ring, Understand What
+                            Actually Determines Quality
+                        </h1>
+                        <!-- Full paragraph — hidden on mobile, shown on desktop -->
+                        <p class="hidden md:block text-lg text-gray-400 mb-8 hero-item hero-item-3">
+                            Most couples overspend because they misunderstand a
+                            few critical factors &mdash; diamond cut, ring
+                            craftsmanship, and how pricing actually works. This
+                            guide explains what to look for so you can make a
+                            confident, informed decision &mdash; whether you buy
+                            from us or not.
+                        </p>
+                        <!-- Shortened mobile text -->
+                        <p class="md:hidden text-base text-gray-400 mb-3 hero-item hero-item-3">
+                            Watch Belmir explain what actually matters &mdash;
+                            in under a minute.
+                        </p>
+
+                        <!-- Mobile: CTAs + trust bar (moved below video on mobile) -->
+                        <div class="hidden">
+                            <div class="flex flex-col gap-3 mb-6">
+                                <a
+                                    href="#guide"
+                                    class="inline-flex items-center justify-center px-7 py-3.5 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark hover:shadow-xl transition-all duration-300 text-base btn-pulse"
+                                >
+                                    <svg
+                                        class="mr-2 w-5 h-5"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                        />
+                                    </svg>
+                                    Send Me The Guide
+                                </a>
+                                <a
+                                    href="#calendly-widget"
+                                    class="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300 text-sm tracking-wide"
+                                >
+                                    Book a Private Consultation
+                                </a>
+                            </div>
+                            <div
+                                class="flex flex-wrap justify-center gap-3 text-xs text-gray-400"
+                            >
+                                <!-- Sydney Showroom -->
+                                <a
+                                    href="#showroom-map"
+                                    class="flex items-center gap-1 hover:text-white transition-colors"
+                                >
+                                    <svg
+                                        class="w-3.5 h-3.5 text-brand-primary"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                        />
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                        />
+                                    </svg>
+                                    Sydney Based &amp; Owned
+                                </a>
+                                <!-- Google Reviews glass badge — REMOVED (now above h1) -->
+                                <a
+                                    href="#reviews"
+                                    class="hidden"
+                                >
+                                    <svg
+                                        class="w-4 h-4"
+                                        viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                                            fill="#4285F4"
+                                        />
+                                        <path
+                                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                                            fill="#34A853"
+                                        />
+                                        <path
+                                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                                            fill="#FBBC05"
+                                        />
+                                        <path
+                                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                                            fill="#EA4335"
+                                        />
+                                    </svg>
+                                    <span class="text-white font-semibold">5.0</span>
+                                    <div class="flex">
+                                        <svg
+                                            class="w-3 h-3"
+                                            viewBox="0 0 24 24"
+                                            fill="#FBBC05"
+                                        >
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                                            />
+                                        </svg>
+                                        <svg
+                                            class="w-3 h-3"
+                                            viewBox="0 0 24 24"
+                                            fill="#FBBC05"
+                                        >
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                                            />
+                                        </svg>
+                                        <svg
+                                            class="w-3 h-3"
+                                            viewBox="0 0 24 24"
+                                            fill="#FBBC05"
+                                        >
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                                            />
+                                        </svg>
+                                        <svg
+                                            class="w-3 h-3"
+                                            viewBox="0 0 24 24"
+                                            fill="#FBBC05"
+                                        >
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                                            />
+                                        </svg>
+                                        <svg
+                                            class="w-3 h-3"
+                                            viewBox="0 0 24 24"
+                                            fill="#FBBC05"
+                                        >
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                                            />
+                                        </svg>
+                                    </div>
+                                    <span
+                                        class="text-white/80"
+                                        >(110+)</span
+                                    >
+                                </a>
+                                <!-- Custom Rings -->
+                                <div class="flex items-center gap-1">
+                                    <svg
+                                        class="w-3.5 h-3.5 text-brand-primary"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                        />
+                                    </svg>
+                                    Budget-First Consultations
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTAs — hidden on mobile (shown below video instead) -->
+                        <div class="hidden md:flex flex-row gap-3 mb-8 hero-item hero-item-4">
+                            <a
+                                href="#calendly-widget"
+                                class="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300 text-sm tracking-wide btn-pulse"
+                            >
+                                Book a Private Consultation
+                            </a>
+                            <a
+                                href="#guide"
+                                class="inline-flex items-center justify-center whitespace-nowrap px-6 py-2.5 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark hover:shadow-xl transition-all duration-300 text-sm"
+                            >
+                                <svg
+                                    class="mr-2 w-4 h-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                    />
+                                </svg>
+                                Download the Free Guide
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Video -->
+                    <div class="hidden lg:block">
+                        <!-- Video label -->
+                        <p
+                            class="hidden lg:block text-sm font-medium text-gray-400 mb-3 text-center"
+                        >
+                            A jeweller&rsquo;s guide to engagement ring quality
+                        </p>
+
+                        <!-- 16:9 Video -->
+                        <div
+                            class="relative w-full rounded-2xl overflow-hidden shadow-lg bg-gray-900"
+                            style="padding-top: 56.25%"
+                        >
+                            <iframe
+                                id="vimeo-player"
+                                src="https://player.vimeo.com/video/1154860741?title=0&byline=0&portrait=0&muted=1"
+                                class="absolute inset-0 w-full h-full"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                            <!-- Unmute Button - Mobile Only -->
+                            <button
+                                id="vimeo-unmute-btn"
+                                class="absolute top-4 left-1/2 -translate-x-1/2 bg-black text-white text-sm font-medium px-4 py-2 rounded md:hidden z-10"
+                            >
+                                Unmute
+                            </button>
+                        </div>
+
+                        <!-- Video description — desktop only (below video) -->
+                        <p
+                            class="hidden lg:block text-sm text-gray-400 mt-3 text-center"
+                        >
+                            In under a minute, Belmir explains what actually
+                            determines diamond quality and the common mistakes
+                            engagement ring buyers make.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Trust badges — centered between both columns, desktop only -->
+                <div
+                    class="hidden md:flex items-center justify-center gap-6 mt-8"
+                >
+                    <!-- Sydney Showroom -->
+                    <a
+                        href="#showroom-map"
+                        class="flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition-colors"
+                    >
+                        <svg
+                            class="w-4 h-4 text-brand-primary"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                            />
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                            />
+                        </svg>
+                        Sydney Based &amp; Owned
+                    </a>
+                    <!-- Google Reviews glass badge -->
+                    <a href="#reviews" class="flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-5 py-2 hover:bg-white/20 transition-colors">
+                        <span class="font-semibold text-lg tracking-tight flex-shrink-0" style="font-family: 'Product Sans', Arial, sans-serif;">
+                            <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
+                        </span>
+                        <span class="w-px h-5 bg-white/20 flex-shrink-0"></span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-white font-bold text-sm">5.0</span>
+                            <div class="flex gap-0.5">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            </div>
+                            <span class="text-white/80 text-sm">(<span id="hero-review-count">110</span>+ Reviews)</span>
+                        </div>
+                    </a>
+                    <!-- Custom Rings -->
+                    <div
+                        class="flex items-center gap-1.5 text-sm text-gray-400"
+                    >
+                        <svg
+                            class="w-4 h-4 text-brand-primary"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                        </svg>
+                        Budget-First Consultations
+                    </div>
+                </div>
+
+                <!-- META PIXEL: Trigger ViewContent event when user scrolls past video section -->
+            </div>
+        </section>
+
+        <!-- ===== MOBILE VIDEO SECTION (below hero, mobile only) ===== -->
+        <section class="lg:hidden bg-gray-900 pb-10 px-4 sm:px-6">
+            <div class="max-w-xl mx-auto">
+                <p class="text-sm font-medium text-gray-400 mb-3 text-center">A jeweller&rsquo;s guide to engagement ring quality</p>
+                <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-gray-900" style="padding-top: 56.25%;">
+                    <iframe
+                        src="https://player.vimeo.com/video/1154860741?title=0&byline=0&portrait=0&muted=1"
+                        class="absolute inset-0 w-full h-full"
+                        frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+                <p class="text-sm text-gray-400 mt-3 text-center">
+                    In under a minute, Belmir explains what actually determines diamond quality and the common mistakes engagement ring buyers make.
+                </p>
+                <div class="flex flex-col gap-3 mt-8">
+                    <a
+                        href="#guide"
+                        class="inline-flex items-center justify-center px-7 py-3.5 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark hover:shadow-xl transition-all duration-300 text-base btn-pulse"
+                    >
+                        <svg class="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Send Me The Guide
+                    </a>
+                    <a
+                        href="#calendly-widget"
+                        class="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300 text-sm tracking-wide"
+                    >
+                        Book a Private Consultation
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 4 COMMON BUYING MISTAKES ===== -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center mb-14 fade-in">
+                    <p
+                        class="section-label mb-4"
+                    >
+                        Learn From Others
+                    </p>
+                    <h2
+                        class="font-heading text-3xl md:text-4xl text-gray-900" style="font-weight: 400;"
+                    >
+                        4 Mistakes Most Engagement Ring Buyers Make
+                    </h2>
+                    <div class="gold-divider mt-6"></div>
+                    <p class="text-gray-600 text-lg">
+                        After helping hundreds of Sydney couples, these are the
+                        patterns we see again and again.
+                    </p>
+                </div>
+
+                <div
+                    class="max-w-6xl mx-auto grid md:grid-cols-2 gap-6 fade-in"
+                >
+                    <!-- Mistake 1 -->
+                    <div
+                        class="bg-stone-50 rounded-2xl p-8 border border-stone-200"
+                    >
+                        <div class="flex items-center gap-4 mb-3">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-red-50 rounded-full flex items-center justify-center text-red-400 font-heading font-semibold text-lg"
+                            >
+                                1
+                            </div>
+                            <h3
+                                class="font-heading text-lg font-medium text-gray-900"
+                            >
+                                Overpaying for Colour and Clarity Grades
+                            </h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-3">
+                            Once set in a ring &mdash; unless you are paying
+                            only a small premium for them &mdash; the difference
+                            between D and E&ndash;F colour, or VVS and VS
+                            clarity, is rarely visible to the naked eye. Much of
+                            the premium for these top grades exists on paper
+                            rather than in what you actually see.
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            <strong class="text-gray-700"
+                                >What to do instead:</strong
+                            >
+                            Before choosing the highest grades, compare options
+                            carefully across jewellers. You should not be paying
+                            massive premiums for D colour or VVS clarity when
+                            E&ndash;F colour and VS clarity will look virtually
+                            identical once set. Redirect the savings toward a
+                            better cut or a higher-quality ring setting.
+                        </p>
+                    </div>
+
+                    <!-- Mistake 2 -->
+                    <div
+                        class="bg-stone-50 rounded-2xl p-8 border border-stone-200"
+                    >
+                        <div class="flex items-center gap-4 mb-3">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-red-50 rounded-full flex items-center justify-center text-red-400 font-heading font-semibold text-lg"
+                            >
+                                2
+                            </div>
+                            <h3
+                                class="font-heading text-lg font-medium text-gray-900"
+                            >
+                                Prioritising Carat Weight Over Cut Quality
+                            </h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-3">
+                            The most common mistake is chasing a round number
+                            &mdash; &ldquo;I want a 1-carat diamond.&rdquo; But
+                            a 0.90ct diamond with an ideal cut will have more
+                            brilliance, more fire, and appear larger face-up
+                            than a 1.10ct stone with a deep or shallow cut.
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            <strong class="text-gray-700"
+                                >What to do instead:</strong
+                            >
+                            Start with cut quality (Excellent or Ideal grade),
+                            then find the largest stone within your budget at
+                            that cut standard. You&rsquo;ll end up with a more
+                            beautiful diamond and often save 15&ndash;25%.
+                        </p>
+                    </div>
+
+                    <!-- Mistake 3 -->
+                    <div
+                        class="bg-stone-50 rounded-2xl p-8 border border-stone-200"
+                    >
+                        <div class="flex items-center gap-4 mb-3">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-red-50 rounded-full flex items-center justify-center text-red-400 font-heading font-semibold text-lg"
+                            >
+                                3
+                            </div>
+                            <h3
+                                class="font-heading text-lg font-medium text-gray-900"
+                            >
+                                Ignoring Ring Construction Entirely
+                            </h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-3">
+                            Most buyers focus entirely on the diamond and never
+                            ask about the ring. They don&rsquo;t check band
+                            thickness, prong construction, or casting quality.
+                            The result is a beautiful stone in a ring that
+                            bends, loosens, or needs constant repair.
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            <strong class="text-gray-700"
+                                >What to do instead:</strong
+                            >
+                            Ask your jeweller about the metal alloy they use,
+                            the minimum band thickness for your design, and how
+                            the prongs are constructed. A good jeweller will
+                            welcome these questions. If they can&rsquo;t answer
+                            them, that tells you something.
+                        </p>
+                    </div>
+
+                    <!-- Mistake 4 -->
+                    <div
+                        class="bg-stone-50 rounded-2xl p-8 border border-stone-200"
+                    >
+                        <div class="flex items-center gap-4 mb-3">
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-red-50 rounded-full flex items-center justify-center text-red-400 font-heading font-semibold text-lg"
+                            >
+                                4
+                            </div>
+                            <h3
+                                class="font-heading text-lg font-medium text-gray-900"
+                            >
+                                Confusing Origin With Quality
+                            </h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-3">
+                            Many buyers assume mined diamonds are
+                            &ldquo;better&rdquo; than lab-grown diamonds. In
+                            reality, lab-grown and natural diamonds are
+                            chemically, optically, and physically identical. The
+                            difference is origin &mdash; not quality.
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            <strong class="text-gray-700"
+                                >What to do instead:</strong
+                            >
+                            Choose based on your values and budget. Focus on cut
+                            quality and craftsmanship, which actually determine
+                            how the ring looks and performs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== INLINE GUIDE CTA ===== -->
+        <div class="bg-gray-900 py-10">
+            <div
+                class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in"
+            >
+                <p class="text-white text-lg font-heading font-medium mb-2">
+                    Want the full breakdown?
+                </p>
+                <p class="text-gray-400 text-sm mb-5">
+                    The free guide covers all of this in detail &mdash; with
+                    visual comparisons and questions to ask any jeweller.
+                </p>
+                <a
+                    href="#guide"
+                    class="inline-flex items-center justify-center px-8 py-3.5 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark hover:shadow-xl transition-all duration-300 text-sm"
+                >
+                    <svg
+                        class="mr-2 w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                    </svg>
+                    Send Me The Guide
+                </a>
+            </div>
+        </div>
+
+        <!-- ===== WHAT ACTUALLY DETERMINES RING QUALITY ===== -->
+        <section class="py-16 md:py-24 bg-stone-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center mb-14 fade-in">
+                    <p
+                        class="section-label mb-4"
+                    >
+                        What Your Jeweller Should Be Explaining
+                    </p>
+                    <h2
+                        class="font-heading text-3xl md:text-4xl text-gray-900" style="font-weight: 400;"
+                    >
+                        The 5 Factors That Actually Determine Ring Quality
+                    </h2>
+                    <div class="gold-divider mt-6"></div>
+                    <p class="text-gray-600 text-lg">
+                        An engagement ring is two things: a stone and a
+                        structure. Most jewellers only talk about the stone.
+                        Here&rsquo;s what a master jeweller evaluates before
+                        putting their name on a piece.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in">
+                    <!-- Factor 1: Diamond Cut Quality -->
+                    <div
+                        class="bg-white rounded-2xl p-8 border border-stone-200"
+                    >
+                        <div
+                            class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-5"
+                        >
+                            <svg
+                                class="w-6 h-6 text-brand-primary"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                    d="M5 3l14 0 3 6-10 12L2 9l3-6z"
+                                />
+                            </svg>
+                        </div>
+                        <h3
+                            class="font-heading text-lg font-medium text-gray-900 mb-3"
+                        >
+                            1. Diamond Cut Quality
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-3">
+                            Cut is the single most important factor in how a
+                            diamond looks. It refers to how precisely the
+                            stone&rsquo;s facets are angled and aligned to
+                            reflect light back to your eye.
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            A diamond with ideal proportions will exhibit
+                            brilliance (white light return), fire (spectral
+                            colours), and scintillation (sparkle when moved). A
+                            poorly cut diamond &mdash; even at higher carat
+                            weight &mdash; will look dull and lifeless. This is
+                            why we always prioritise cut over size.
+                        </p>
+                    </div>
+
+                    <!-- Factor 2: Stone Setting Integrity -->
+                    <div
+                        class="bg-white rounded-2xl p-8 border border-stone-200"
+                    >
+                        <div
+                            class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-5"
+                        >
+                            <svg
+                                class="w-6 h-6 text-brand-primary"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                    d="M12 15l-3-6h6l-3 6zm0 0v4m-4-8l4-8 4 8"
+                                />
+                            </svg>
+                        </div>
+                        <h3
+                            class="font-heading text-lg font-medium text-gray-900 mb-3"
+                        >
+                            2. Stone Setting Integrity
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-3">
+                            The setting is what holds your diamond securely for
+                            decades. A properly set stone has symmetrical prongs
+                            that grip the diamond at its girdle, with each prong
+                            applying equal pressure.
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            Poorly set stones sit unevenly, with prongs that are
+                            too thin, too short, or asymmetrical. Over time this
+                            leads to the stone loosening or, worst case, falling
+                            out entirely. The stone seat &mdash; the notch cut
+                            into each prong &mdash; should be precision-cut to
+                            match the exact profile of the diamond.
+                        </p>
+                    </div>
+
+                    <!-- Factor 3: Metal Alloy Composition -->
+                    <div
+                        class="bg-white rounded-2xl p-8 border border-stone-200"
+                    >
+                        <div
+                            class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-5"
+                        >
+                            <svg
+                                class="w-6 h-6 text-brand-primary"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                    d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                />
+                            </svg>
+                        </div>
+                        <h3
+                            class="font-heading text-lg font-medium text-gray-900 mb-3"
+                        >
+                            3. Metal Alloy Quality
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-3">
+                            Not all 18-karat gold is the same. The metals mixed
+                            with pure gold (the alloy) determine the
+                            ring&rsquo;s hardness, colour consistency, and
+                            resistance to bending and scratching.
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            A high-quality 18k alloy uses a precise ratio of
+                            gold, palladium, silver, and copper to achieve a
+                            balanced metal that holds its shape and polishes
+                            well. Cheap alloys use excess copper, leading to
+                            brittleness, inconsistent colour, and faster
+                            tarnishing. The alloy is invisible but determines
+                            how the ring ages over decades of daily wear.
+                        </p>
+                    </div>
+
+                    <!-- Factor 4: Casting Quality -->
+                    <div
+                        class="bg-white rounded-2xl p-8 border border-stone-200"
+                    >
+                        <div
+                            class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-5"
+                        >
+                            <svg
+                                class="w-6 h-6 text-brand-primary"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                    d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"
+                                />
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                    d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"
+                                />
+                            </svg>
+                        </div>
+                        <h3
+                            class="font-heading text-lg font-medium text-gray-900 mb-3"
+                        >
+                            4. Casting Quality &amp; Porosity
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-3">
+                            When a ring is cast, molten metal fills a mould. If
+                            the process is rushed or done at the wrong
+                            temperature, microscopic air bubbles get trapped
+                            inside the metal. This is called porosity.
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            A porous ring has internal weak points. It&rsquo;s
+                            more likely to crack under pressure, warp during
+                            resizing, or develop surface pitting over time.
+                            High-quality casting requires controlled
+                            temperatures, proper vacuum conditions, and
+                            experienced finishing. You can&rsquo;t see porosity
+                            on a new ring &mdash; it only reveals itself years
+                            later.
+                        </p>
+                    </div>
+
+                    <!-- Factor 5: Band Thickness & Structure -->
+                    <div
+                        class="bg-white rounded-2xl p-8 border border-stone-200"
+                    >
+                        <div
+                            class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-5"
+                        >
+                            <svg
+                                class="w-6 h-6 text-brand-primary"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                    d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z"
+                                />
+                            </svg>
+                        </div>
+                        <h3
+                            class="font-heading text-lg font-medium text-gray-900 mb-3"
+                        >
+                            5. Band Thickness &amp; Structural Design
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-3">
+                            A thin band may look delicate and elegant, but if
+                            it&rsquo;s too thin, it will bend, warp, and lose
+                            shape with daily wear. Band thickness is a
+                            structural decision, not just an aesthetic one.
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            We design bands to be as slim as possible while
+                            maintaining the structural integrity needed for
+                            everyday use. The minimum safe thickness depends on
+                            the metal type, the stone size, and the setting
+                            style. A good jeweller will explain this trade-off
+                            honestly rather than giving you whatever looks
+                            thinnest in a photo.
+                        </p>
+                    </div>
+
+                    <!-- Summary card -->
+                    <div
+                        class="bg-gray-900 text-white rounded-2xl p-8 flex flex-col justify-center"
+                    >
+                        <h3 class="font-heading text-lg font-medium mb-3">
+                            Why This Matters
+                        </h3>
+                        <p class="text-sm text-gray-300 mb-4">
+                            Most engagement ring buyers spend hours researching
+                            the diamond and minutes on the ring itself. But the
+                            ring is what you wear every day. The diamond sits
+                            inside it.
+                        </p>
+                        <p class="text-sm text-gray-400">
+                            A $10,000 diamond in a poorly made ring is a worse
+                            investment than a $6,000 diamond in a ring built to
+                            last generations. Understanding both sides of the
+                            equation is what separates an informed buyer from an
+                            overspending one.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== INLINE GUIDE CTA 2 ===== -->
+        <div class="bg-gray-900 py-10">
+            <div
+                class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in"
+            >
+                <p class="text-white text-lg font-heading font-medium mb-2">
+                    Get the complete guide free
+                </p>
+                <p class="text-gray-400 text-sm mb-5">
+                    Everything above &mdash; plus visual comparisons, pricing
+                    insights, and the exact questions to ask before you buy.
+                </p>
+                <a
+                    href="#guide"
+                    class="inline-flex items-center justify-center px-8 py-3.5 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark hover:shadow-xl transition-all duration-300 text-sm"
+                >
+                    <svg
+                        class="mr-2 w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                    </svg>
+                    Send Me The Guide
+                </a>
+            </div>
+        </div>
+
+        <!-- ===== HOW TO VISUALLY JUDGE RING CRAFTSMANSHIP ===== -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center mb-14 fade-in">
+                    <p
+                        class="section-label mb-4"
+                    >
+                        Visual Guide
+                    </p>
+                    <h2
+                        class="font-heading text-3xl md:text-4xl text-gray-900" style="font-weight: 400;"
+                    >
+                        How to Visually Judge Ring Craftsmanship
+                    </h2>
+                    <div class="gold-divider mt-6"></div>
+                    <p class="text-gray-600 text-lg">
+                        Most buyers are never shown the craftsmanship details
+                        that determine whether a ring will last decades. The
+                        following examples illustrate what jewellers look for
+                        when assessing ring quality.
+                    </p>
+                </div>
+
+                <div class="max-w-5xl mx-auto space-y-12 fade-in">
+                    <!-- Comparison 1: Prong Quality -->
+                    <div
+                        class="bg-stone-50 rounded-2xl p-8 border border-stone-200"
+                    >
+                        <h3
+                            class="font-heading text-lg font-medium text-gray-900 mb-6"
+                        >
+                            Diamond Seating
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <div
+                                    class="aspect-[4/3] rounded-xl overflow-hidden mb-3"
+                                >
+                                    <img
+                                        src="{{ 'uneven-prongs-latest.png' | asset_url }}"
+                                        alt="Uneven prongs — poor setting quality"
+                                        class="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <p
+                                    class="text-xs text-red-500 font-medium uppercase tracking-wider"
+                                >
+                                    Lower quality
+                                </p>
+                            </div>
+                            <div>
+                                <div
+                                    class="aspect-[4/3] rounded-xl overflow-hidden mb-3"
+                                >
+                                    <img
+                                        src="{{ 'even-prongs-newest.jpg' | asset_url }}"
+                                        alt="Symmetrical prongs — high-quality setting"
+                                        class="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <p
+                                    class="text-xs text-brand-primary font-medium uppercase tracking-wider"
+                                >
+                                    Higher quality
+                                </p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600">
+                            Each prong must be precisely cut so the diamond sits
+                            level inside the setting. When the seats are poorly
+                            cut, the stone may tilt slightly or rest unevenly
+                            within the prongs. This forces the metal to
+                            compensate for the misfit and can create long-term
+                            stability issues. A properly seated diamond sits
+                            level and secure, allowing the prongs to protect the
+                            stone rather than forcing it into position.
+                        </p>
+                    </div>
+
+                    <!-- Comparison: Prong Symmetry (top view) -->
+                    <div
+                        class="bg-stone-50 rounded-2xl p-8 border border-stone-200"
+                    >
+                        <h3
+                            class="font-heading text-lg font-medium text-gray-900 mb-6"
+                        >
+                            Prong Symmetry (top view)
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <img
+                                    src="{{ 'uneven-prongs-front-new.jpg' | asset_url }}"
+                                    alt="Uneven prong spacing"
+                                    class="aspect-[4/3] w-full object-cover rounded-xl mb-3"
+                                />
+                                <p
+                                    class="text-xs text-red-500 font-medium uppercase tracking-wider"
+                                >
+                                    Lower quality
+                                </p>
+                            </div>
+                            <div>
+                                <img
+                                    src="{{ 'even-prongs-front-new.jpg' | asset_url }}"
+                                    alt="Symmetrical prong spacing"
+                                    class="aspect-[4/3] w-full object-cover rounded-xl mb-3"
+                                />
+                                <p
+                                    class="text-xs text-brand-primary font-medium uppercase tracking-wider"
+                                >
+                                    Higher quality
+                                </p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600">
+                            Well-set diamonds have evenly spaced, symmetrical
+                            prongs that grip the stone securely at the girdle,
+                            with each prong applying equal pressure. Uneven or
+                            poorly shaped prongs create weak points in the
+                            setting, increasing the risk of the stone loosening
+                            or shifting over time. This is one of the first
+                            things an experienced jeweller checks when assessing
+                            ring quality.
+                        </p>
+                    </div>
+
+                    <!-- Comparison 2: Band Thickness -->
+                    <div
+                        class="bg-stone-50 rounded-2xl p-8 border border-stone-200"
+                    >
+                        <h3
+                            class="font-heading text-lg font-medium text-gray-900 mb-6"
+                        >
+                            Band Thickness
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <div
+                                    class="aspect-[4/3] rounded-xl overflow-hidden mb-3"
+                                >
+                                    <img
+                                        src="{{ 'thin-band.png' | asset_url }}"
+                                        alt="Extremely thin band — structurally weak"
+                                        class="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <p
+                                    class="text-xs text-red-500 font-medium uppercase tracking-wider"
+                                >
+                                    Lower quality
+                                </p>
+                            </div>
+                            <div>
+                                <div
+                                    class="aspect-[4/3] rounded-xl overflow-hidden mb-3"
+                                >
+                                    <img
+                                        src="{{ 'thick-band.jpg' | asset_url }}"
+                                        alt="Structurally balanced band — proper thickness"
+                                        class="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <p
+                                    class="text-xs text-brand-primary font-medium uppercase tracking-wider"
+                                >
+                                    Higher quality
+                                </p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600">
+                            Extremely thin bands may look delicate in photos,
+                            but they often lack the structural strength needed
+                            for everyday wear. Over time, thin bands can bend,
+                            warp, and lose their shape &mdash; especially when
+                            supporting a heavier centre stone.
+                        </p>
+                        <p class="text-sm text-gray-600 mt-3">
+                            As a general guideline, a band should be no thinner
+                            than approximately 1.6mm in width and 1.6mm in
+                            thickness to maintain basic structural integrity.
+                            However, for long-term durability, most well-made
+                            engagement rings are typically crafted closer to
+                            2.0mm in width and around 1.8mm in thickness.
+                        </p>
+                        <p class="text-sm text-gray-600 mt-3">
+                            A well-designed ring maintains an elegant profile
+                            while ensuring the band is strong enough to hold its
+                            shape for decades of daily wear.
+                        </p>
+                    </div>
+
+                    <!-- Comparison 3: Casting Quality -->
+                    <div
+                        class="bg-stone-50 rounded-2xl p-8 border border-stone-200"
+                    >
+                        <h3
+                            class="font-heading text-lg font-medium text-gray-900 mb-6"
+                        >
+                            Casting Quality
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <div
+                                    class="aspect-[4/3] rounded-xl overflow-hidden mb-3"
+                                >
+                                    <img
+                                        src="{{ 'low-casting-quality.jpg' | asset_url }}"
+                                        alt="Porous metal casting — weak internal structure"
+                                        class="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <p
+                                    class="text-xs text-red-500 font-medium uppercase tracking-wider"
+                                >
+                                    Lower quality
+                                </p>
+                            </div>
+                            <div>
+                                <div
+                                    class="aspect-[4/3] rounded-xl overflow-hidden mb-3"
+                                >
+                                    <img
+                                        src="{{ 'high-casting-quality.jpg' | asset_url }}"
+                                        alt="Dense, clean casting — strong internal structure"
+                                        class="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <p
+                                    class="text-xs text-brand-primary font-medium uppercase tracking-wider"
+                                >
+                                    Higher quality
+                                </p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-3">
+                            Porous casting occurs when air bubbles become
+                            trapped in the metal during the moulding process.
+                            These bubbles are sometimes visible on the surface,
+                            but they can also exist inside the metal where they
+                            cannot be seen. Hidden porosity creates weak points
+                            that can lead to cracking or structural issues over
+                            time.
+                        </p>
+                        <p class="text-sm text-gray-600">
+                            Dense, clean casting &mdash; produced under proper
+                            vacuum conditions &mdash; creates a stronger,
+                            smoother ring that withstands daily wear and
+                            polishes cleanly for decades. Because casting
+                            quality matters, we provide a lifetime warranty
+                            against structural defects caused by casting issues.
+                        </p>
+                    </div>
+
+                    <p class="text-sm text-gray-500 text-center mt-8 italic">
+                        The full guide covers these topics in detail, with
+                        visual comparisons and specific questions to ask any
+                        jeweller.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== GUIDE DOWNLOAD ===== -->
+        <section class="py-16 md:py-24 bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <!-- Guide description -->
+                    <div class="fade-in text-center lg:text-left">
+                        <p
+                            class="section-label mb-4"
+                        >
+                            Free Expert Resource
+                        </p>
+                        <h2
+                            class="hidden lg:block font-heading text-[1.75rem] md:text-[2.25rem] font-medium text-white mb-5 leading-tight"
+                        >
+                            Most couples misunderstand what determines quality.
+                        </h2>
+                        <p class="hidden lg:block text-lg text-gray-400 mb-6">
+                            Carat size doesn&rsquo;t tell you how beautiful a
+                            diamond looks. Brand markups don&rsquo;t reflect
+                            better craftsmanship. And lab vs natural isn&rsquo;t
+                            a quality decision &mdash; it&rsquo;s a values
+                            decision. Most couples don&rsquo;t learn this until
+                            after they&rsquo;ve overspent.
+                        </p>
+                        <!-- Mobile-only h2 -->
+                        <h2
+                            class="lg:hidden font-heading text-[1.75rem] font-medium text-white mb-4"
+                        >
+                            The Engagement Ring Quality Guide
+                        </h2>
+                        <!-- Desktop h3 -->
+                        <h3
+                            class="hidden lg:block font-heading text-xl font-medium text-white mb-4"
+                        >
+                            The Engagement Ring Quality Guide
+                        </h3>
+                        <p class="text-gray-400 mb-8">
+                            Written by our jewellers with over 30 years of
+                            combined experience, this guide covers:
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-brand-primary mt-0.5 flex-shrink-0"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Visual comparison charts: how cut
+                                    proportions change a diamond&rsquo;s
+                                    appearance at every grade</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-brand-primary mt-0.5 flex-shrink-0"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Lab-grown vs natural: cost breakdowns,
+                                    resale data, and what jewellers won&rsquo;t
+                                    tell you</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-brand-primary mt-0.5 flex-shrink-0"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                                <span class="text-gray-300"
+                                    >The exact questions to ask any jeweller
+                                    about ring construction, metal alloy, and
+                                    setting quality</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-brand-primary mt-0.5 flex-shrink-0"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                                <span class="text-gray-300"
+                                    >A realistic budget framework: what you
+                                    should expect to pay for different styles,
+                                    sizes, and quality levels</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-brand-primary mt-0.5 flex-shrink-0"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Red flags checklist: how to identify
+                                    low-quality rings before you buy</span
+                                >
+                            </li>
+                        </ul>
+                        <p class="text-sm text-gray-400 italic">
+                            No fluff. No sales pitch. Just the information we
+                            wish every buyer had before walking into a jeweller.
+                        </p>
+                    </div>
+
+                    <!-- Guide form -->
+                    <div class="fade-in">
+                        <div
+                            id="guide"
+                            class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100"
+                        >
+                            <h3
+                                class="font-heading text-xl font-medium text-gray-900 mb-2 text-center"
+                            >
+                                Get Your Free Copy
+                            </h3>
+                            <p class="text-sm text-gray-500 mb-6 text-center">
+                                Instant download &mdash; no spam, no
+                                obligations.
+                            </p>
+                            <form
+                                id="guide-form"
+                                class="guide-form space-y-4"
+                                onsubmit="return handleGuideSubmit(event);"
+                            >
+                                <!-- UTM hidden fields (auto-populated by JS) -->
+                                <input
+                                    type="hidden"
+                                    name="utm_source"
+                                    id="utm_source"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="utm_medium"
+                                    id="utm_medium"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="utm_campaign"
+                                    id="utm_campaign"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="utm_content"
+                                    id="utm_content"
+                                />
+                                <div>
+                                    <label
+                                        for="guide-name"
+                                        class="block text-sm font-medium text-gray-700 mb-1"
+                                        >Full Name</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="guide-name"
+                                        name="name"
+                                        required
+                                        placeholder="Your name"
+                                        class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm bg-white outline-none"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        for="guide-email"
+                                        class="block text-sm font-medium text-gray-700 mb-1"
+                                        >Email Address</label
+                                    >
+                                    <input
+                                        type="email"
+                                        id="guide-email"
+                                        name="email"
+                                        required
+                                        placeholder="you@example.com"
+                                        class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm bg-white outline-none"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        for="guide-phone"
+                                        class="block text-sm font-medium text-gray-700 mb-1"
+                                        >Phone
+                                        <span class="text-gray-400"
+                                            >(optional)</span
+                                        ></label
+                                    >
+                                    <input
+                                        type="tel"
+                                        id="guide-phone"
+                                        name="phone"
+                                        placeholder="04XX XXX XXX"
+                                        class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm bg-white outline-none"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        for="guide-timeline"
+                                        class="block text-sm font-medium text-gray-700 mb-1"
+                                        >Engagement Timeline</label
+                                    >
+                                    <select
+                                        id="guide-timeline"
+                                        name="timeline"
+                                        required
+                                        class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm bg-white outline-none appearance-none"
+                                    >
+                                        <option value="">
+                                            Select timeline...
+                                        </option>
+                                        <option value="Now - 2-6 weeks">
+                                            Now &ndash; 2&ndash;6 weeks
+                                        </option>
+                                        <option value="Soon - 6-12 weeks">
+                                            Soon &ndash; 6&ndash;12 weeks
+                                        </option>
+                                        <option value="Later - 3-6 months+">
+                                            Later &ndash; 3&ndash;6 Months+
+                                        </option>
+                                        <option value="Just researching">
+                                            Just researching
+                                        </option>
+                                    </select>
+                                </div>
+                                <button
+                                    type="submit"
+                                    id="guide-submit-btn"
+                                    class="w-full py-4 bg-gray-900 text-white font-medium rounded-xl hover:bg-gray-800 transition-all duration-300 text-sm"
+                                >
+                                    Send Me The Guide
+                                </button>
+                                <p class="text-xs text-gray-400 text-center">
+                                    Your information is never shared.
+                                    Unsubscribe anytime.
+                                </p>
+                                <p
+                                    class="text-sm text-gray-500 text-center mt-4"
+                                >
+                                    If you&rsquo;d prefer to see rings in
+                                    person, you can also
+                                    <a
+                                        href="#calendly-widget"
+                                        class="text-brand-primary font-medium hover:underline"
+                                        >book a private consultation</a
+                                    >
+                                    at our Sydney showroom.
+                                </p>
+                            </form>
+                            <!-- Success message (hidden by default) -->
+                            <div
+                                id="guide-success"
+                                class="hidden text-center py-8"
+                            >
+                                <div
+                                    class="w-16 h-16 mx-auto mb-4 bg-brand-primary/10 rounded-full flex items-center justify-center"
+                                >
+                                    <svg
+                                        class="w-8 h-8 text-brand-primary"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M5 13l4 4L19 7"
+                                        />
+                                    </svg>
+                                </div>
+                                <h3
+                                    class="font-heading text-xl font-medium text-gray-900 mb-2"
+                                >
+                                    Check Your Email
+                                </h3>
+                                <p class="text-sm text-gray-600 mb-6">
+                                    Your guide is on its way. In the
+                                    meantime&hellip;
+                                </p>
+                                <a
+                                    href="#calendly-widget"
+                                    class="inline-flex items-center justify-center px-6 py-3 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark transition-all duration-300 text-sm"
+                                    >Book Your Private Consultation</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 4: MEET BELMIR ===== -->
+        <section class="py-16 md:py-24 bg-stone-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <!-- Portrait -->
+                    <div class="fade-in">
+                        <div
+                            class="relative rounded-2xl overflow-hidden shadow-lg bg-stone-100 aspect-[3/4] max-w-md mx-auto lg:mx-0"
+                        >
+                            <img
+                                src="{{ 'belmir-2.png' | asset_url }}"
+                                alt="Belmir - House of Diamonds founder"
+                                class="absolute inset-0 w-full h-full object-cover"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Bio -->
+                    <div class="fade-in text-center lg:text-left">
+                        <p
+                            class="section-label mb-4"
+                        >
+                            Your Personal Jeweller
+                        </p>
+                        <h2
+                            class="font-heading text-3xl md:text-4xl text-gray-900" style="font-weight: 400;"
+                        >
+                            Meet Belmir
+                        </h2>
+                        <div class="gold-divider mt-6"></div>
+                        <p class="text-lg text-gray-600 mb-5">
+                            Belmir personally guides every Sydney couple through
+                            the engagement ring process &mdash; from
+                            understanding diamond quality to designing a ring
+                            that reflects your story.
+                        </p>
+                        <p class="text-gray-500 mb-5">
+                            With decades of experience in the diamond industry,
+                            Belmir built House of Diamonds on one principle:
+                            transparency. No confusing jargon, no inflated
+                            pricing, no pressure. Just honest education so you
+                            can make a confident decision.
+                        </p>
+                        <p class="text-gray-500 mb-8">
+                            Whether you&rsquo;re buying your first diamond or
+                            upgrading an heirloom piece, Belmir will walk you
+                            through every option and make sure you understand
+                            exactly what you&rsquo;re getting &mdash; and what
+                            it should cost.
+                        </p>
+                        <a
+                            href="#calendly-widget"
+                            class="inline-flex items-center justify-center px-8 py-4 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark hover:shadow-xl transition-all duration-300 text-base"
+                            onclick="
+                                if (typeof fbq !== 'undefined') {
+                                    fbq('track', 'Schedule', {
+                                        content_name: 'Meet Belmir CTA',
+                                        content_category: 'Consultation Click',
+                                    });
+                                }
+                            "
+                        >
+                            Book a Private Consultation
+                            <svg
+                                class="ml-2 w-5 h-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WHAT I TELL CLIENTS ===== -->
+        <section class="py-16 md:py-24" style="background: #072b31;">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center mb-14 fade-in">
+                    <p
+                        class="section-label mb-4"
+                    >
+                        From the Showroom
+                    </p>
+                    <h2
+                        class="font-heading text-3xl md:text-4xl text-white" style="font-weight: 400;"
+                    >
+                        What I Tell Clients in Private Consultations
+                    </h2>
+                    <div class="gold-divider mt-6"></div>
+                    <p class="text-white/70 text-lg mt-6">
+                        These are the things I find myself explaining in almost
+                        every first consultation. They&rsquo;re worth knowing
+                        before you walk into any jeweller.
+                    </p>
+                </div>
+
+                <div
+                    class="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 fade-in"
+                >
+                    <!-- Insight 1 -->
+                    <div
+                        class="rounded-2xl p-8 border border-white/10" style="background: rgba(255,255,255,0.05);"
+                    >
+                        <h3
+                            class="font-heading text-lg font-medium text-white mb-3"
+                        >
+                            Retail pricing often reflects overhead
+                        </h3>
+                        <p class="text-sm text-white/65">
+                            When you buy from a large retailer, a significant
+                            portion of the price covers their shopfront,
+                            staffing, and marketing &mdash; not the ring itself.
+                            That&rsquo;s not dishonest, but it&rsquo;s worth
+                            understanding. A private jeweller with lower
+                            overheads can often deliver the same or better
+                            quality at a meaningfully different price point.
+                        </p>
+                    </div>
+
+                    <!-- Insight 2 -->
+                    <div
+                        class="rounded-2xl p-8 border border-white/10" style="background: rgba(255,255,255,0.05);"
+                    >
+                        <h3
+                            class="font-heading text-lg font-medium text-white mb-3"
+                        >
+                            The diamond is only part of the ring
+                        </h3>
+                        <p class="text-sm text-white/65">
+                            A beautiful stone means very little if the ring
+                            holding it isn&rsquo;t built to last. The setting,
+                            prong construction, band thickness, and overall
+                            structural design determine whether your ring holds
+                            up to decades of daily wear &mdash; or needs
+                            constant repair. Durability is craftsmanship, and
+                            craftsmanship is worth asking about.
+                        </p>
+                    </div>
+
+                    <!-- Insight 3 -->
+                    <div
+                        class="rounded-2xl p-8 border border-white/10" style="background: rgba(255,255,255,0.05);"
+                    >
+                        <h3
+                            class="font-heading text-lg font-medium text-white mb-3"
+                        >
+                            Cut quality matters more than carat size
+                        </h3>
+                        <p class="text-sm text-white/65">
+                            The way a diamond is cut determines how much light
+                            it returns to your eye. That&rsquo;s what creates
+                            brilliance, fire, and sparkle. A smaller diamond
+                            with an excellent cut will consistently outperform a
+                            larger one with a mediocre cut. If you only optimise
+                            for one thing, make it cut.
+                        </p>
+                    </div>
+
+                    <!-- Insight 4 -->
+                    <div
+                        class="rounded-2xl p-8 border border-white/10" style="background: rgba(255,255,255,0.05);"
+                    >
+                        <h3
+                            class="font-heading text-lg font-medium text-white mb-3"
+                        >
+                            Colour and clarity grades are often overemphasised
+                        </h3>
+                        <p class="text-sm text-white/65">
+                            Many buyers are encouraged to pay large premiums for
+                            extremely high grades like D colour or VVS clarity.
+                            In reality, a well-cut E or F colour diamond with VS
+                            clarity will appear virtually identical to the naked
+                            eye once set in a ring. The goal is to prioritise
+                            what actually affects beauty &mdash; not to overpay
+                            for differences that are only visible under
+                            magnification.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="max-w-3xl mx-auto text-center mt-12 fade-in">
+                    <p class="text-white/70 mb-6">
+                        If you&rsquo;d like help comparing diamond options,
+                        understanding what&rsquo;s worth spending on, or just
+                        want an honest second opinion, you can book a private
+                        consultation with Belmir. There&rsquo;s no obligation
+                        and no pressure.
+                    </p>
+                    <a
+                        href="#calendly-widget"
+                        class="inline-flex items-center justify-center px-8 py-4 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark hover:shadow-xl transition-all duration-300 text-base"
+                    >
+                        Book a Private Consultation
+                        <svg
+                            class="ml-2 w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                        </svg>
+                    </a>
+                    <p class="text-sm text-white/40 mt-3">
+                        Sydney showroom or virtual &middot; Free &middot; No
+                        obligation
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== REVIEWS ===== -->
+        <section id="reviews" class="py-10 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-14 fade-in">
+                    <p class="section-label mb-4">Google Reviews</p>
+                    <h2
+                        class="font-heading text-3xl md:text-4xl text-gray-900" style="font-weight: 400;"
+                    >
+                        What Our Clients Say
+                    </h2>
+                    <div class="gold-divider mt-6"></div>
+                </div>
+                <!-- Elfsight Google Reviews widget -->
+                <script
+                    src="https://elfsightcdn.com/platform.js"
+                    async
+                ></script>
+                <div
+                    class="elfsight-app-6b0842d6-849c-4c01-9858-3f51d512cad9"
+                    data-elfsight-app-lazy
+                ></div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 5B: OUR LATEST CREATIONS ===== -->
+        <section class="py-10 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <div class="flex justify-center mb-4">
+                        <svg
+                            class="w-10 h-10"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                                fill="url(#ig-gradient-expert)"
+                            />
+                            <defs>
+                                <linearGradient
+                                    id="ig-gradient-expert"
+                                    x1="0%"
+                                    y1="100%"
+                                    x2="100%"
+                                    y2="0%"
+                                >
+                                    <stop
+                                        offset="0%"
+                                        style="stop-color: #ffdc80"
+                                    />
+                                    <stop
+                                        offset="25%"
+                                        style="stop-color: #f77737"
+                                    />
+                                    <stop
+                                        offset="50%"
+                                        style="stop-color: #e1306c"
+                                    />
+                                    <stop
+                                        offset="75%"
+                                        style="stop-color: #c13584"
+                                    />
+                                    <stop
+                                        offset="100%"
+                                        style="stop-color: #833ab4"
+                                    />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h2
+                        class="font-heading text-3xl md:text-4xl text-gray-900" style="font-weight: 400;"
+                    >
+                        Our Latest Creations
+                    </h2>
+                    <p class="text-gray-600">
+                        <a
+                            href="https://www.instagram.com/houseofdiamonds.au_/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-brand-primary hover:underline"
+                            >@houseofdiamonds.au_</a
+                        >
+                    </p>
+                </div>
+
+                <!-- Elfsight Instagram Feed (same widget as main site, limited to 6 items) -->
+                <div
+                    class="elfsight-app-ae15ad64-39a9-4daa-a0c6-90f844012c74"
+                    data-elfsight-app-lazy
+                ></div>
+            </div>
+        </section>
+
+        <!-- ===== WHY HOUSE OF DIAMONDS ===== -->
+        <section class="py-16 md:py-24 bg-stone-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-14 fade-in">
+                    <p class="section-label mb-4">Why Choose Us</p>
+                    <h2
+                        class="font-heading text-3xl md:text-4xl text-gray-900" style="font-weight: 400;"
+                    >
+                        Why House of Diamonds
+                    </h2>
+                    <div class="gold-divider mt-6"></div>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 fade-in">
+                    <div class="text-center p-6">
+                        <div
+                            class="w-14 h-14 mx-auto mb-4 bg-brand-primary/10 rounded-xl flex items-center justify-center"
+                        >
+                            <svg
+                                class="w-7 h-7 text-brand-primary"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 100 100"
+                                stroke-width="2"
+                            >
+                                <path
+                                    d="M69.36 55.8a2.45 2.45 0 1 1-2.45 2.45 2.45 2.45 0 0 1 2.45-2.45Z"
+                                />
+                                <path
+                                    d="M61.77 58.24a7.92 7.92 0 0 0 7.94 7.94H85V85H18.49a6 6 0 0 1-6-6V28a4.64 4.64 0 0 0 4.67 4.66H85v17.65H69.71a7.93 7.93 0 0 0-7.94 7.93Z"
+                                />
+                                <path
+                                    d="M86 50.31H69.71a7.94 7.94 0 1 0 0 15.87H86a1.53 1.53 0 0 0 1.53-1.52V51.84A1.54 1.54 0 0 0 86 50.31ZM12.5 28a4.66 4.66 0 0 1 4.67-4.66H47m21.65-.02h10.82v9.33"
+                                />
+                                <path
+                                    d="M72.99 32.65H27l20.01-9.33 17.78-8.28 3.86 8.28 4.34 9.33z"
+                                />
+                            </svg>
+                        </div>
+                        <h3
+                            class="font-heading text-base font-medium text-gray-900 mb-2"
+                        >
+                            Private Jeweller Pricing. Retail Savings.
+                        </h3>
+                        <p class="text-sm text-gray-500">
+                            Service and quality first, never volume.
+                            That&rsquo;s how we deliver private jeweller pricing
+                            without compromise.
+                        </p>
+                    </div>
+                    <div class="text-center p-6">
+                        <div
+                            class="w-14 h-14 mx-auto mb-4 bg-brand-primary/10 rounded-xl flex items-center justify-center"
+                        >
+                            <svg
+                                class="w-7 h-7 text-brand-primary"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 100 100"
+                                stroke-width="2"
+                            >
+                                <path
+                                    d="M51.18 7.63c5.54 3.1 17.09 8.07 34.33 8.07h1.07v23.72A56.14 56.14 0 0 1 80 66.07C73.58 78 63.89 85.62 51.18 88.83 38.48 85.62 28.79 78 22.36 66.06a56.08 56.08 0 0 1-6.58-26.64V15.7h1.07c17.25 0 28.8-4.97 34.33-8.07Z"
+                                />
+                                <path d="M66.15 37.87 45.43 58.59l-9.21-9.21" />
+                            </svg>
+                        </div>
+                        <h3
+                            class="font-heading text-base font-medium text-gray-900 mb-2"
+                        >
+                            Lifetime Warranty
+                        </h3>
+                        <p class="text-sm text-gray-500">
+                            Every ring comes with a lifetime manufacturing
+                            warranty. We stand behind our craftsmanship for
+                            life.
+                        </p>
+                    </div>
+                    <div class="text-center p-6">
+                        <div
+                            class="w-14 h-14 mx-auto mb-4 bg-brand-primary/10 rounded-xl flex items-center justify-center"
+                        >
+                            <svg
+                                class="w-7 h-7 text-brand-primary"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 100 100"
+                                stroke-width="2"
+                            >
+                                <path
+                                    d="M44.18 67.51 30 89.72l-4.44-12.19-12.93 1.1 14.19-22.18a28.86 28.86 0 0 0 13.79 10.08 26.93 26.93 0 0 0 3 .85Zm43.19 11.12-12.93-1.1L70 89.72 55.81 67.51l.63-.13a26.76 26.76 0 0 0 2.94-.85 28.8 28.8 0 0 0 13.8-10.08Z"
+                                />
+                                <path
+                                    d="M78.92 39.19a28.82 28.82 0 0 1-3.61 14 30 30 0 0 1-1.74 2.73 5 5 0 0 1-.39.52 28.8 28.8 0 0 1-13.79 10.09 26.76 26.76 0 0 1-2.94.85l-.63.13a29 29 0 0 1-11.63 0l-.62-.13a26.93 26.93 0 0 1-3-.85 28.86 28.86 0 0 1-13.75-10.08c-.13-.17-.26-.34-.38-.52q-.93-1.32-1.74-2.73a28.92 28.92 0 1 1 54.22-14Z"
+                                />
+                                <path
+                                    d="m56.95 42.84 1.63 9.55L50 47.88l-8.58 4.51 1.64-9.55-6.95-6.77 9.6-1.39 4.29-8.7 4.29 8.7 9.6 1.39-6.94 6.77z"
+                                />
+                            </svg>
+                        </div>
+                        <h3
+                            class="font-heading text-base font-medium text-gray-900 mb-2"
+                        >
+                            Free Resize &amp; Aftercare
+                        </h3>
+                        <p class="text-sm text-gray-500">
+                            One complimentary resizing, cleaning, plating and
+                            polishing for the lifetime of your ring.
+                        </p>
+                    </div>
+                    <div class="text-center p-6">
+                        <div
+                            class="w-14 h-14 mx-auto mb-4 bg-brand-primary/10 rounded-xl flex items-center justify-center"
+                        >
+                            <svg
+                                class="w-7 h-7 text-brand-primary"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 100 100"
+                                stroke-width="2"
+                            >
+                                <path
+                                    d="M15.33 86.58h69.34s-30.67-40.37-69.34 0Z"
+                                />
+                                <path
+                                    d="M43.15 46.69s9 8.83 9.27 22m29.64-55.26s-27.38-1.32-25.37 25.16c0 0 23 5.54 25.37-25.16Zm0 0L56.69 38.59m6.5-6.42 13.16-.45m-6.3-6.37 9.7-.34m-16.56 7.16.45-13.07m6.41 6.25.34-9.91"
+                                />
+                                <path
+                                    d="M50.64 59.11a32.68 32.68 0 0 1 6-20.52M18 21.31S16.67 48.7 43.15 46.69c0 0 5.54-23-25.15-25.38Zm-.01 0 25.16 25.38m-6.42-6.5-.45-13.16m-6.37 6.3-.34-9.7m7.16 16.56-13.08-.45m6.26-6.41L20 32.99"
+                                />
+                            </svg>
+                        </div>
+                        <h3
+                            class="font-heading text-base font-medium text-gray-900 mb-2"
+                        >
+                            Responsible and Conflict-free
+                        </h3>
+                        <p class="text-sm text-gray-500">
+                            A dedication to sustainable, conflict-free and
+                            ethical sourcing, each piece transcends being merely
+                            a symbol of love.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 5: MOMENTS WITH HOUSE OF DIAMONDS ===== -->
+        <section class="py-10 md:py-28 bg-gray-50 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-14 fade-in">
+                    <p class="section-label mb-4">Real Proposals</p>
+                    <h2 class="font-heading text-3xl md:text-4xl text-gray-900" style="font-weight: 400;">
+                        Moments with House of Diamonds
+                    </h2>
+                    <div class="gold-divider mt-6"></div>
+                </div>
+
+                <div class="relative">
+                    <div class="moments-slider flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4" id="moments-slider">
+
+                        <!-- Santorini Proposal -->
+                        <div class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
+                            data-moment-title="Santorini Proposal"
+                            data-moment-caption="A breathtaking proposal against the iconic blue domes of Santorini"
+                            data-moment-images='["assets/santorini-proposal1.jpeg","assets/santorini-proposal2.jpeg","assets/santorini-proposal3.jpeg","assets/santorini-proposal4.jpeg"]'>
+                            <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
+                                <img src="{{ 'santorini-proposal1.jpeg' | asset_url }}" alt="Santorini Proposal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                    <h3 class="font-heading text-xl font-medium mb-2">Santorini Proposal</h3>
+                                    <span class="text-sm text-white/80 flex items-center gap-2 group-hover:text-white transition-colors">
+                                        View <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Banff Proposal -->
+                        <div class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
+                            data-moment-title="Banff Proposal"
+                            data-moment-caption="A magical mountain proposal in the heart of the Canadian Rockies"
+                            data-moment-images='["assets/Banff-proposal1.jpeg","assets/banff-proposal2.jpeg","assets/banff-proposal3.jpeg"]'>
+                            <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
+                                <img src="{{ 'Banff-proposal1.jpeg' | asset_url }}" alt="Banff Proposal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                    <h3 class="font-heading text-xl font-medium mb-2">Banff Proposal</h3>
+                                    <span class="text-sm text-white/80 flex items-center gap-2 group-hover:text-white transition-colors">
+                                        View <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sydney Proposal -->
+                        <div class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
+                            data-moment-title="Sydney Proposal"
+                            data-moment-caption="A breathtaking beach proposal with the ocean as the perfect backdrop"
+                            data-moment-images='["assets/opera-house-proposal2.jpeg","assets/opera-house-proposal1.jpeg"]'>
+                            <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
+                                <img src="{{ 'opera-house-proposal2.jpeg' | asset_url }}" alt="Sydney Proposal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                    <h3 class="font-heading text-xl font-medium mb-2">Sydney Proposal</h3>
+                                    <span class="text-sm text-white/80 flex items-center gap-2 group-hover:text-white transition-colors">
+                                        View <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Royal Garden Proposal -->
+                        <div class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
+                            data-moment-title="Royal Garden Proposal"
+                            data-moment-caption="An elegant proposal in Sydney's beautiful Royal Botanic Garden"
+                            data-moment-images='["assets/royal-garden-1.jpeg","assets/royal-garden-2.jpeg","assets/royal-garden-3.jpeg"]'>
+                            <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
+                                <img src="{{ 'royal-garden-1.jpeg' | asset_url }}" alt="Royal Garden Proposal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                    <h3 class="font-heading text-xl font-medium mb-2">Royal Garden Proposal</h3>
+                                    <span class="text-sm text-white/80 flex items-center gap-2 group-hover:text-white transition-colors">
+                                        View <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Beach Proposal -->
+                        <div class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
+                            data-moment-title="Beach Proposal"
+                            data-moment-caption="A magical beach proposal at golden hour by the water"
+                            data-moment-images='["assets/beach-proposal-1.jpeg","assets/beach-proposal-2.jpeg","assets/beach-proposal-3.jpeg"]'>
+                            <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
+                                <img src="{{ 'beach-proposal-1.jpeg' | asset_url }}" alt="Beach Proposal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                    <h3 class="font-heading text-xl font-medium mb-2">Beach Proposal</h3>
+                                    <span class="text-sm text-white/80 flex items-center gap-2 group-hover:text-white transition-colors">
+                                        View <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Harbour Bridge Proposal -->
+                        <div class="moments-slide flex-shrink-0 w-[280px] md:w-[350px] snap-start group cursor-pointer moment-card"
+                            data-moment-title="Harbour Bridge Proposal"
+                            data-moment-caption="An unforgettable proposal overlooking Sydney's iconic Harbour Bridge"
+                            data-moment-images='["assets/haris_proposal.webp","assets/harbour-bridge-2.jpeg"]'>
+                            <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
+                                <img src="{{ 'haris_proposal.webp' | asset_url }}" alt="Harbour Bridge Proposal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                    <h3 class="font-heading text-xl font-medium mb-2">Harbour Bridge Proposal</h3>
+                                    <span class="text-sm text-white/80 flex items-center gap-2 group-hover:text-white transition-colors">
+                                        View <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    <button id="moments-prev" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-gray-800 hover:bg-gray-50 transition-colors z-10" aria-label="Previous slide">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button id="moments-next" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-gray-800 hover:bg-gray-50 transition-colors z-10" aria-label="Next slide">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="#calendly-widget" class="inline-flex items-center justify-center px-8 py-4 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark hover:shadow-xl transition-all duration-300 text-base">
+                        Book Your Free Consultation
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Moments Lightbox Modal -->
+        <div id="moments-lightbox-guide" class="fixed inset-0 z-50 hidden items-center justify-center" style="background: rgba(0,0,0,0.92);">
+            <div class="relative w-full max-w-3xl mx-4 flex flex-col items-center">
+                <button id="lightbox-close-guide" class="absolute -top-12 right-0 text-white/70 hover:text-white transition-colors" aria-label="Close">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+                <div class="relative w-full">
+                    <img id="lightbox-img-guide" src="" alt="" class="w-full max-h-[75vh] object-contain rounded-xl" />
+                    <button id="lightbox-prev-guide" class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/80 rounded-full flex items-center justify-center text-white transition-colors" aria-label="Previous image">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button id="lightbox-next-guide" class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/80 rounded-full flex items-center justify-center text-white transition-colors" aria-label="Next image">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+                <div class="mt-4 text-center">
+                    <p id="lightbox-caption-guide" class="text-white/80 text-sm mb-3"></p>
+                    <div id="lightbox-dots-guide" class="flex gap-2 justify-center"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== BOOKING / CALENDLY ===== -->
+        <section id="booking" class="py-12 md:py-28 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 md:pt-8">
+                <!-- Centered heading spanning both columns -->
+                <div class="text-center max-w-2xl mx-auto mb-6">
+                    <p class="section-label mb-4">
+                        Ready to Start?
+                    </p>
+                    <h2
+                        class="font-heading text-3xl md:text-4xl text-gray-900" style="font-weight: 400;"
+                    >
+                        Book Your Private Consultation
+                    </h2>
+                    <div class="gold-divider mt-6"></div>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        Schedule a 30-minute session with a diamond expert. See
+                        diamonds in person, explore designs, and get a
+                        transparent quote. No pressure, no obligation.
+                    </p>
+                </div>
+                <div>
+                    <div
+                        id="calendly-widget"
+                        class="calendly-inline-widget"
+                        data-url="https://calendly.com/houseofdiamonds-info/30min?hide_gdpr_banner=1"
+                        style="min-width: 320px; height: 700px"
+                    ></div>
+                    <script
+                        type="text/javascript"
+                        src="https://assets.calendly.com/assets/external/widget.js"
+                        async
+                    ></script>
+                    <p class="text-xs text-gray-500 text-center mt-6">
+                        Your information is secure and never shared with third
+                        parties.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONSULTATION SECTION ===== -->
+        <section id="consultation" class="py-16 md:py-24 bg-stone-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center mb-14 fade-in">
+                    <p
+                        class="section-label mb-4"
+                    >
+                        For Those Ready to Start
+                    </p>
+                    <h2
+                        class="font-heading text-3xl md:text-4xl text-gray-900" style="font-weight: 400;"
+                    >
+                        Your Ring, Designed With Expert Guidance
+                    </h2>
+                    <div class="gold-divider mt-6"></div>
+                    <p class="text-lg text-gray-600">
+                        A private consultation is the fastest way to get clarity
+                        on exactly what you want &mdash; and what it should
+                        cost.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 fade-in">
+                    <!-- 1. Expert Education -->
+                    <div class="text-center p-6">
+                        <div
+                            class="w-14 h-14 mx-auto mb-4 bg-brand-primary/10 rounded-xl flex items-center justify-center"
+                        >
+                            <svg
+                                class="w-7 h-7 text-brand-primary"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                    d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+                                />
+                            </svg>
+                        </div>
+                        <h3
+                            class="font-heading text-base font-medium text-gray-900 mb-2"
+                        >
+                            Expert Education
+                        </h3>
+                        <p class="text-sm text-gray-500">
+                            We&rsquo;ll walk you through everything &mdash; the
+                            4Cs, metal options, lab vs natural &mdash; so you
+                            buy with confidence.
+                        </p>
+                    </div>
+                    <!-- 2. See Styles In Person -->
+                    <div class="text-center p-6">
+                        <div
+                            class="w-14 h-14 mx-auto mb-4 bg-brand-primary/10 rounded-xl flex items-center justify-center"
+                        >
+                            <svg
+                                class="w-7 h-7 text-brand-primary"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                />
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                                />
+                            </svg>
+                        </div>
+                        <h3
+                            class="font-heading text-base font-medium text-gray-900 mb-2"
+                        >
+                            See Styles In Person
+                        </h3>
+                        <p class="text-sm text-gray-500">
+                            Compare diamond sizes, shapes, and quality side by
+                            side and compare different ring styles. Photos
+                            don&rsquo;t do justice to how a ring looks in real
+                            life.
+                        </p>
+                    </div>
+                    <!-- 3. Personalised Design -->
+                    <div class="text-center p-6">
+                        <div
+                            class="w-14 h-14 mx-auto mb-4 bg-brand-primary/10 rounded-xl flex items-center justify-center"
+                        >
+                            <svg
+                                class="w-7 h-7 text-brand-primary"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                />
+                            </svg>
+                        </div>
+                        <h3
+                            class="font-heading text-base font-medium text-gray-900 mb-2"
+                        >
+                            Personalised Design
+                        </h3>
+                        <p class="text-sm text-gray-500">
+                            Work directly with us to design your own ring with
+                            multiple revisions possible. Bring inspiration or
+                            start from scratch &mdash; every detail is yours to
+                            choose.
+                        </p>
+                    </div>
+                    <!-- 4. Personalised Quote -->
+                    <div class="text-center p-6">
+                        <div
+                            class="w-14 h-14 mx-auto mb-4 bg-brand-primary/10 rounded-xl flex items-center justify-center"
+                        >
+                            <svg
+                                class="w-7 h-7 text-brand-primary"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                    d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                                />
+                            </svg>
+                        </div>
+                        <h3
+                            class="font-heading text-base font-medium text-gray-900 mb-2"
+                        >
+                            Personalised Quote
+                        </h3>
+                        <p class="text-sm text-gray-500">
+                            Get an itemised quote on the spot. No hidden fees,
+                            no pressure. Private jeweller pricing without retail
+                            markup.
+                        </p>
+                    </div>
+                </div>
+                <div class="text-center mt-10 fade-in">
+                    <a
+                        href="#calendly-widget"
+                        class="inline-flex items-center justify-center px-8 py-4 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark hover:shadow-xl transition-all duration-300 text-base"
+                    >
+                        Book Your Private Consultation
+                        <svg
+                            class="ml-2 w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                        </svg>
+                    </a>
+                    <p class="text-sm text-gray-400 mt-3">
+                        Sydney showroom or virtual &middot; Free &middot; No
+                        obligation
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 7: SECOND GUIDE CTA ===== -->
+        <section class="py-16 md:py-24 bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div class="fade-in text-center lg:text-left">
+                        <h2
+                            class="font-heading text-[1.75rem] md:text-[2.25rem] font-medium text-white mb-5 leading-tight"
+                        >
+                            Still researching engagement rings?
+                        </h2>
+                        <p class="text-lg text-gray-400 mb-6">
+                            Download the Engagement Ring Quality Guide before
+                            making a decision. It covers the key factors that
+                            determine diamond quality, the myths most buyers
+                            believe, and a realistic framework for budgeting.
+                        </p>
+                        <p class="text-sm text-gray-400 italic">
+                            Free, no-obligation download. No spam.
+                        </p>
+                    </div>
+                    <div class="fade-in">
+                        <div
+                            class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100"
+                        >
+                            <h3
+                                class="font-heading text-xl font-medium text-gray-900 mb-2 text-center"
+                            >
+                                Get Your Free Copy
+                            </h3>
+                            <p class="text-sm text-gray-500 mb-6 text-center">
+                                Instant download &mdash; no spam, no
+                                obligations.
+                            </p>
+                            <form
+                                id="guide-form-2"
+                                class="guide-form space-y-4"
+                                onsubmit="return handleGuideSubmit2(event);"
+                            >
+                                <!-- UTM hidden fields -->
+                                <input
+                                    type="hidden"
+                                    name="utm_source"
+                                    class="utm_source"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="utm_medium"
+                                    class="utm_medium"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="utm_campaign"
+                                    class="utm_campaign"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="utm_content"
+                                    class="utm_content"
+                                />
+                                <div>
+                                    <label
+                                        for="guide-name-2"
+                                        class="block text-sm font-medium text-gray-700 mb-1"
+                                        >Full Name</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="guide-name-2"
+                                        name="name"
+                                        required
+                                        placeholder="Your name"
+                                        class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm bg-white outline-none"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        for="guide-email-2"
+                                        class="block text-sm font-medium text-gray-700 mb-1"
+                                        >Email Address</label
+                                    >
+                                    <input
+                                        type="email"
+                                        id="guide-email-2"
+                                        name="email"
+                                        required
+                                        placeholder="you@example.com"
+                                        class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm bg-white outline-none"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        for="guide-phone-2"
+                                        class="block text-sm font-medium text-gray-700 mb-1"
+                                        >Phone
+                                        <span class="text-gray-400"
+                                            >(optional)</span
+                                        ></label
+                                    >
+                                    <input
+                                        type="tel"
+                                        id="guide-phone-2"
+                                        name="phone"
+                                        placeholder="04XX XXX XXX"
+                                        class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm bg-white outline-none"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        for="guide-timeline-2"
+                                        class="block text-sm font-medium text-gray-700 mb-1"
+                                        >Engagement Timeline</label
+                                    >
+                                    <select
+                                        id="guide-timeline-2"
+                                        name="timeline"
+                                        required
+                                        class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm bg-white outline-none appearance-none"
+                                    >
+                                        <option value="">
+                                            Select timeline...
+                                        </option>
+                                        <option value="Now - 2-6 weeks">
+                                            Now &ndash; 2&ndash;6 weeks
+                                        </option>
+                                        <option value="Soon - 6-12 weeks">
+                                            Soon &ndash; 6&ndash;12 weeks
+                                        </option>
+                                        <option value="Later - 3-6 months+">
+                                            Later &ndash; 3&ndash;6 Months+
+                                        </option>
+                                        <option value="Just researching">
+                                            Just researching
+                                        </option>
+                                    </select>
+                                </div>
+                                <button
+                                    type="submit"
+                                    id="guide-submit-btn-2"
+                                    class="w-full py-4 bg-gray-900 text-white font-medium rounded-xl hover:bg-gray-800 transition-all duration-300 text-sm"
+                                >
+                                    Send Me The Guide
+                                </button>
+                                <p class="text-xs text-gray-400 text-center">
+                                    Your information is never shared.
+                                    Unsubscribe anytime.
+                                </p>
+                            </form>
+                            <div
+                                id="guide-success-2"
+                                class="hidden text-center py-8"
+                            >
+                                <div
+                                    class="w-16 h-16 mx-auto mb-4 bg-brand-primary/10 rounded-full flex items-center justify-center"
+                                >
+                                    <svg
+                                        class="w-8 h-8 text-brand-primary"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M5 13l4 4L19 7"
+                                        />
+                                    </svg>
+                                </div>
+                                <h3
+                                    class="font-heading text-xl font-medium text-gray-900 mb-2"
+                                >
+                                    Check Your Email
+                                </h3>
+                                <p class="text-sm text-gray-600 mb-6">
+                                    Your guide is on its way. In the
+                                    meantime&hellip;
+                                </p>
+                                <a
+                                    href="#calendly-widget"
+                                    class="inline-flex items-center justify-center px-6 py-3 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark transition-all duration-300 text-sm"
+                                    >Book Your Private Consultation</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MAP SECTION ===== -->
+        <section id="showroom-map" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-14 fade-in">
+                    <p class="section-label mb-4">Sydney Showroom</p>
+                    <h2 class="font-heading text-3xl md:text-4xl text-gray-900" style="font-weight: 400;">
+                        Visit Our Sydney Showroom
+                    </h2>
+                    <div class="gold-divider mt-6"></div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6 fade-in">
+                    <!-- Left: Office photo -->
+                    <div class="relative rounded-xl overflow-hidden shadow-lg" style="min-height: 400px;">
+                        <img
+                            src="{{ 'house-of-diamonds-office.jpg' | asset_url }}"
+                            alt="House of Diamonds Sydney showroom"
+                            class="absolute inset-0 w-full h-full object-cover"
+                        />
+                        <div class="absolute inset-0 rounded-xl" style="background: linear-gradient(to top, rgba(7,43,49,0.6) 0%, transparent 50%);"></div>
+                        <div class="absolute bottom-6 left-6">
+                            <p class="text-white font-medium text-sm">Level 17, 175 Pitt Street</p>
+                            <p class="text-white/70 text-xs mt-0.5">Sydney NSW 2000</p>
+                            <p class="text-white/70 text-xs mt-0.5">Mon–Sat · By appointment</p>
+                        </div>
+                    </div>
+                    <!-- Right: Map -->
+                    <div class="rounded-xl overflow-hidden shadow-lg" style="min-height: 400px;">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.8181609054045!2d151.20556931297443!3d-33.86857587311521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80a34e066a2c73c5%3A0xf090a537ebe3a8ff!2sHouse%20of%20Diamonds!5e0!3m2!1sen!2sau!4v1770166872807!5m2!1sen!2sau"
+                            width="100%"
+                            height="100%"
+                            style="border: 0; display: block;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FINAL CTA ===== -->
+        <section class="py-16 md:py-20 bg-gray-900 text-white">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="font-heading text-3xl md:text-4xl font-medium mb-4">
+                    Two Ways to Get Started
+                </h2>
+                <p class="text-gray-400 mb-10 text-lg">
+                    Whether you're ready to design or still researching, we're
+                    here to help you make the right decision.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a
+                        href="#calendly-widget"
+                        class="inline-flex items-center justify-center px-8 py-4 bg-brand-primary text-white font-medium rounded-full hover:bg-brand-dark hover:shadow-xl transition-all duration-300 text-base"
+                    >
+                        Book Private Consultation
+                    </a>
+                    <a
+                        href="#guide"
+                        class="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300 text-base"
+                    >
+                        Download Free Guide
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="bg-white border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div>
+                        <img
+                            src="https://www.houseofdiamonds.com.au/cdn/shop/files/House_of_diamonds_logo_standard-svg.svg?v=1695613849&width=200"
+                            alt="House of Diamonds"
+                            class="h-10 w-auto mb-4"
+                        />
+                        <p class="text-sm text-gray-500">
+                            Sydney's trusted private jeweller. Custom engagement
+                            rings designed and handcrafted with expert guidance.
+                        </p>
+                    </div>
+                    <div>
+                        <h4
+                            class="font-heading text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4"
+                        >
+                            Contact
+                        </h4>
+                        <ul class="space-y-2 text-sm text-gray-500">
+                            <li>
+                                <a
+                                    href="tel:1800845320"
+                                    class="hover:text-brand-primary transition-colors"
+                                    >1800 845 320</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="mailto:info@houseofdiamonds.com.au"
+                                    class="hover:text-brand-primary transition-colors"
+                                    >info@houseofdiamonds.com.au</a
+                                >
+                            </li>
+                            <li>Level 17, 175 Pitt Street, Sydney NSW 2000</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4
+                            class="font-heading text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4"
+                        >
+                            Client Care Hours
+                        </h4>
+                        <ul class="space-y-1 text-sm text-gray-500">
+                            <li>
+                                Monday&ndash;Wednesday: 8:30am &ndash; 6:30pm
+                            </li>
+                            <li>Thursday: 8:30am &ndash; 9:30pm</li>
+                            <li>Friday: 8:30am &ndash; 6:30pm</li>
+                            <li>Saturday: 9:00am &ndash; 5:00pm</li>
+                            <li>Sunday: 10:00am &ndash; 4:00pm</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4
+                            class="font-heading text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4"
+                        >
+                            Follow Us
+                        </h4>
+                        <div class="flex gap-4">
+                            <a
+                                href="https://www.instagram.com/houseofdiamonds.au_/"
+                                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-brand-primary/10 transition-colors"
+                                aria-label="Instagram"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-gray-600"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                                    />
+                                </svg>
+                            </a>
+                            <a
+                                href="https://www.facebook.com/houseofdiamondsaustralia/"
+                                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-brand-primary/10 transition-colors"
+                                aria-label="Facebook"
+                            >
+                                <svg
+                                    class="w-5 h-5 text-gray-600"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                                    />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="border-t border-gray-200 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
+                >
+                    <p class="text-sm text-gray-500">
+                        &copy; 2026 House of Diamonds. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 text-sm">
+                        <a
+                            href="https://www.houseofdiamonds.com.au/policies/privacy-policy"
+                            class="text-gray-500 hover:text-brand-primary transition-colors"
+                            >Privacy Policy</a
+                        >
+                        <a
+                            href="https://www.houseofdiamonds.com.au/policies/terms-of-service"
+                            class="text-gray-500 hover:text-brand-primary transition-colors"
+                            >Terms of Service</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- ===== SCRIPTS ===== -->
+
+        <!-- Mobile Menu -->
+        <script>
+            const menuBtn = document.getElementById("mobile-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+            menuBtn.addEventListener("click", () =>
+                mobileMenu.classList.toggle("hidden"),
+            );
+            mobileMenu
+                .querySelectorAll("a")
+                .forEach((link) =>
+                    link.addEventListener("click", () =>
+                        mobileMenu.classList.add("hidden"),
+                    ),
+                );
+        </script>
+
+        <!-- Scroll fade-in -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting)
+                                entry.target.classList.add("visible");
+                        });
+                    },
+                    { threshold: 0.1 },
+                );
+                document
+                    .querySelectorAll(".fade-in")
+                    .forEach((el) => observer.observe(el));
+            });
+        </script>
+
+        <!-- Guide Form Handler -->
+        <script>
+            function handleGuideSubmit(e) {
+                e.preventDefault();
+                const form = document.getElementById("guide-form");
+                const btn = document.getElementById("guide-submit-btn");
+                const successMsg = document.getElementById("guide-success");
+
+                btn.textContent = "Sending...";
+                btn.disabled = true;
+
+                const formData = {
+                    name: document.getElementById("guide-name").value,
+                    email: document.getElementById("guide-email").value,
+                    phone: document.getElementById("guide-phone").value,
+                    timeline: document.getElementById("guide-timeline").value,
+                    source: "Expert Guide Landing Page",
+                    tag: "Guide Lead",
+                    utm_source: document.getElementById("utm_source").value,
+                    utm_medium: document.getElementById("utm_medium").value,
+                    utm_campaign: document.getElementById("utm_campaign").value,
+                    utm_content: document.getElementById("utm_content").value,
+                };
+
+                // Submit to Web3Forms
+                fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        access_key: "7d34111d-1396-483c-961f-0ee423385f65",
+                        subject: "New Guide Download - " + formData.name,
+                        from_name: "Expert Guide Page",
+                        ...formData,
+                    }),
+                })
+                    .then(() => {
+                        // Fire Meta Pixel Lead event
+                        if (typeof fbq !== "undefined") {
+                            fbq("track", "Lead", {
+                                content_name: "Engagement Ring Quality Guide",
+                                content_category: "Guide Download",
+                                value: 0,
+                                currency: "AUD",
+                            });
+                        }
+
+                        // Fire Google Ads event
+                        if (typeof gtag !== "undefined") {
+                            gtag("event", "generate_lead", {
+                                event_category: "Guide",
+                                event_label: "Expert Guide Download",
+                            });
+                        }
+
+                        // Show success
+                        form.classList.add("hidden");
+                        successMsg.classList.remove("hidden");
+                    })
+                    .catch(() => {
+                        btn.textContent = "Download Free Guide";
+                        btn.disabled = false;
+                        alert(
+                            "Something went wrong. Please try again or call us on 0410 744 631.",
+                        );
+                    });
+
+                return false;
+            }
+        </script>
+
+        <!-- Google Ads Conversion Tracking for Calendly -->
+        <script>
+            window.addEventListener("message", function (e) {
+                if (
+                    e.origin === "https://calendly.com" &&
+                    e.data.event === "calendly.event_scheduled"
+                ) {
+                    // Google Ads conversion
+                    gtag("event", "conversion", {
+                        send_to: "AW-17894796124/kwRxCMK9l-obENzW89RC",
+                        value: 1.0,
+                        currency: "AUD",
+                    });
+                    // Meta Pixel - Consultation Booked
+                    if (typeof fbq !== "undefined") {
+                        fbq("track", "Schedule", {
+                            content_name: "Private Consultation",
+                            content_category: "Consultation Booking",
+                            value: 0,
+                            currency: "AUD",
+                        });
+                    }
+                }
+            });
+        </script>
+        <!-- UTM Parameter Capture -->
+        <script>
+            (function () {
+                var params = new URLSearchParams(window.location.search);
+                var utmFields = [
+                    "utm_source",
+                    "utm_medium",
+                    "utm_campaign",
+                    "utm_content",
+                ];
+                utmFields.forEach(function (field) {
+                    var val = params.get(field) || "";
+                    // Populate by ID (form 1)
+                    var el = document.getElementById(field);
+                    if (el) el.value = val;
+                    // Populate by class (form 2)
+                    document
+                        .querySelectorAll("." + field)
+                        .forEach(function (el2) {
+                            el2.value = val;
+                        });
+                });
+            })();
+        </script>
+
+        <!-- Second Guide Form Handler -->
+        <script>
+            function handleGuideSubmit2(e) {
+                e.preventDefault();
+                var form = document.getElementById("guide-form-2");
+                var btn = document.getElementById("guide-submit-btn-2");
+                var successMsg = document.getElementById("guide-success-2");
+
+                btn.textContent = "Sending...";
+                btn.disabled = true;
+
+                var formData = {
+                    name: document.getElementById("guide-name-2").value,
+                    email: document.getElementById("guide-email-2").value,
+                    phone: document.getElementById("guide-phone-2").value,
+                    timeline: document.getElementById("guide-timeline-2").value,
+                    source: "Expert Guide Landing Page (Second CTA)",
+                    tag: "Guide Lead",
+                };
+
+                fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        access_key: "7d34111d-1396-483c-961f-0ee423385f65",
+                        subject: "New Guide Download - " + formData.name,
+                        from_name: "Expert Guide Page (2nd CTA)",
+                        ...formData,
+                    }),
+                })
+                    .then(function () {
+                        // META PIXEL: Lead event on guide form submission
+                        if (typeof fbq !== "undefined") {
+                            fbq("track", "Lead", {
+                                content_name: "Engagement Ring Quality Guide",
+                                content_category: "Guide Download",
+                                value: 0,
+                                currency: "AUD",
+                            });
+                        }
+                        if (typeof gtag !== "undefined") {
+                            gtag("event", "generate_lead", {
+                                event_category: "Guide",
+                                event_label: "Expert Guide Download (2nd CTA)",
+                            });
+                        }
+                        form.classList.add("hidden");
+                        successMsg.classList.remove("hidden");
+                    })
+                    .catch(function () {
+                        btn.textContent = "Send Me The Guide";
+                        btn.disabled = false;
+                        alert(
+                            "Something went wrong. Please try again or call us on 0410 744 631.",
+                        );
+                    });
+
+                return false;
+            }
+        </script>
+
+        <!-- Moments Slider + Lightbox -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // --- Slider nav ---
+                var slider = document.getElementById("moments-slider");
+                var prev = document.getElementById("moments-prev");
+                var next = document.getElementById("moments-next");
+                if (slider && prev && next) {
+                    var slideWidth = 350 + 16;
+                    prev.addEventListener("click", function () { slider.scrollBy({ left: -slideWidth, behavior: "smooth" }); });
+                    next.addEventListener("click", function () { slider.scrollBy({ left: slideWidth, behavior: "smooth" }); });
+                }
+
+                // --- Lightbox ---
+                var lightbox = document.getElementById("moments-lightbox-guide");
+                var lbImg = document.getElementById("lightbox-img-guide");
+                var lbCaption = document.getElementById("lightbox-caption-guide");
+                var lbDots = document.getElementById("lightbox-dots-guide");
+                var lbClose = document.getElementById("lightbox-close-guide");
+                var lbPrev = document.getElementById("lightbox-prev-guide");
+                var lbNext = document.getElementById("lightbox-next-guide");
+                var currentImages = [], currentIndex = 0;
+
+                function showLightbox(images, caption, index) {
+                    currentImages = images; currentIndex = index;
+                    lbCaption.textContent = caption;
+                    updateLightboxImage();
+                    lightbox.classList.remove("hidden"); lightbox.classList.add("flex");
+                    document.body.style.overflow = "hidden";
+                }
+                function updateLightboxImage() {
+                    lbImg.src = currentImages[currentIndex];
+                    lbDots.innerHTML = "";
+                    currentImages.forEach(function(_, i) {
+                        var dot = document.createElement("button");
+                        dot.className = "w-2 h-2 rounded-full transition-colors " + (i === currentIndex ? "bg-white" : "bg-white/30");
+                        dot.addEventListener("click", function() { currentIndex = i; updateLightboxImage(); });
+                        lbDots.appendChild(dot);
+                    });
+                    lbPrev.style.display = currentImages.length > 1 ? "flex" : "none";
+                    lbNext.style.display = currentImages.length > 1 ? "flex" : "none";
+                }
+                function closeLightbox() {
+                    lightbox.classList.add("hidden"); lightbox.classList.remove("flex");
+                    document.body.style.overflow = "";
+                }
+                lbClose.addEventListener("click", closeLightbox);
+                lightbox.addEventListener("click", function(e) { if (e.target === lightbox) closeLightbox(); });
+                lbPrev.addEventListener("click", function() { currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length; updateLightboxImage(); });
+                lbNext.addEventListener("click", function() { currentIndex = (currentIndex + 1) % currentImages.length; updateLightboxImage(); });
+                document.addEventListener("keydown", function(e) {
+                    if (lightbox.classList.contains("hidden")) return;
+                    if (e.key === "Escape") closeLightbox();
+                    if (e.key === "ArrowLeft") { currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length; updateLightboxImage(); }
+                    if (e.key === "ArrowRight") { currentIndex = (currentIndex + 1) % currentImages.length; updateLightboxImage(); }
+                });
+                document.querySelectorAll(".moment-card").forEach(function(card) {
+                    card.addEventListener("click", function() {
+                        var images = [];
+                        try { images = JSON.parse(card.getAttribute("data-moment-images")); } catch(e) {}
+                        if (images.length) showLightbox(images, card.getAttribute("data-moment-caption") || "", 0);
+                    });
+                });
+            });
+        </script>
+
+        <!-- META PIXEL: ViewContent event when user scrolls past video section -->
+        <script>
+            (function () {
+                var videoSection = document.querySelector(
+                    '[class*="EXPERT VIDEO"]',
+                );
+                // Use the first section after the hero (video section)
+                var sections = document.querySelectorAll("section");
+                var videoEl = sections.length > 1 ? sections[1] : null;
+                if (videoEl) {
+                    var videoObserver = new IntersectionObserver(
+                        function (entries) {
+                            entries.forEach(function (entry) {
+                                if (entry.isIntersecting) {
+                                    if (typeof fbq !== "undefined") {
+                                        fbq("track", "ViewContent", {
+                                            content_name:
+                                                "Expert Video Section",
+                                            content_category: "Video",
+                                        });
+                                    }
+                                    videoObserver.unobserve(entry.target);
+                                }
+                            });
+                        },
+                        { threshold: 0.5 },
+                    );
+                    videoObserver.observe(videoEl);
+                }
+            })();
+        </script>
+
+        <!-- Vimeo Player SDK -->
+        <script src="https://player.vimeo.com/api/player.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const iframe = document.getElementById("vimeo-player");
+                const unmuteBtn = document.getElementById("vimeo-unmute-btn");
+
+                if (!iframe) return;
+
+                const player = new Vimeo.Player(iframe);
+
+                // Autoplay muted after 3 seconds (mobile requires muted autoplay)
+                setTimeout(function () {
+                    player.setMuted(true);
+                    player.play().catch(function (error) {
+                        console.log("Autoplay prevented:", error);
+                    });
+                }, 3000);
+
+                // Unmute button click handler
+                if (unmuteBtn) {
+                    unmuteBtn.addEventListener("click", function () {
+                        player.setMuted(false);
+                        unmuteBtn.style.display = "none";
+                    });
+                }
+            });
+        </script>
+
+        <!-- Dynamic review count from Elfsight widget -->
+        <script>
+            function updateReviewCounts(reviewCount) {
+                const heroCount = document.getElementById("hero-review-count");
+                if (heroCount) heroCount.textContent = reviewCount;
+
+                const mobileCount = document.getElementById(
+                    "hero-review-count-mobile",
+                );
+                if (mobileCount)
+                    mobileCount.textContent = reviewCount;
+            }
+
+            function extractElfsightReviewCount() {
+                const elfsightWidget = document.querySelector(
+                    ".elfsight-app-6b0842d6-849c-4c01-9858-3f51d512cad9",
+                );
+                if (!elfsightWidget) return null;
+
+                const allText =
+                    elfsightWidget.innerText || elfsightWidget.textContent;
+                const reviewPatterns = [
+                    /(\d+)\s*reviews?/i,
+                    /\((\d+)\)/,
+                    /Based on (\d+)/i,
+                ];
+
+                for (const pattern of reviewPatterns) {
+                    const match = allText.match(pattern);
+                    if (match && match[1]) {
+                        return parseInt(match[1], 10);
+                    }
+                }
+                return null;
+            }
+
+            function observeElfsightWidget() {
+                const targetNode = document.body;
+                const config = {
+                    childList: true,
+                    subtree: true,
+                    characterData: true,
+                };
+                let lastCount = null;
+
+                const checkForReviewCount = () => {
+                    const count = extractElfsightReviewCount();
+                    if (count && count !== lastCount) {
+                        lastCount = count;
+                        updateReviewCounts(count);
+                    }
+                };
+
+                const observer = new MutationObserver(() => {
+                    checkForReviewCount();
+                });
+
+                observer.observe(targetNode, config);
+
+                let attempts = 0;
+                const interval = setInterval(() => {
+                    checkForReviewCount();
+                    attempts++;
+                    if (attempts >= 30 || lastCount !== null) {
+                        clearInterval(interval);
+                    }
+                }, 1000);
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener(
+                    "DOMContentLoaded",
+                    observeElfsightWidget,
+                );
+            } else {
+                observeElfsightWidget();
+            }
+        </script>
+
+        <!--
+        ===== SECTION 8: TRACKING PLACEHOLDERS =====
+
+        META PIXEL EVENTS SUMMARY:
+        1. PageView — fires on page load (already in <head>)
+        2. Lead — fires on guide form submission (both form 1 and form 2)
+        3. Schedule — fires on Calendly booking confirmation
+        4. Schedule — fires on Meet Belmir consultation button click
+        5. ViewContent — fires when user scrolls past video section
+
+        GOOGLE ADS EVENTS:
+        1. Conversion — fires on Calendly booking
+        2. generate_lead — fires on guide form submission
+
+        MICROSOFT CLARITY:
+        - Session recording active (tag: v5onrlxmra)
+
+        TO ADD LATER:
+        - Replace video placeholder with actual video embed
+        - Belmir portrait added (belmir-2.png)
+        - Connect guide PDF to form submission flow
+        -->
+
+        <script>
+        (function() {
+            // ── Count-up for review numbers ──
+            function countUp(el, target, duration) {
+                var start = null;
+                function step(ts) {
+                    if (!start) start = ts;
+                    var progress = Math.min((ts - start) / duration, 1);
+                    var ease = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = Math.floor(ease * target);
+                    if (progress < 1) requestAnimationFrame(step);
+                    else el.textContent = target;
+                }
+                requestAnimationFrame(step);
+            }
+
+            var countEls = document.querySelectorAll('#hero-review-count, #hero-review-count-mobile');
+            if (countEls.length && 'IntersectionObserver' in window) {
+                var countObs = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) {
+                            countUp(e.target, parseInt(e.target.textContent) || 110, 1400);
+                            countObs.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 1 });
+                countEls.forEach(function(el) { countObs.observe(el); });
+            }
+
+            // ── Moments slider swipe hint ──
+            var sliderEl = document.getElementById('moments-slider-meta') || document.getElementById('moments-slider');
+            if (sliderEl && !sessionStorage.getItem('swipeHintShown') && 'IntersectionObserver' in window) {
+                var sliderObs = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) {
+                            sessionStorage.setItem('swipeHintShown', '1');
+                            setTimeout(function() {
+                                sliderEl.classList.add('swipe-hint-active');
+                                setTimeout(function() { sliderEl.classList.remove('swipe-hint-active'); }, 950);
+                            }, 600);
+                            sliderObs.unobserve(sliderEl);
+                        }
+                    });
+                }, { threshold: 0.6 });
+                sliderObs.observe(sliderEl);
+            }
+        })();
+        </script>
+        <!-- Elfsight sticky widgets -->
+        <div class="elfsight-app-261e604a-8c49-40dc-a757-e744d1e0cf58" data-elfsight-app-lazy></div>
+        <div class="elfsight-app-2e153ef7-aae4-4989-a939-1b73822f0d92" data-elfsight-app-lazy></div>
+
+{% schema %}
+{
+  "name": "Expert Guide Page",
+  "settings": []
+}
+{% endschema %}

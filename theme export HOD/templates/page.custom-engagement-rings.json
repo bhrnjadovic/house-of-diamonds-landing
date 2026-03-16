@@ -1,0 +1,10 @@
+{
+  "layout": "landing-page",
+  "sections": {
+    "main": {
+      "type": "meta-landing-page",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
