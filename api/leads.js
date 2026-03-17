@@ -54,6 +54,20 @@ export default async function handler(req, res) {
         revision: KLAVIYO_REVISION,
     };
 
+    // ── Normalise phone to E.164 (Klaviyo rejects anything else) ───────────────
+    // Handles: 04XX XXX XXX → +614XXXXXXXX, +61... → kept, blank → omitted
+    function toE164(raw) {
+        if (!raw) return null;
+        const digits = raw.replace(/\D/g, "");
+        if (!digits) return null;
+        if (digits.startsWith("61") && digits.length === 11) return "+" + digits;
+        if (digits.startsWith("0") && digits.length === 10) return "+61" + digits.slice(1);
+        if (digits.startsWith("4") && digits.length === 9) return "+61" + digits;
+        // Already has country code or unknown format — prepend + if missing
+        return raw.startsWith("+") ? raw : "+" + digits;
+    }
+    const phoneE164 = toE164(phone);
+
     // Custom properties sent to both the profile and the event
     const customProperties = {
         timeline:       timeline      || "",
@@ -74,8 +88,17 @@ export default async function handler(req, res) {
             attributes: {
                 email,
                 first_name,
-                // Only include phone_number if provided — Klaviyo rejects empty strings
-                ...(phone ? { phone_number: phone } : {}),
+                // Only include phone_number if valid E.164 — Klaviyo rejects empty/malformed
+                ...(phoneE164 ? { phone_number: phoneE164 } : {}),
+                // Set email marketing consent so profile is Subscribed, not Never Subscribed
+                subscriptions: {
+                    email: {
+                        marketing: {
+                            consent: "SUBSCRIBED",
+                            consented_at: new Date().toISOString(),
+                        },
+                    },
+                },
                 properties: customProperties,
             },
         },
@@ -115,8 +138,8 @@ export default async function handler(req, res) {
                 },
                 properties: {
                     first_name,
-                    phone:   phone   || "",
-                    message: message || "",
+                    phone:   phoneE164 || "",
+                    message: message   || "",
                     ...customProperties,
                 },
             },
