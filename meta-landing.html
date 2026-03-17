@@ -592,6 +592,8 @@
                                 <input type="hidden" id="meta_utm_medium" name="utm_medium" />
                                 <input type="hidden" id="meta_utm_campaign" name="utm_campaign" />
                                 <input type="hidden" id="meta_utm_content" name="utm_content" />
+                                <input type="hidden" id="meta_fbclid" name="fbclid" />
+                                <input type="hidden" id="meta_landing_page" name="landing_page" value="meta-landing" />
                                 <input type="hidden" name="source" value="Meta Landing Page" />
                                 <input type="hidden" name="tag" value="Meta Consultation Lead" />
                                 <div>
@@ -1811,15 +1813,19 @@
             }
         </script>
 
-        <!-- UTM Capture -->
+        <!-- UTM + fbclid Capture -->
         <script>
             (function () {
                 const params = new URLSearchParams(window.location.search);
-                const fields = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
-                fields.forEach((f) => {
+                ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach((f) => {
                     const el = document.getElementById("meta_" + f);
                     if (el && params.get(f)) el.value = params.get(f);
                 });
+                const fbclid = params.get("fbclid");
+                if (fbclid) {
+                    const el = document.getElementById("meta_fbclid");
+                    if (el) el.value = fbclid;
+                }
             })();
         </script>
 
@@ -1837,27 +1843,37 @@
                 btn.disabled = true;
                 btn.style.opacity = "0.7";
 
-                const formData = {
-                    access_key: "7d34111d-1396-483c-961f-0ee423385f65",
-                    subject: "New Meta Landing Page Lead — " + document.getElementById("meta-name").value,
-                    from_name: "Meta Landing Page",
-                    name: document.getElementById("meta-name").value,
+                const leadData = {
+                    first_name: document.getElementById("meta-name").value,
                     email: document.getElementById("meta-email").value,
                     phone: document.getElementById("meta-phone").value,
                     timeline: document.getElementById("meta-timeline").value,
+                    budget: document.getElementById("meta-budget").value,
                     message: document.getElementById("meta-message").value,
-                    source: "Meta Landing Page",
-                    tag: "Meta Consultation Lead",
+                    landing_page: "meta-landing",
                     utm_source: document.getElementById("meta_utm_source").value,
                     utm_medium: document.getElementById("meta_utm_medium").value,
                     utm_campaign: document.getElementById("meta_utm_campaign").value,
                     utm_content: document.getElementById("meta_utm_content").value,
+                    fbclid: document.getElementById("meta_fbclid").value,
                 };
+
+                // POST to /api/leads (fire and forget — does not block submission)
+                fetch("/api/leads", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(leadData),
+                }).catch(() => {});
 
                 fetch("https://api.web3forms.com/submit", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(formData),
+                    body: JSON.stringify({
+                        access_key: "7d34111d-1396-483c-961f-0ee423385f65",
+                        subject: "New Meta Landing Page Lead — " + leadData.first_name,
+                        from_name: "Meta Landing Page",
+                        ...leadData,
+                    }),
                 })
                 .then((res) => res.json())
                 .then((data) => {

@@ -1623,26 +1623,12 @@
                                 onsubmit="return handleGuideSubmit(event);"
                             >
                                 <!-- UTM hidden fields (auto-populated by JS) -->
-                                <input
-                                    type="hidden"
-                                    name="utm_source"
-                                    id="utm_source"
-                                />
-                                <input
-                                    type="hidden"
-                                    name="utm_medium"
-                                    id="utm_medium"
-                                />
-                                <input
-                                    type="hidden"
-                                    name="utm_campaign"
-                                    id="utm_campaign"
-                                />
-                                <input
-                                    type="hidden"
-                                    name="utm_content"
-                                    id="utm_content"
-                                />
+                                <input type="hidden" name="utm_source" id="utm_source" />
+                                <input type="hidden" name="utm_medium" id="utm_medium" />
+                                <input type="hidden" name="utm_campaign" id="utm_campaign" />
+                                <input type="hidden" name="utm_content" id="utm_content" />
+                                <input type="hidden" name="fbclid" id="guide_fbclid" />
+                                <input type="hidden" name="landing_page" value="expert-guide" />
                                 <div>
                                     <label
                                         for="guide-name"
@@ -2657,26 +2643,12 @@
                                 onsubmit="return handleGuideSubmit2(event);"
                             >
                                 <!-- UTM hidden fields -->
-                                <input
-                                    type="hidden"
-                                    name="utm_source"
-                                    class="utm_source"
-                                />
-                                <input
-                                    type="hidden"
-                                    name="utm_medium"
-                                    class="utm_medium"
-                                />
-                                <input
-                                    type="hidden"
-                                    name="utm_campaign"
-                                    class="utm_campaign"
-                                />
-                                <input
-                                    type="hidden"
-                                    name="utm_content"
-                                    class="utm_content"
-                                />
+                                <input type="hidden" name="utm_source" class="utm_source" />
+                                <input type="hidden" name="utm_medium" class="utm_medium" />
+                                <input type="hidden" name="utm_campaign" class="utm_campaign" />
+                                <input type="hidden" name="utm_content" class="utm_content" />
+                                <input type="hidden" name="fbclid" class="guide_fbclid" />
+                                <input type="hidden" name="landing_page" value="expert-guide" />
                                 <div>
                                     <label
                                         for="guide-name-2"
@@ -3031,18 +3003,26 @@
                 btn.textContent = "Sending...";
                 btn.disabled = true;
 
-                const formData = {
-                    name: document.getElementById("guide-name").value,
+                const leadData = {
+                    first_name: document.getElementById("guide-name").value,
                     email: document.getElementById("guide-email").value,
                     phone: document.getElementById("guide-phone").value,
                     timeline: document.getElementById("guide-timeline").value,
-                    source: "Expert Guide Landing Page",
-                    tag: "Guide Lead",
+                    message: "",
+                    landing_page: "expert-guide",
                     utm_source: document.getElementById("utm_source").value,
                     utm_medium: document.getElementById("utm_medium").value,
                     utm_campaign: document.getElementById("utm_campaign").value,
                     utm_content: document.getElementById("utm_content").value,
+                    fbclid: document.getElementById("guide_fbclid").value,
                 };
+
+                // POST to /api/leads (fire and forget)
+                fetch("/api/leads", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(leadData),
+                }).catch(() => {});
 
                 // Submit to Web3Forms
                 fetch("https://api.web3forms.com/submit", {
@@ -3050,9 +3030,11 @@
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         access_key: "7d34111d-1396-483c-961f-0ee423385f65",
-                        subject: "New Guide Download - " + formData.name,
+                        subject: "New Guide Download - " + leadData.first_name,
                         from_name: "Expert Guide Page",
-                        ...formData,
+                        source: "Expert Guide Landing Page",
+                        tag: "Guide Lead",
+                        ...leadData,
                     }),
                 })
                     .then(() => {
@@ -3115,28 +3097,22 @@
                 }
             });
         </script>
-        <!-- UTM Parameter Capture -->
+        <!-- UTM + fbclid Capture -->
         <script>
             (function () {
                 var params = new URLSearchParams(window.location.search);
-                var utmFields = [
-                    "utm_source",
-                    "utm_medium",
-                    "utm_campaign",
-                    "utm_content",
-                ];
-                utmFields.forEach(function (field) {
+                // Populate UTM fields
+                ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach(function (field) {
                     var val = params.get(field) || "";
-                    // Populate by ID (form 1)
                     var el = document.getElementById(field);
                     if (el) el.value = val;
-                    // Populate by class (form 2)
-                    document
-                        .querySelectorAll("." + field)
-                        .forEach(function (el2) {
-                            el2.value = val;
-                        });
+                    document.querySelectorAll("." + field).forEach(function (el2) { el2.value = val; });
                 });
+                // Populate fbclid
+                var fbclid = params.get("fbclid") || "";
+                var fbclidById = document.getElementById("guide_fbclid");
+                if (fbclidById) fbclidById.value = fbclid;
+                document.querySelectorAll(".guide_fbclid").forEach(function (el) { el.value = fbclid; });
             })();
         </script>
 
@@ -3151,23 +3127,44 @@
                 btn.textContent = "Sending...";
                 btn.disabled = true;
 
-                var formData = {
-                    name: document.getElementById("guide-name-2").value,
+                var form2 = document.getElementById("guide-form-2");
+                var utmSourceEl = form2.querySelector(".utm_source");
+                var utmMediumEl = form2.querySelector(".utm_medium");
+                var utmCampaignEl = form2.querySelector(".utm_campaign");
+                var utmContentEl = form2.querySelector(".utm_content");
+                var fbclidEl = form2.querySelector(".guide_fbclid");
+
+                var leadData = {
+                    first_name: document.getElementById("guide-name-2").value,
                     email: document.getElementById("guide-email-2").value,
                     phone: document.getElementById("guide-phone-2").value,
                     timeline: document.getElementById("guide-timeline-2").value,
-                    source: "Expert Guide Landing Page (Second CTA)",
-                    tag: "Guide Lead",
+                    message: "",
+                    landing_page: "expert-guide",
+                    utm_source: utmSourceEl ? utmSourceEl.value : "",
+                    utm_medium: utmMediumEl ? utmMediumEl.value : "",
+                    utm_campaign: utmCampaignEl ? utmCampaignEl.value : "",
+                    utm_content: utmContentEl ? utmContentEl.value : "",
+                    fbclid: fbclidEl ? fbclidEl.value : "",
                 };
+
+                // POST to /api/leads (fire and forget)
+                fetch("/api/leads", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(leadData),
+                }).catch(function () {});
 
                 fetch("https://api.web3forms.com/submit", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         access_key: "7d34111d-1396-483c-961f-0ee423385f65",
-                        subject: "New Guide Download - " + formData.name,
+                        subject: "New Guide Download - " + leadData.first_name,
                         from_name: "Expert Guide Page (2nd CTA)",
-                        ...formData,
+                        source: "Expert Guide Landing Page (Second CTA)",
+                        tag: "Guide Lead",
+                        ...leadData,
                     }),
                 })
                     .then(function () {
