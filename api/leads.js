@@ -36,7 +36,6 @@ export default async function handler(req, res) {
     }
 
     // ── 2. Save lead to database (TODO: replace with real DB write) ──────────
-    // Example: await db.leads.create({ first_name, email, phone, ... })
     console.log("New lead received:", { first_name, email, landing_page });
 
     // ── 3. Klaviyo integration ───────────────────────────────────────────────
@@ -44,7 +43,6 @@ export default async function handler(req, res) {
 
     if (!KLAVIYO_API_KEY) {
         console.error("KLAVIYO_PRIVATE_KEY environment variable is not set");
-        // Still return 200 so the form success state shows — Klaviyo is non-blocking
         return res.status(200).json({ success: true, klaviyo: false });
     }
 
@@ -54,8 +52,7 @@ export default async function handler(req, res) {
         revision: KLAVIYO_REVISION,
     };
 
-    // ── Normalise phone to E.164 (Klaviyo rejects anything else) ───────────────
-    // Handles: 04XX XXX XXX → +614XXXXXXXX, +61... → kept, blank → omitted
+    // ── Normalise phone to E.164 ─────────────────────────────────────────────
     function toE164(raw) {
         if (!raw) return null;
         const digits = raw.replace(/\D/g, "");
@@ -63,42 +60,31 @@ export default async function handler(req, res) {
         if (digits.startsWith("61") && digits.length === 11) return "+" + digits;
         if (digits.startsWith("0") && digits.length === 10) return "+61" + digits.slice(1);
         if (digits.startsWith("4") && digits.length === 9) return "+61" + digits;
-        // Already has country code or unknown format — prepend + if missing
         return raw.startsWith("+") ? raw : "+" + digits;
     }
     const phoneE164 = toE164(phone);
 
     // Custom properties sent to both the profile and the event
     const customProperties = {
-        timeline:       timeline      || "",
-        budget:         budget        || "",
-        landing_page:   landing_page  || "",
-        utm_source:     utm_source    || "",
-        utm_medium:     utm_medium    || "",
-        utm_campaign:   utm_campaign  || "",
-        utm_content:    utm_content   || "",
-        fbclid:         fbclid        || "",
+        timeline:     timeline     || "",
+        budget:       budget       || "",
+        landing_page: landing_page || "",
+        utm_source:   utm_source   || "",
+        utm_medium:   utm_medium   || "",
+        utm_campaign: utm_campaign || "",
+        utm_content:  utm_content  || "",
+        fbclid:       fbclid       || "",
     };
 
-    // ── 3a. Upsert Klaviyo profile ───────────────────────────────────────────
-    // profile-import upserts by email — existing profiles are updated, not duplicated.
+    // ── 3a. Upsert Klaviyo profile via profile-import ────────────────────────
+    // profile-import upserts by email — no subscriptions block (not supported here)
     const profilePayload = {
         data: {
             type: "profile",
             attributes: {
                 email,
                 first_name,
-                // Only include phone_number if valid E.164 — Klaviyo rejects empty/malformed
                 ...(phoneE164 ? { phone_number: phoneE164 } : {}),
-                // Set email marketing consent so profile is Subscribed, not Never Subscribed
-                subscriptions: {
-                    email: {
-                        marketing: {
-                            consent: "SUBSCRIBED",
-                            consented_at: new Date().toISOString(),
-                        },
-                    },
-                },
                 properties: customProperties,
             },
         },
@@ -118,7 +104,58 @@ export default async function handler(req, res) {
         console.error("Klaviyo profile request threw:", err.message);
     }
 
-    // ── 3b. Track "Lead Submitted" event ────────────────────────────────────
+    // ── 3b. Subscribe profile to list (sets email consent to Subscribed) ─────
+    // Requires KLAVIYO_LIST_ID env var — set to your "Landing Page Leads" list ID in Vercel.
+    const KLAVIYO_LIST_ID = process.env.KLAVIYO_LIST_ID;
+
+    if (KLAVIYO_LIST_ID) {
+        const subscriptionPayload = {
+            data: {
+                type: "profile-subscription-bulk-create-job",
+                attributes: {
+                    profiles: {
+                        data: [{
+                            type: "profile",
+                            attributes: {
+                                email,
+                                subscriptions: {
+                                    email: {
+                                        marketing: {
+                                            consent: "SUBSCRIBED",
+                                            consented_at: new Date().toISOString(),
+                                        },
+                                    },
+                                },
+                            },
+                        }],
+                    },
+                },
+                relationships: {
+                    list: {
+                        data: { type: "list", id: KLAVIYO_LIST_ID },
+                    },
+                },
+            },
+        };
+
+        try {
+            const subRes = await fetch(`${KLAVIYO_BASE}/api/profile-subscription-bulk-create-jobs/`, {
+                method: "POST",
+                headers: klaviyoHeaders,
+                body: JSON.stringify(subscriptionPayload),
+            });
+            if (!subRes.ok) {
+                const body = await subRes.text();
+                console.error("Klaviyo subscription failed:", subRes.status, body);
+            }
+        } catch (err) {
+            console.error("Klaviyo subscription request threw:", err.message);
+        }
+    } else {
+        console.warn("KLAVIYO_LIST_ID not set — profile created but not subscribed to a list");
+    }
+
+    // ── 3c. Track "Lead Submitted" event ────────────────────────────────────
     const eventPayload = {
         data: {
             type: "event",
