@@ -20,7 +20,6 @@ export default async function handler(req, res) {
         first_name,
         email,
         phone,
-        timeline,
         budget,
         message,
         landing_page,
@@ -29,7 +28,22 @@ export default async function handler(req, res) {
         utm_campaign,
         utm_content,
         fbclid,
+        When_required,  // Meta Lead Ads field name
     } = req.body || {};
+
+    // Normalise timeline — Meta Lead Ads sends "When_required", landing pages send "timeline"
+    const TIMELINE_MAP = {
+        "now → 2–6 weeks":  "2–6 weeks",
+        "now - 2-6 weeks":  "2–6 weeks",
+        "6–12 weeks":       "6–12 weeks",
+        "6-12 weeks":       "6–12 weeks",
+        "3–6 months+":      "3–6 months+",
+        "3-6 months+":      "3–6 months+",
+        "just researching": "Just researching",
+        "Just researching": "Just researching",
+    };
+    const timeline = req.body?.timeline
+        || (When_required ? (TIMELINE_MAP[When_required] ?? When_required) : "");
 
     if (!first_name || !email) {
         return res.status(400).json({ error: "first_name and email are required" });
