@@ -105,10 +105,12 @@ export default async function handler(req, res) {
     }
 
     // ── 3b. Subscribe profile to list (sets email consent to Subscribed) ─────
-    // Requires KLAVIYO_LIST_ID env var — set to your "Landing Page Leads" list ID in Vercel.
-    const KLAVIYO_LIST_ID = process.env.KLAVIYO_LIST_ID;
+    // expert-guide → KLAVIYO_LIST_ID_GUIDE, all others → KLAVIYO_LIST_ID
+    const listId = landing_page === "expert-guide"
+        ? process.env.KLAVIYO_LIST_ID_GUIDE
+        : process.env.KLAVIYO_LIST_ID;
 
-    if (KLAVIYO_LIST_ID) {
+    if (listId) {
         const subscriptionPayload = {
             data: {
                 type: "profile-subscription-bulk-create-job",
@@ -118,13 +120,20 @@ export default async function handler(req, res) {
                             type: "profile",
                             attributes: {
                                 email,
+                                ...(phoneE164 ? { phone_number: phoneE164 } : {}),
                                 subscriptions: {
                                     email: {
                                         marketing: {
                                             consent: "SUBSCRIBED",
-                                            consented_at: new Date().toISOString(),
                                         },
                                     },
+                                    ...(phoneE164 ? {
+                                        sms: {
+                                            marketing: {
+                                                consent: "SUBSCRIBED",
+                                            },
+                                        },
+                                    } : {}),
                                 },
                             },
                         }],
@@ -132,7 +141,7 @@ export default async function handler(req, res) {
                 },
                 relationships: {
                     list: {
-                        data: { type: "list", id: KLAVIYO_LIST_ID },
+                        data: { type: "list", id: listId },
                     },
                 },
             },
@@ -152,7 +161,7 @@ export default async function handler(req, res) {
             console.error("Klaviyo subscription request threw:", err.message);
         }
     } else {
-        console.warn("KLAVIYO_LIST_ID not set — profile created but not subscribed to a list");
+        console.warn("No Klaviyo list ID set for landing_page:", landing_page);
     }
 
     // ── 3c. Track "Lead Submitted" event ────────────────────────────────────
