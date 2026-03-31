@@ -78,17 +78,29 @@ export default async function handler(req, res) {
     }
     const phoneE164 = toE164(phone);
 
+    // Map timeline → Meta Lead Ads When_required format
+    const WHEN_REQUIRED_MAP = {
+        "2–6 weeks":       "soon__2_6_weeks",
+        "6–12 weeks":      "6_12_weeks",
+        "3–6 months+":     "3_6_months_plus",
+        "Just researching": "just_researching",
+        "Just exploring":   "just_exploring",
+    };
+    const whenRequired = WHEN_REQUIRED_MAP[timeline] || When_required || "";
+
     // Custom properties sent to both the profile and the event
     const customProperties = {
-        timeline:     timeline     || "",
-        budget:       budget       || "",
-        message:      message      || "",
-        landing_page: landing_page || "",
-        utm_source:   utm_source   || "",
-        utm_medium:   utm_medium   || "",
-        utm_campaign: utm_campaign || "",
-        utm_content:  utm_content  || "",
-        fbclid:       fbclid       || "",
+        timeline:      timeline      || "",
+        When_required: whenRequired,
+        lead_status:   landing_page === "meta-landing" ? "awaiting-booking" : "",
+        budget:        budget        || "",
+        message:       message       || "",
+        landing_page:  landing_page  || "",
+        utm_source:    utm_source    || "",
+        utm_medium:    utm_medium    || "",
+        utm_campaign:  utm_campaign  || "",
+        utm_content:   utm_content   || "",
+        fbclid:        fbclid        || "",
     };
 
     // ── 3a. Upsert Klaviyo profile via profile-import ────────────────────────
