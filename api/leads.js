@@ -80,9 +80,9 @@ export default async function handler(req, res) {
 
     // Map timeline → Meta Lead Ads When_required format
     const WHEN_REQUIRED_MAP = {
-        "2–6 weeks":       "soon__2_6_weeks",
-        "6–12 weeks":      "6_12_weeks",
-        "3–6 months+":     "3_6_months_plus",
+        "2–6 weeks":        "now_-_2-6_weeks",
+        "6–12 weeks":       "soon_-_6_12_weeks",
+        "3–6 months+":      "later_-_3-6_months+",
         "Just researching": "just_researching",
         "Just exploring":   "just_exploring",
     };
