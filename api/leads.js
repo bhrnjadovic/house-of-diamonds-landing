@@ -82,6 +82,7 @@ export default async function handler(req, res) {
     const customProperties = {
         timeline:     timeline     || "",
         budget:       budget       || "",
+        message:      message      || "",
         landing_page: landing_page || "",
         utm_source:   utm_source   || "",
         utm_medium:   utm_medium   || "",
