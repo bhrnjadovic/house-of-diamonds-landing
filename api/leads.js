@@ -92,7 +92,7 @@ export default async function handler(req, res) {
     const customProperties = {
         timeline:      timeline      || "",
         When_required: whenRequired,
-        lead_status:   landing_page === "meta-landing" ? "awaiting-booking" : "",
+        "Lead Status":  landing_page === "meta-landing" ? "awaiting-booking" : "",
         budget:        budget        || "",
         message:       message       || "",
         landing_page:  landing_page  || "",
