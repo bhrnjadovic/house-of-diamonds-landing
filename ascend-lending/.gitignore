@@ -1,0 +1,4 @@
+node_modules/
+package-lock.json
+optimize-images.js
+optimize-logos.js
