@@ -111,7 +111,7 @@
         <img src="${B}logo-footer.svg" alt="Ascend Lending Partners" class="footer__logo-img" style="height:38px;width:auto;" />
       </a>
       <p class="footer__tagline">Lending with Precision.</p>
-      <p class="footer__credit-rep">ACN XXX XXX XXX</p>
+      <p class="footer__credit-rep">Australian Credit Licence No. XXXXXX &nbsp;|&nbsp; ACN XXX XXX XXX</p>
     </div>
     <div class="footer__links">
       <div class="footer__col">
@@ -142,7 +142,7 @@
   <div class="footer__bottom">
     <div class="container footer__bottom-inner">
       <p>&copy; 2025 Ascend Lending Partners. All rights reserved.</p>
-      <p class="footer__disclaimer">General information only. Not financial advice. Credit subject to lender assessment and approval criteria.</p>
+      <p class="footer__disclaimer">General information only. Not financial advice. Credit subject to lender assessment and approval criteria. Ascend Lending Partners Pty Ltd — Australian Credit Licence No. XXXXXX.</p>
     </div>
   </div>
 </footer>`;
